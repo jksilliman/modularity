@@ -435,13 +435,8 @@ $n \pmod{6}$ & $F_n \pmod{4}$ & $L_n \pmod{4}$ \\ \hline \hline
 First we deal with the small exponents $p = 2,3,5$.  That is first we want to rule out solutions to
 \[ 13y^{4} -x^{2} = \pm 4 \]
 
-**think about maybe factoring this over $\Q(\sqrt{13})$ which has class number 1.  Maybe something along the line of 
-\[ (x + \sqrt{13} y^2)(x - \sqrt{13}y^2) = (2)^2 \]
-This means that $(x+\sqrt{13}y^2)$ and $(x-\sqrt{13}y^2)$ both need to be $(2 \cdot u^r)$ for $u$ the fundamental unit 
-\[ u = \frac{3 + \sqrt{13}}{2} \]
-**
 
-We can prove that there are no nontrivial squares as follows:
+We can prove that there are no nontrivial squares $p=2$ as follows:
 
 The Diophantine equation
 \[ Ln^2 = 13y^4 \pm 4\]
@@ -450,6 +445,15 @@ gives an integral point $(13y^2, 13yL_n)$ on the elliptic curve
 With sage we can check that for $+52$ the only integral point is $(0:0:1)$ and with $-52$, the only integral points are $(-4:12:1), (0:0:1), (13:39:0)$.  This means that the only solution is the trivial for $y = 1, L_n = 3$.   So we conclude that there are no nontrivial squares.
 
 
+**check this** In general, we may be able to do this by factoring this over $\Q(\sqrt{13})$ which has class number 1:
+\[ (x + \sqrt{13} y^p)(x - \sqrt{13}y^p) = (2)^2 \]
+This means that $(x+\sqrt{13}y^p)$ and $(x-\sqrt{13}y^p)$ both need to be $(2 \cdot u^r)$ for $u$ the fundamental unit 
+\[ u = \frac{3 + \sqrt{13}}{2} \]
+as they are Galois conjugate.  So we add these two to get the relation
+\[2x = 2(u^r+u^r) \Rightarrow x = 2u^r \]
+Plugging this into our old equation we get
+\[2u^r + \sqrt{13}y^p = 2u^r  \Rightarrow y = 0.\]
+which is a contradiction.
 
 -----
 
@@ -691,9 +695,6 @@ All of this can be easily made into a sage algorithm see appendix \ref{findlevel
 
 \end{enumerate}
 
-
-
-Isabel is typing here!
 
 
 
