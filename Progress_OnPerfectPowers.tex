@@ -594,6 +594,66 @@ We must again separate by what residue classes of $n$ we want to consider.
 \end{enumerate}
 
 
+\section{Kraus' Method applied to b odd, c=1}
+We consider $b$ odd.
+We deal with odd solutions to $F_n = y^p$, $n$ an odd prime, $p \geq 7$. We record the parity of the n, as we have to apply Kraus' method separately in each case.
+
+The restriction to prime index is unfortunate, since it appears that Robbins' proof of reduction to prime index will not work for other Lucas sequences [see Jesse's moleskine]. 
+
+\textbf{TODO}: check Petho's proof, to see if it is any different.
+
+The restriction to $F_n$ odd may not be too problematic. Isabel believes that a paper of Bennett rules out solutions to $X^2-DY^{2p}=1$, which applies here to rule out the case $F_n$ even, n even. Further, Ribenboim tells us that:
+\begin{enumerate}
+\item If b odd, then $F_n$ even implies $3 | n$
+\item If b even, then Fn is never even.
+\end{enumerate}
+Note that this implies that the period mod 4 is 6 when b is odd, is 2 or 4 when b is even. Thus in our situation, an even solution would require $3|n$. We may be able to rule such indices out using Robbins' method when 3 does not divide $D$.
+
+\begin{enumerate}
+\item{b=3, c=1}
+  Empty levels. Thus no solutions $y >= 2, p >= 7$
+    
+\item{b=5, c=1} 
+\begin{itemize} 
+  \item{n=1}
+    Conditional success. If:
+      $Fn = y^p$ has a solutions for $y \geq 6$ n = 1 mod 2 p in [7, 1000]
+    then:
+      n even or $n = \pm 1$ mod p
+  \item{n=0}
+    An abelian variety found with bad prime p=7.
+    No elliptic curves found.
+\end{itemize}  
+\item{b=7, c=1}
+\begin{itemize}
+  \item{n=0}
+    An abelian variety found with bad prime p=11.
+    No elliptic curves found.
+  \item{n=1}
+    An abelian variety found with bad primes $3^3 \cdot 7^2 \cdot 11$
+    We cannot descend to an elliptic curve,
+      for $y \geq 8, 7 \leq p \leq 1000$.
+\end{itemize}
+\item{b=9, c=1}
+\begin{itemize}
+  
+  \item{n=1}
+    An abelian variety found with bad primes $2^{10} 3^4 7$
+    Conditional success. If:
+      $Fn = y^p$ has no solutions for $y \geq 10$, n = 1 mod 2 p in [7, 1000]
+      and
+      we descend to an elliptic curve
+    then:
+      n even or $n = \pm 1$ mod p
+  \item{n=0}
+    Three abelian varieties found, with bad primes:	
+      $2^5 \cdot 3 \cdot 11, 2^5 \cdot 7^2, 2^{10} \cdot 7$
+    We cannot descend to an elliptic curve,
+      for $y \geq 10, 7 \leq p \leq 1000$.
+
+\end{itemize}
+\end{enumerate}
+
 \section{In general for $c = 1$}
 
 We have several possibilities based upon congruences:
