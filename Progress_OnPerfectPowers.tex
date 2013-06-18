@@ -156,7 +156,7 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
 **TODO confirm that this corresponds to the trivial solution. Understand why this does not seem to complicate every Lucas sequence we consider, even though they all have same trivial solution: see the section on Kraus' method for egs**
 \end{rem}
 
-\item If Kraus' method does not rule out descent to a specific elliptic curve entirely, for $p < 10^8$, it might give us "local information" about the solution. In all of the examples we have seen, this information is $n = \pm 1 \mod p$. **QUESTION: 1 mod p would appear to correspond to the trivial solution. Why is -1 mod p hard to rule out?**
+\item If Kraus' method does not rule out descent to a specific elliptic curve entirely, for $p < 10^8$, it might give us "local information" about the solution. In all of the examples we have seen, this information is $n = \pm 1 \mod p$, ruling out all but the equiv. classes of the two trivial solutions.
 \item At this point, the condition $n = \pm 1 \mod p$ lets us rewrite $\Lambda$ as a linear form in two logs 
 \[ \Lambda = p \log(\frac{\alpha^s}{y}) -  \log(\sqrt{D}\alpha^{\pm 1}). \]
 Applying the powerful results of [LMN], we should get $p < 1000$.
