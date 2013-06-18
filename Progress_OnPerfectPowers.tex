@@ -388,7 +388,7 @@ $|b|$ & $c$ & no perfect powers for $20 \leq n < 10000$ & perfect power for $n=$
 \end{tabular}
 \end{center}
 
-\subsection{The cases we can deal with thus far}
+\subsection{Examples with $b^2+4c = 1$}
 
 \begin{enumerate}
 
@@ -414,6 +414,12 @@ No Mersenne number $2^n-1$ is a perfect power for $n>1$.
 \end{cor}
 
 which is obviously already known by Catalan's theorem.
+ 
+ \end{enumerate}
+ 
+ \subsection{Examples with $c=  +1$}
+ 
+ \begin{enumerate}
  
 \item[\textbf{2.}] $b = 3$, $c = 1$
 In this case we have the Diophantine equation
@@ -445,20 +451,22 @@ gives an integral point $(13y^2, 13yL_n)$ on the elliptic curve
 With sage we can check that for $+52$ the only integral point is $(0:0:1)$ and with $-52$, the only integral points are $(-4:12:1), (0:0:1), (13:39:0)$.  This means that the only solution is the trivial for $y = 1, L_n = 3$.   So we conclude that there are no nontrivial squares.
 
 
-**check this** In general, we may be able to do this by factoring this over $\Q(\sqrt{13})$ which has class number 1:
+**This does not give anything** In general, we may be able to do this by factoring this over $\Q(\sqrt{13})$ which has class number 1:
 \[ (x + \sqrt{13} y^p)(x - \sqrt{13}y^p) = (2)^2 \]
-This means that $(x+\sqrt{13}y^p)$ and $(x-\sqrt{13}y^p)$ both need to be $(2 \cdot u^r)$ for $u$ the fundamental unit 
+This means that $(x+\sqrt{13}y^p)$ and $(x-\sqrt{13}y^p)$ need to be $(2 \cdot u^r)$ and $(-2 \cdot u^{-r})$ for $u$ the fundamental unit 
 \[ u = \frac{3 + \sqrt{13}}{2} \]
 as they are Galois conjugate.  So we add these two to get the relation
-\[2x = 2(u^r+u^r) \Rightarrow x = 2u^r \]
+\[2x = 2(u^r-u^{-r}) \Rightarrow x = u^r-u^{-r} \]
 Plugging this into our old equation we get
-\[2u^r + \sqrt{13}y^p = 2u^r  \Rightarrow y = 0.\]
-which is a contradiction.
+\[u^r - u^{-r} + \sqrt{13}y^p = 2u^r  \Rightarrow \sqrt{13}y^p = u^r + u^{-r}\]
+which is the condition that
+\[ y^p = \frac{u^r + u^{-r}}{\sqrt{13}} \]
+which is exactly equivalent to the original formula for $F_n$.
 
 -----
 
 
-We want to rule out seperately the cases of $F_n$ and $L_n$ both even (ie $n \equiv 0,3 \pmod{4}$) and both odd.
+We want to rule out separately the cases of $F_n$ and $L_n$ both even (ie $n \equiv 0,3 \pmod{4}$) and both odd.
 
 First treating the even case, we can immediately rule out the case of $n \equiv 3 \pmod{4}$ as no perfect power is $2 \pmod{4}$  This implies that $n$ is even.  Next, we define the variables
 \[ z = y/2 \qquad \qquad \tilde{L} = \pm L_n/2 \text{ such that } \tilde{L} \equiv 1 \pmod{4}. \]
@@ -473,8 +481,7 @@ and the mod $p$ representation for $p \geq 7$ descends to level $26$ as it is un
 E^{26a} & : y^2 + xy + y = x^3 - 5x - 8 \\
 E^{26b} & : y^2 + xy + y = x^3 - x^2 - 3x + 3 \\
 \end{align*}
-and we can not immediately rule these out. **Probably rule one of these out using congruences a la Siksek page 986**
-
+and we can not immediately rule these out.  By the congruence conditions of \texttt{analyze\_level()} we can rule out the first of these.  So it must be isomorphic to the mod $p$ Galois representation arising from $E^{26b}$.
 
 Now assume both $L_n$ and $y$ are odd and $n$ is odd.  We associate the Frey curve
 \[ E: Y^2 = X^3 + H_nX^2 - X \]
@@ -487,7 +494,7 @@ in the Cremona database.
 
 If $n$ were even then we would need
 \[ E': Y^2 = X^3 + H_n'X^2 + X \]
-where $H_n' = \pm L_n$ such that $H_n' \equiv -1 \pmod{4}$.  This descends to a level $N = 2^3 \cdot 13$.  The space of cusp forms of level $104$ is $2$-dimensional, consisting of one rational and one irrational newform.  These respectively correspond to an elliptic curve ($E^{104}: y^2 = x^3 + x^2 - 16*x - 32$) and abelian variety respectively.
+where $H_n' = \pm L_n$ such that $H_n' \equiv -1 \pmod{4}$.  This descends to a level $N = 2^3 \cdot 13$.  The space of cusp forms of level $104$ is $2$-dimensional, consisting of one rational and one irrational newform.  These respectively correspond to an elliptic curve ($E^{104}: y^2 = x^3 + x^2 - 16*x - 32$) and abelian variety respectively.  They can both be ruled out using the method of congruences (Bennett and Skinner proposition 4.2) implemented in the sage code \texttt{analyze\_level()}.
 
 
 
@@ -522,7 +529,13 @@ which we associate to the Frey curve
 \[ E: Y^2 = X^3 + 2\tilde{L}X^2+2y^{2p}X \]
 which has conductor
 \[N_E = 2^7 \cdot \prod_{\ell |y} \ell. \]
-It descends to level $2^7 = 128$.  The space of newforms of level $128$ is dimension $4$, spanned by $4$ rational newforms. **could try to use Siksek's method of congruences to rule out all but one of these**
+It descends to level $2^7 = 128$.  The space of newforms of level $128$ is dimension $4$, spanned by $4$ rational newforms.   
+
+We can actually rule this out using the theorem that there are only two solutions to
+\[ x^2 - 2y^{2p} = \pm 1\]
+namely $(1,1,p)$ and $(234, 13, 2)$ (cited in Bennett, but due originally to Petho and Cohn).
+
+This is the Diophantine equation one arrives at by dividing the original Diophantine equation by $4$.
 
 
 \item[\textbf{4.}] $b = 4$, $c = 1$
@@ -552,8 +565,7 @@ which we associate to the Frey curve
 \[ E: Y^2 = X^3 + 2\tilde{L} X^2 - X \]
 with conductor
 \[N_E = 2^5\cdot 5 \prod_{\ell | y} \ell. \]
-As above the Galois representation descends to level $2^5 \cdot 5 = 160$, which is 4 dimensional, spanned by $2$ rational newforms and one irrational. **work on ruling out the two elliptic curves and the abelian variety**
-
+As above the Galois representation descends to level $2^5 \cdot 5 = 160$, which is 4 dimensional, spanned by $2$ rational newforms and one irrational.   The abelian variety can be ruled out easily using \texttt{analyze\_level()}.
 
 \item[\textbf{4.}] $b = 5$, $c = 1$
 
@@ -574,12 +586,57 @@ $n \pmod{6}$ & $F_n \pmod{4}$ & $L_n \pmod{4}$ \\ \hline \hline
 
 We must again separate by what residue classes of $n$ we want to consider.  
 
+\end{enumerate}
 
 
+\subsection{Examples with $c = -1$}
+
+\begin{enumerate}
+
+\item[\textbf{5.}] $b = 4, c = -1$: This is in some sense the simplest case for $b$ even as the case $2, -1$ has many nontrivial perfect powers as $b^2+4c = 0$.
+
+We have the Diophantine equation
+\[ 12y^{2p} - 4 = L_n^2 \]
+with the congruence conditions (and levels descended to) given by the Sage script \texttt{find\_levels()}.
+
+\begin{lstlisting}
+
+D is 12
+For term 0 mod 4 F is 0 mod 4 and L is 2 mod 4; it descends to level 6
+For term 1 mod 4 F is 1 mod 4 and L is 0 mod 4; it descends to level 96
+For term 2 mod 4 F is 0 mod 4 and L is 2 mod 4; it descends to level 6
+For term 3 mod 4 F is 3 mod 4 and L is 0 mod 4; it descends to level 96
+
+
+\end{lstlisting}
+
+So for $n \equiv 0, 2 \pmod{4}$, $F_n$ has no nontrivial perfect powers for $p \geq 7$.  To rule out the other cases, we consider the fact that $D$ and $L_n$ are even.  So letting $x = L_n/2$ we get the Diophantine equation:
+\[ x^2 - 3y^{2p} = 1. \]
+By Thm 7.1 in Bennett (2004), the only nontrivial solution is 
+\[ 7^2 -3 \cdot 2^4 = 1\]
+and as $16$ is not a term in the Fibonacci sequence this is not possible.  **need to make this slightly less sketchy**
+
+
+\item[\textbf{6.}] $b = 6, c = -1$: A similar case holds here.  We get the congruences by \texttt{find\_levels()}
+
+\begin{lstlisting}
+
+D is 32
+For term 0 mod 4 F is 0 mod 4 and L is 2 mod 4; it descends to level 2
+For term 1 mod 4 F is 1 mod 4 and L is 2 mod 4; it descends to level 32
+For term 2 mod 4 F is 2 mod 4 and is not a perfect power
+For term 3 mod 4 F is 3 mod 4 and L is 2 mod 4; it descends to level 32
+
+\end{lstlisting}
+
+If $F_n \equiv 2 \pmod{4}$, it is clearly not a perfect power.  If $F_n \equiv 0 \pmod{4}$ then for $p \geq 7$ we can rule this out by the modular method.
+
+For $F_n \equiv 1, 3 \pmod{4}$ we can transform this as above
+\[ x^2 - 8y^{2p} = 1 \]
+which by Bennett (2004) Thm 7.1 has no solutions.
 
 
 \end{enumerate}
-
 
 \section{Kraus' Method applied to b odd, c=1, $F_n$ odd}
 We consider $b$ odd.
@@ -641,7 +698,7 @@ Note that this implies that the period mod 4 is 6 when b is odd, is 2 or 4 when 
 \end{itemize}
 \end{enumerate}
 
-\section{In general for $c = 1$}
+\section{In general for $c = \pm 1$}
 
 We have several possibilities based upon congruences:
 
@@ -656,7 +713,7 @@ We have several possibilities based upon congruences:
 
 We simplify our Diophantine equation using $z = y/2$ and $\tilde{L} = L/2$:
 \[ (b^2+4c) 2^{2p-2} z^{2p} \pm 1 = \tilde{L}^2 \]
-and then associate it to the Frey curve
+where it is always $+1$ if $c = -1$; then associate it to the Frey curve
 \[E: Y^2 +XY = X^3 + \frac{\tilde{L} -1}{4} X^2  + (b^2+4c) 2^{2p-8} z^{2p}X \]
 with conductor
 \[N_E = 2 \cdot \prod_{\substack{\ell | b^2+4c \\ \ell \notdiv 2}} \ell \]
@@ -665,14 +722,16 @@ ie it is square free.
 \item $F_n$ and $L_n$ are odd and $b^2+4c$ is odd
 
 Then we have the usual Diophantine equation 
-\[ (b^2+4c)y^{2p} \pm 4 = H_n^2 \]
-where it is $+4$ if $n$ is even and $-4$ if $n$ is odd and $H_n = \pm L_n$ such that $H_n \equiv -1\pmod{4}$ if $n$ is even and $-1 \pmod{4}$ if $n$ is odd.
+\[ (b^2+4c)y^{2p} \pm 4 = H_n^2. \]
+For $c = 1$ it is $+4$ if $n$ is even and $-4$ if $n$ is odd and $H_n = \pm L_n$ such that $H_n \equiv -1\pmod{4}$ if $n$ is even and $-1 \pmod{4}$ if $n$ is odd.  If $c = -1$ then it is $+4$, so we choose $H_n \equiv -1 \pmod{4}$.
+
+
 We associate this to the elliptic curve
 \[ E: Y^3 = X^3 + H_n X^2 \pm X \]
 where the $\pm$ corresponds to that in the original Diophantine equation.  This has conductor
 \[N_E = 2^{\alpha} \cdot  \prod_{\substack{\ell | b^2+4c \\ \ell \notdiv 2}} \ell \cdot \prod_{\ell | y} \ell \]
 with 
-\[ \alpha = \begin{cases} 2 &: n \text{ odd} \\ 3 &:  n \text{ even} \end{cases} \]
+\[ \alpha = \begin{cases} 2 &: c = +1 \text{ and } n \text{ odd} \\ 3 &:   c= +1 \text{ and } n \text{ even} \text{ or } c = -1 \end{cases}. \]
 
 \item It is not possible for $F_n$ and $L_n$ to be odd and $b^2+4c$ to be even (reduce the Diophantine equation mod $2$)
 
@@ -684,9 +743,9 @@ Let $k$ be the order of $2$ dividing $b^2+4c$ such that $b^2 + 4c = 2^k \cdot A$
 
 \item $k = 2$:  We write our Diophantine equation as
 \[ A y^{2p} \pm 1 = \tilde{L}^2 \]
-where as above $\tilde{L} = \pm L_n/2$.  We can also say that $A \equiv \mp 1 \pmod{4}$ and $y^{2p} \equiv 1 \pmod{4}$ by congruences reasons.  We then associate the following Frey curve
+where as above $\tilde{L} = \pm L_n/2$.  For $c=  +1$, we can also say that $A \equiv \mp 1 \pmod{4}$ and $y^{2p} \equiv 1 \pmod{4}$ by congruences reasons.  We then associate the following Frey curve
 
-\[ E : \begin{cases} Y^2 = X^3 + 2 \tilde{L}X^2 + A X & : A \equiv -1 \pmod{4} \qquad (n \text{ even}) \\  Y^2 = X^3 + 2 \tilde{L}X^2 - X & : A \equiv 1 \pmod{4} \qquad (n \text{ odd}) \end{cases} \]
+\[ E : \begin{cases} Y^2 = X^3 + 2 \tilde{L}X^2 + A X & : A \equiv -1 \pmod{4} \qquad (c = -1 \text{ and } n \text{ even or } c = -1) \\  Y^2 = X^3 + 2 \tilde{L}X^2 - X & : A \equiv 1 \pmod{4} \qquad (c = -1 \text{ and } n \text{ odd}) \end{cases} \]
 
 These have conductor
 
@@ -788,29 +847,29 @@ def  get_congruences(b,c):
     return F,L
     
 def find_levels(b,c):
+    sign = (1-c)/2
     R = Integers(4)
     F,L = get_congruences(b,c)
     m = len(F)
     D = b^2+4*c
+    print "D is", D
     for n in xrange(m):
+        N = 0
         f = F[n]
         l = L[n]
         if R(f) == R(2):
-            print "For term", n, "mod", m, "F is",f, \
-            "mod 4 and is not a perfect power"
+            print "For term", n, "mod", m, "F is",f, "mod 4 and is not a perfect power"
             continue
         elif GF(2)(f) == GF(2)(0) and R(l) == R(2):
             j = (radical(D)).valuation(2)
             radD = radical(D)/2^j
             N = 2*radD
-        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(1) \ 
-        and GF(2)(D) == GF(2)(1):
-            if GF(2)(n) == GF(2)(1):
-                N = 2^2*radical(D)
-            if GF(2)(n) == GF(2)(0):
+        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(1) and GF(2)(D) == GF(2)(1):
+            if (GF(2)(n) == GF(2)(0)) or sign:
                 N = 2^3*radical(D)
-        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(0) \ 
-        and GF(2)(D) == GF(2)(0):
+            elif GF(2)(n) == GF(2)(1):
+                N = 2^2*radical(D)
+        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(0) and GF(2)(D) == GF(2)(0):
             k = D.valuation(2)
             A = D/2^k
             if k == 2:
@@ -830,9 +889,7 @@ def find_levels(b,c):
                 N = radical(A)
             if k >8:
                 N = 2*radical(A)
-        print "For term", n, "mod", m, "F is", f, "mod 4 and L is", \
-        l, "mod 4 and it descends to level", N
-
+        print "For term", n, "mod", m, "F is", f, "mod 4 and L is", l, "mod 4; it descends to level", N
 
 \end{lstlisting}
 
