@@ -109,23 +109,131 @@ def describe_level(n):
             print "\tAV", (div.factor(), f.q_expansion(5))
         return False
     return True
+   
+   
+   
+   
+   
+ 
+ 
+def find_period_fib(b,c):
+    R = Integers(4)
+    f0 = 0; f1 = 1
+    A1 = 0; A2 = 1
+    for i in xrange(20):
+        x = b*A2 + c*A1
+        A1 = A2
+        A2 = x
+        if (i>= 1) and R(A1) == R(f0) and R(A2) == R(f1):
+            return i+1
+            
+def find_period_luc(b,c):
+    R = Integers(4)
+    l0 = 2; l1 = b
+    A1 = 2; A2 = b
+    for i in xrange(20):
+        x = b*A2 + c*A1
+        A1 = A2
+        A2 = x
+        if (i>= 0) and R(A1) == R(l0) and R(A2) == R(l1):
+            return i+1
+            
+def  get_congruences(b,c):
+    R = Integers(4)
+    f0 = 0; f1 = 1
+    l0 = 2; l1 = b
+    fib_per = find_period_fib(b,c)
+    luc_per = find_period_luc(b,c)
+    m = lcm(fib_per, luc_per)
+    F = [R(0), R(1)]
+    L = [R(2), R(b)]
+    for i in xrange(m-2):
+        x = b*f1 + c*f0
+        f0 = f1
+        f1 = x
+        y = b*l1 + c*l0
+        l0 = l1
+        l1 = y
+        F.append(R(x))
+        L.append(R(y))
+    return F,L
     
+def find_levels(b,c):
+    R = Integers(4)
+    F,L = get_congruences(b,c)
+    m = len(F)
+    D = b**2+4*c
+    for n in xrange(m):
+        f = F[n]
+        l = L[n]
+        if R(f) == R(2):
+            print "n =", n, "mod", m
+            print "\tF =",f,"mod 4"
+            print "\tF is not a perfect power"
+            continue
+        elif GF(2)(f) == GF(2)(0) and R(l) == R(2):
+            j = (radical(D)).valuation(2)
+            radD = radical(D)/2**j
+            N = 2*radD
+        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(1) \
+        and GF(2)(D) == GF(2)(1):
+            if GF(2)(n) == GF(2)(1):
+                N = 2**2*radical(D)
+            if GF(2)(n) == GF(2)(0):
+                N = 2**3*radical(D)
+        elif GF(2)(f) == GF(2)(1) and GF(2)(l) == GF(2)(0) \
+        and GF(2)(D) == GF(2)(0):
+            k = D.valuation(2)
+            A = D/2**k
+            if k == 2:
+                N = 2**5*radical(A)
+            if k == 3:
+                N = 2**7*radical(A)
+            if k == 4:
+                if R(-A) == R(f):
+                    N = 2**2*radical(A)
+                if R(A) == R(f):
+                    N = 2**3*radical(A)
+            if k == 5:
+                N = 2**5*radical(A)
+            if k == 6 or k == 7:
+                N = 2**3*radical(A)
+            if k == 8:
+                N = radical(A)
+            if k >8:
+                N = 2*radical(A)
+        print "n =", n, "mod", m
+        print "\tF =", f, "mod 4"
+        print "\tL =", l, "mod 4"
+        print "\tDescent level:", N
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 # Kraus Method
-# (b^2 + 4c)Fn^2 + 4(-c)^n = Ln^2
+# (b**2 + 4c)Fn**2 + 4(-c)**n = Ln**2
 # c = +- 1, Ln, Fn odd.
 
 def print_unconditional_success(y,n):
-    print "Success! Fn = y^p has no solutions for y >=",y, "n =", n, "mod 2"
+    print "Success! Fn = y**p has no solutions for y >=",y, "n =", n, "mod 2"
 def print_success(y,n,p_range,try_global):
     if try_global:
-        print "Success! Fn = y^p has no solutions for y >=",y, "n =", n, "mod 2", "p in",
+        print "Success! Fn = y**p has no solutions for y >=",y, "n =", n, "mod 2", "p in",
         print_range(p_range) 
     else:
         print "Conditional success. If:"
-        print "\tFn = y^p has a solutions for y >=",y, "n =", n, "mod 2", "p in",
+        print "\tFn = y**p has a solutions for y >=",y, "n =", n, "mod 2", "p in",
         print_range(p_range)
         print "then:"
-        print"\t y^2p != 1 mod l for one of our allowed l"
+        print"\t y**2p != 1 mod l for one of our allowed l"
 def print_range(r):
     print "["+str(r[0])+", " + str(r[-1]) +"]" 
     
@@ -138,14 +246,14 @@ def kraus(b,c,p_range,n_parity=1,max_k=1000, try_global=True, max_global_attempt
     
     
     d = b**2 + 4*c
-    # Roots of x^2 - bx - c
+    # Roots of x**2 - bx - c
     #omega = (b + sqrt(d))/2
     #tau = (b + sqrt(d))/2
     
-    # Fix p >= 7 prime. Fix parity of n. We attempt to prove that Fn = y^p has no solutions.
-    # Frey Curve E: Y^2 = X^3 + Hn X^2 + (-c)^nX, 
-    # where Hn = +- Ln such that Hn = -(-c)^n mod 4.
-    # N(E) = 2^alpha * rad(d)
+    # Fix p >= 7 prime. Fix parity of n. We attempt to prove that Fn = y**p has no solutions.
+    # Frey Curve E: Y**2 = X**3 + Hn X**2 + (-c)**nX, 
+    # where Hn = +- Ln such that Hn = -(-c)**n mod 4.
+    # N(E) = 2**alpha * rad(d)
     n = n_parity
     
     if ((-c)**n+1)%4 == 0:
@@ -195,7 +303,7 @@ def kraus(b,c,p_range,n_parity=1,max_k=1000, try_global=True, max_global_attempt
                 # Does l divide the conductor? If so, skip. THEORY-PROBLEM: This works for y >= |b| + |c|.
                 if (2*d)%l == 0:
                     continue
-                # We can't check unless b^2 + 4c a qr.
+                # We can't check unless b**2 + 4c a qr.
                 if Fl(d).is_square():
                     omega = (Fl(b) + Fl(d).sqrt())/Fl(2)
                     if omega**(2*k) == Fl(1):
@@ -214,11 +322,11 @@ def kraus(b,c,p_range,n_parity=1,max_k=1000, try_global=True, max_global_attempt
                 
                 z = g
                 
-                if try_global: # If we want to allow y^2p = 1 mod l 
+                if try_global: # If we want to allow y**2p = 1 mod l 
                     top = k+1
                 else:
                     top = k
-                for i in range(1,top): #z is of order k, we go up to z^k=1
+                for i in range(1,top): #z is of order k, we go up to z**k=1
                     m = d*z + 4*(-c)**n
                     if m.is_square():
                         # A.append(z)
@@ -237,9 +345,9 @@ def kraus(b,c,p_range,n_parity=1,max_k=1000, try_global=True, max_global_attempt
                     #print "\tSuccessful l:", l
                     break
             if not success:
-                print "No success at p =", p, ". Improve Kraus' method, or find a soln to Fn = y^p. Curve:", F  
+                print "No success at p =", p, ". Improve Kraus' method, or find a soln to Fn = y**p. Curve:", F  
                 overall_success = False      
     if overall_success:
         print_success(abs(b)+abs(c),n,p_range, try_global)
     else:
-      print "There was failure at some p. Check the logs"
+      print "There was failure at some p."

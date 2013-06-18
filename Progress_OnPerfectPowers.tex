@@ -97,7 +97,6 @@
 \DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
 
-
 \begin{document}
 
 
@@ -117,6 +116,56 @@ From Siksek 2006:
 \begin{thm}\label{fibluc}
 The only perfect powers in the Fibonacci sequence are $F_0 = 0, F_1 = 1, F_2 = 1, F_6 = 8, F_{12} = 144$.  The only perfect powers in the Lucas sequence are $F_1 = 1$ and $F_3 = 4$. 
 \end{thm}
+
+\section{Plan of Attack/Jesse's Musings}
+We seek to enumerate the perfect powers in binary linear recurrence relations. To begin with, we look at Lucas sequences, which are of the form $F_m = b F_{m-1} + c F_{m-2}, F_0 = 0, F_1 = 1$. This is a generalization of the Fibonacci sequence. Given a solution $F_n=y^p$:
+\begin{enumerate}
+\item
+  Consider the Diophantine equation $Dy^{2p} = L_n^2 - 4(-c)^n$.
+\item
+  Rule out p=2,3,5, using Thue equations, by solving for integral points on elliptic/higher genus curves.
+\item
+  Construct the Frey curve(s). There may be many cases which need to be dealt with, if $DF_n, L_n, 2c$ are not pairwise coprime.
+\item Deal with the Frey curve, using modular methods. That is, we note that our Frey curve arises mod p from a modular form in a particular small level. First, the trivial cases:
+    For $\ell$ a prime where $\rho_p$ is unramified, p must divide 
+        \[ N_{K/Q}((l+1)^2 - c_l^2)\prod_{-2\sqrt{l} \leq 2r \leq 2\sqrt{l}} N_{K/Q}(2r - c_l), \]
+        where $c_l$ are the coefficients of the associated modular form.
+    If nonzero, this congruence condition bounds $p$. In particular, if $p \leq 5$, we are done. Note that this always succeeds for abelian varieties, since $c_l \notin \Z$ infinitely often **CHECK**. Unfortunately, it can fail to give information on elliptic curves.
+    \begin{rem}
+     If $p \mid a_{\ell}(E)$ for almost all $\ell$, then by Cebotarev Density (and some linear algebra, found in Serre's Abelian l-adic Repr.), we would have a p-torsion point on our Frey curve, contradicting Mazur's torsion theorem if $p \geq 11$. If our Frey curves had full 2-torsion, this would be more useful, for we might obtain 7-torsion on the curve below, which then would "lift" to our curve above, by the irreducibility of the representation (see Serre). Unfortunately, $p$ may divide the product of norms above for all such $\ell$ without this occuring. For an example, see the "Multi-Frey" paper by Siksek. 
+     **QUESTION What "conditions" give rise to Frey curves with full two torsion? Why is it natural to consider curves with only some two torsion here, but all the families in "Multi-Frey" have full two-torsion?**
+	\end{rem}    
+
+	\begin{rem}
+	If we descend to a curve (or abelian variety) with complex multiplication, we can likely find an immediate contradiction. However, this is of little use to us, as we are often in square-free levels, i.e. semistable elliptic curves, which cannot be CM, since CM implies potentially good. To tell if your abelian varieties have complex multiplication, the only method we know of is to construct enough distinct Hecke characters of the specified conductor. This appears to work only if all abelian varieties at the level had complex multiplication. **QUESTION Can we detect CM abelian varieties?**
+	\end{rem}
+
+\item If such tricks do not work, we imitate the paper of Siksek. 
+**TODO: Verify the applications of linear forms in two/three logs**
+\begin{itemize}
+	\item Bound p above by about$10^8$, using the theory of linear forms in three logarithms, applied to 
+	\[\Lambda = n \log \alpha - \log \sqrt{D} - p \log{y}. \]
+	[BMS] did this by first applying Matveev's bound, in order to satisfy the quite complicated conditions of their improvement.
+	 **TODO this may require $n, p$ prime, not small.**
+	\item For p less than this bound, use the method of Kraus. For fixed p, this gives congruence conditions on $a_l$ for "good" $\ell$, and we do a computer search for such $l$, hoping to find that the conditions are not satisfied by any curves in our level. We will not be so lucky: there may be a Frey reduction which is equal to a curve in our level.
+	\begin{rem}	
+	 In order to define "good", we need to find a condition on $\ell$ which implies that $\ell \nmid N(E)$ which only depends on $p$, not (n, y). This is easier said than done: [BMS] required $n$ prime, and used the condition $1 \le F_p \le 2^p$, which are respectively we don't know how to achieve, and only work for the Fibonacci sequence. **TODO: Prove y large, in order to make the latter work.**
+\end{rem}
+\begin{rem}
+	We believe that when [BMS] says that the trivial solution complicates their solution to the Fibonacci sequence, it is here where it occurs: for in their work, there exists a curve in their level which always agrees with a possible mod l reduction of the Frey curve. 
+**TODO confirm that this corresponds to the trivial solution. Understand why this does not seem to complicate every Lucas sequence we consider, even though they all have same trivial solution: see the section on Kraus' method for egs**
+\end{rem}
+
+\item If Kraus' method does not rule out descent to a specific elliptic curve entirely, for $p < 10^8$, it might give us "local information" about the solution. In all of the examples we have seen, this information is $n = \pm 1 \mod p$. **QUESTION: 1 mod p would appear to correspond to the trivial solution. Why is -1 mod p hard to rule out?**
+\item At this point, the condition $n = \pm 1 \mod p$ lets us rewrite $\Lambda$ as a linear form in two logs 
+\[ \Lambda = p \log(\frac{\alpha^s}{y}) -  \log(\sqrt{D}\alpha^{\pm 1}). \]
+Applying the powerful results of [LMN], we should get $p < 1000$.
+
+\item At this point, a sieve ought to, in all cases, prove $\log y$ astronomical, $p > 1000$, completing this hypothetical proof by contradiction. **TODO We need this input on $y$ to apply linear forms in 3 logs. Reorder this section**
+
+\end{itemize}
+\end{enumerate}
+
 
 \section{Preliminaries}
 
