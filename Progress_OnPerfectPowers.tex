@@ -143,10 +143,11 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
 \item If such tricks do not work, we imitate the paper of Siksek. 
 **TODO: Verify the applications of linear forms in two/three logs**
 \begin{itemize}
-	\item Bound p above by about$10^8$, using the theory of linear forms in three logarithms, applied to 
+	\item A sieve ought to, in all cases, prove $\log y$ astronomical, $p > 1000$.
+	\item Bound p above by about $10^8$, using the theory of linear forms in three logarithms, applied to 
 	\[\Lambda = n \log \alpha - \log \sqrt{D} - p \log{y}. \]
 	[BMS] did this by first applying Matveev's bound, in order to satisfy the quite complicated conditions of their improvement.
-	 **TODO this may require $n, p$ prime, not small.**
+	 **CHECK this may require $n, p$ prime, y large**
 	\item For p less than this bound, use the method of Kraus. For fixed p, this gives congruence conditions on $a_l$ for "good" $\ell$, and we do a computer search for such $l$, hoping to find that the conditions are not satisfied by any curves in our level. We will not be so lucky: there may be a Frey reduction which is equal to a curve in our level.
 	\begin{rem}	
 	 In order to define "good", we need to find a condition on $\ell$ which implies that $\ell \nmid N(E)$ which only depends on $p$, not (n, y). This is easier said than done: [BMS] required $n$ prime, and used the condition $1 \le F_p \le 2^p$, which are respectively we don't know how to achieve, and only work for the Fibonacci sequence. **TODO: Prove y large, in order to make the latter work.**
@@ -159,9 +160,9 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
 \item If Kraus' method does not rule out descent to a specific elliptic curve entirely, for $p < 10^8$, it might give us "local information" about the solution. In all of the examples we have seen, this information is $n = \pm 1 \mod p$, ruling out all but the equiv. classes of the two trivial solutions.
 \item At this point, the condition $n = \pm 1 \mod p$ lets us rewrite $\Lambda$ as a linear form in two logs 
 \[ \Lambda = p \log(\frac{\alpha^s}{y}) -  \log(\sqrt{D}\alpha^{\pm 1}). \]
-Applying the powerful results of [LMN], we should get $p < 1000$.
+Applying the powerful results of [LMN], we should get $p < 1000$, contradicting our sieve.
 
-\item At this point, a sieve ought to, in all cases, prove $\log y$ astronomical, $p > 1000$, completing this hypothetical proof by contradiction. **TODO We need this input on $y$ to apply linear forms in 3 logs. Reorder this section**
+
 
 \end{itemize}
 \end{enumerate}
