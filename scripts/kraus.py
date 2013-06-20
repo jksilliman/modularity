@@ -81,6 +81,7 @@ def analyze_level(level, bad_prime_size=7):
     forms = Newforms(level,2, names='a')
     bad_q_expn = []
     for f in forms:
+        print f
         r = f.base_ring()
         div = check_congruence(f, trace_depth)
         largest_p = largest_prime(div)
@@ -230,19 +231,19 @@ def print_success(y,n,p_range,try_global):
         print_range(p_range) 
     else:
         print "Conditional success. If:"
-        print "\tFn = y**p has a solutions for y >=",y, "n =", n, "mod 2", "p in",
+        print "\tFn = y**p has a solution for p in",
         print_range(p_range)
-        print "then:"
-        print"\t y**2p != 1 mod l for one of our allowed l"
+        print "then (if n prime):"
+        print"\t n = +-1 mod p"
 def print_range(r):
     print "["+str(r[0])+", " + str(r[-1]) +"]" 
     
 def kraus(b,c,p_range,n_parity=1,max_k=1000, try_global=True, max_global_attempt=50):
     print "b =",b
-    print "c =",c
+    #print "c =",c
     print "p ",
     print_range(p_range)
-    print "n =",n_parity, "mod 2"
+    #print "n =",n_parity, "mod 2"
     
     
     d = b**2 + 4*c
