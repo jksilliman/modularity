@@ -688,13 +688,55 @@ which by Bennett (2004) Thm 7.1 has no solutions.
 
 \end{enumerate}
 
+\section{Reduction to prime index when $c = 1, d = b^2+4$ prime}
+
+\begin{lem}
+$(F(n), \frac{F(kn)}{F(n)}) | k$
+\end{lem}
+\begin{proof}
+We have verified that Halton's General Fibonacci Identity works for general Lucas sequences. This is surely well known, but we have not seen it in the literature. Then identity (34) in that paper proves Lemma 16 in his Divisibility Properties paper, which is exactly this lemma.
+\end{proof}
+
+
+Assume $p \geq 5$. We verify that the argument of Robbins for the Fibonacci sequence applies more generally.
+
+**TODO: Remove constraint on d**
+\begin{prop}
+Suppose $b^2 + 4 = d < 100000$, d prime. If $b \neq 1$, there are no solutions $F(2n) = c^p$, $c > 1$, such that $F(m) \neq z^p$ for $m < 2n$.
+\end{prop}
+\begin{proof}
+We consider $F(n)$ mod 4, hence n mod 6.
+\begin{itemize}
+\item{$n \not\equiv 0 \mod 3$}
+
+$c^p = F(2n) = F(n)L(n)$, and $(F(n), L(n)) = 1$, so $F(n) = x^p$, contradicting minimality unless $x=1$, in which case $n=2$. Thus $c^p = F(4) = L(2)F(2) = b^2 + 2$. For $d < 100000$, the only solution to this is $(b,c,p) = 5, 27, 3)$. **TODO - Solve equation fully, using Thue equations, perhaps?**
+ 
+\item{$n \equiv 3 \mod 6$}
+
+The period mod 4 tells us that $F(n) = 2r, L(n) = 4s, (r,s)=1, rs odd$. Thus $c^p = F(2n) = 2^3rs$, so $p|3$, hence $p=3$. 
+
+\item{$n \equiv 0 \mod 6$}
+
+Let $n = n_0 = 2^j3^kt$ for $j,k \geq 1, (6, t) = 1$. Since $b$ odd, the mod 8 period tells us that $F(n_0) = 2^{2+j}r_0^p, L(n_0)=2s_0^p,$ $r_0s_0$ odd, $(r_0,s_0)=1$. Let $n_i = 2^{-i}n$. Inducting, we see $F(n_j) = 2r_j^p$ (as $3|n_i$ implies $2|F(n_i)$, and $(F(k), L(k)) | 2$ ), and so $L(n_j) = 4s_j^p$, with $r_is_i$ odd, $(r_i, s_i) = 1$.
+
+Let $h_0 = n_j, h_i = 2^{-i}h_0$, so $F(h_0) = 2u_0^p$. Let $g = (F(h_i), \frac{F(h_{i-1})}{F(h_i)})$. By lemma above, $g|3$. If $g = 3$, then $9 | F(3h_i)$. We checked the mod 9 periods for $b=1,\cdots,17$ odd, and thus for all odd $b$, and see that $9 \nmid F(3k)$ for k odd. Thus $g=1$. Hence we induct, and get $F(h_i) = 2u_i^p, \frac{F(h_{i-1})}{F(h_i)} = v_i^p$ for $i=0,\cdots,k-1$, $F(t) = F(h_k) = u_k^p, \frac{F(h_{i-1})}{F(h_i)} = 2v_k^p$ for $(u_i, v_i) = 1, u_i v_i$ odd.
+
+Since $u_k^p = F(t) < F(6t) \leq F(n) < F(2n) = c^p$, the minimality of the index implies $u_k = 1, t = 1$. If $k \geq 2$, then $\frac{F(h_{k-2})}{F(h_{k-1})} = \frac{F(9)}{F(3)} = v_{k-1}^p$. If $k = 1, j \geq 2$, then $L(n_{j-2}) = L(12) = 2 s_{j-1}^p$. If $k = j = 1$, then $n = 6$, $F(12) = c^p$. 
+
+At this point, we run a computer search. For $1 \leq d \le 10^5$, we find that none of $F(12), 2^{-1}L(12), \frac{F(9)}{F(3)}$ are perfect powers, with the exception of the Fibonacci sequence itself, where only $F(12)$ is a perfect power.
+\end{itemize}
+\end{proof}
+
+\begin{prop}With the same conditions on $b$, if $F(m) = y^p$ has a solution with $m$ odd, $p \geq 5$, then there exists a solution $F(n) = z^p$ with n prime.
+\end{prop}
+\begin{proof}
+Robbins proof for Fibonacci works for our sequences as well, since d is prime, and we check that $\frac{d^2}{d^2}$ is not a perfect power for $d < 100000$.
+**VERIFY If $p < q$ primes, $p \mid F(q^k)$, then p = 2, q = 3.
+\end{proof}
+
 \section{Kraus' Method applied to b odd, c=1, $F_n$ odd}
 We consider $b$ odd.
 We deal with odd solutions to $F_n = y^p$, $n$ an odd prime, $p \geq 7$. We record the parity of the n, as we have to apply Kraus' method separately in each case.
-
-The restriction to prime index is unfortunate, since it appears that Robbins' proof of reduction to prime index will not work for other Lucas sequences [see Jesse's moleskine]. 
-
-\textbf{TODO}: check Petho's proof, to see if it is any different.
 
 The restriction to $F_n$ odd may not be too problematic. Isabel believes that a paper of Bennett rules out solutions to $X^2-DY^{2p}=1$, which applies here to rule out the case $F_n$ even, n even. Further, Ribenboim tells us that:
 \begin{enumerate}
@@ -713,7 +755,7 @@ Note that this implies that the period mod 4 is 6 when b is odd, is 2 or 4 when 
     Conditional success. If:
       $Fn = y^p$ has a solutions for $y \geq 6$ n = 1 mod 2 p in [7, 1000]
     then:
-      n even or $n = \pm 1$ mod p
+      $n = \pm 1$ mod p
   \item{n=0}
     An abelian variety found with bad prime p=7.
     No elliptic curves found.
@@ -738,7 +780,7 @@ Note that this implies that the period mod 4 is 6 when b is odd, is 2 or 4 when 
       and
       we descend to an elliptic curve
     then:
-      n even or $n = \pm 1$ mod p
+      $n = \pm 1$ mod p
   \item{n=0}
     Three abelian varieties found, with bad primes:	
       $2^5 \cdot 3 \cdot 11, 2^5 \cdot 7^2, 2^{10} \cdot 7$
