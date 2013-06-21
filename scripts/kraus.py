@@ -47,7 +47,13 @@ def is_rad(num):
         if exp > 1:
             return false
     return true
-    
+
+def try_factor(num):
+  if abs(num) < 2:
+    return num
+  else:
+    return factor(num)
+
 def all_factors(num):
     f = num.factor()
     fs = []
@@ -81,7 +87,7 @@ def analyze_level(level, bad_prime_size=7):
     forms = Newforms(level,2, names='a')
     bad_q_expn = []
     for f in forms:
-        print f
+        #print f
         r = f.base_ring()
         div = check_congruence(f, trace_depth)
         largest_p = largest_prime(div)
@@ -105,9 +111,9 @@ def describe_level(n):
     if len(curves) + len(abvars) > 0:
         print "Level", Integer(n).factor()
         for (curve, div) in curves:
-            print "\tEC", (div.factor(), curve.modular_form().q_expansion(5))
+            print "\tEC", (try_factor(div), curve.modular_form().q_expansion(5))
         for (f, div) in abvars:
-            print "\tAV", (div.factor(), f.q_expansion(5))
+            print "\tAV", (try_factor(div), f.q_expansion(5))
         return False
     return True
    

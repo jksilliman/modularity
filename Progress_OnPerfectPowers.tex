@@ -130,7 +130,7 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
     For $\ell$ a prime where $\rho_p$ is unramified, p must divide 
         \[ N_{K/Q}((l+1)^2 - c_l^2)\prod_{-2\sqrt{l} \leq 2r \leq 2\sqrt{l}} N_{K/Q}(2r - c_l), \]
         where $c_l$ are the coefficients of the associated modular form.
-    If nonzero, this congruence condition bounds $p$. In particular, if $p \leq 5$, we are done. Note that this always succeeds for abelian varieties, since $c_l \notin \Z$ infinitely often **CHECK**. Unfortunately, it can fail to give information on elliptic curves.
+    If nonzero, this congruence condition bounds $p$. In particular, if $p \leq 5$, we are done. Note that this always succeeds for abelian varieties, since $c_l \notin \Z$ infinitely often. Unfortunately, it can fail to give information on elliptic curves.
     \begin{rem}
      If $p \mid a_{\ell}(E)$ for almost all $\ell$, then by Cebotarev Density (and some linear algebra, found in Serre's Abelian l-adic Repr.), we would have a p-torsion point on our Frey curve, contradicting Mazur's torsion theorem if $p \geq 11$. If our Frey curves had full 2-torsion, this would be more useful, for we might obtain 7-torsion on the curve below, which then would "lift" to our curve above, by the irreducibility of the representation (see Serre). Unfortunately, $p$ may divide the product of norms above for all such $\ell$ without this occuring. For an example, see the "Multi-Frey" paper by Siksek. 
      **QUESTION What "conditions" give rise to Frey curves with full two torsion? Why is it natural to consider curves with only some two torsion here, but all the families in "Multi-Frey" have full two-torsion?**
@@ -161,10 +161,70 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
 \item At this point, the condition $n = \pm 1 \mod p$ lets us rewrite $\Lambda$ as a linear form in two logs 
 \[ \Lambda = p \log(\frac{\alpha^s}{y}) -  \log(\sqrt{D}\alpha^{\pm 1}). \]
 Applying the powerful results of [LMN], we should get $p < 1000$, contradicting our sieve.
-
-
-
 \end{itemize}
+\end{enumerate}
+
+\section{Status report of various families}
+\subsection{$c=1$}
+
+If $b^2+4$ is a prime less than $100000$, say, we can use an elementary argument of Robbins to reduce to prime index. It seems difficult to prove this in general with the same methods, for we can see no way of solving
+\[\frac{F(d^2)}{d^2} = y^p, \]
+or even simpler equations such as
+\[\frac{F(9)}{F(3)} = y^p,\]
+when the best tools we have seen can only potentially solve such an equation for \textbf{fixed} $p$ using Chabauty's method.
+
+Then, for $F_n$ odd, Kraus' method then gives, for $p$ as large as we can compute, either that there are no solutions, or that $n \equiv \pm 1 \mod p$. If the level has \textbf{no abelian varieties}, then at this point, we \textbf{expect} to be able to use linear forms in logs and sieves as in [BMS] to complete any specific recurrence relation in about $150*N$ hours (N=\# of remaining elliptic curves) , but this has not been verified.
+
+For $F_n$ even, we would have to use a different Frey curve, which descends to level $2\cdot d$ as well.
+
+\textbf{Questions:}
+\begin{enumerate}
+\item What can be done for non-CM abelian varieties, besides the most naive congruences?
+\item Does Kraus work for $F_n$ even?
+\item Verify linear forms in logs, etc, for at least 1 sequence.
+\end{enumerate}
+
+
+\subsection{$c=-1$}
+
+The sequence $b=2$ is degenerate.
+For $b=4,6,8$, we find that either the level is small, or that we can rewrite our Diophantine equation as $x^2 - C y^2p = 1$, which has no solutions which agree with ours, by Bennett (2004).
+
+\textbf{Questions:}
+\begin{enumerate}
+\item Can we do a reduction to prime index, Kraus, etc?
+\end{enumerate}
+
+
+\subsection{$b^2 + 4c = 1$}
+\begin{center}
+\begin{tabular}{c c c}
+b & c & \rad(c) \\ \hline \hline
+3 & -2 & 2  \\
+5 & -6 & $2\cdot$3  \\
+7 & -12 & $2\cdot$3  \\
+17 & -72 & $2\cdot$3 \\
+9 & -20 & $2\cdot$5
+\end{tabular}
+\end{center}
+have no newforms in their levels, hence $F_n$ has no nontrivial pth powers for $p \geq 7, n \geq 5$.
+
+$p=2:$ No solutions for $(3,-2)$ by the parametrization of pythagorean triples.
+
+$p=3:$ No solutions for any $(b,c)$, using a reduction to odd index, since $x^r+y^r=z^3$ has no solutions.
+
+$p=5:$ The Fermat equation $(r,r,5)$ is not yet understood, unfortunately...
+
+\textbf{Associated Diophantine Equations}:
+
+$x^n + (x-1)^n = y^p$, for all n odd, p prime. Although this is useful in low levels, (n,n,p) has not been generally solved for $p \geq 5$. There are some methods of Darmon, Frietas, using Q-curves, Hilbert modforms, multifrey, which conjecturally could give more information.
+
+$y^{2p} + 4(-c)^n = x^2$, which is specialization of Fermat $(p, (4(-c)^n, p), 2)$, which has Frey curves from [BS].
+
+\textbf{Questions:}
+\begin{enumerate}
+\item  Can we deal with $p=5$ by methods of [Bro]? 
+\item Can we utilize two Frey curves, since we have two Diophantine equations?
 \end{enumerate}
 
 
@@ -698,18 +758,18 @@ We have verified that Halton's General Fibonacci Identity works for general Luca
 \end{proof}
 
 
-Assume $p \geq 5$. We verify that the argument of Robbins for the Fibonacci sequence applies more generally.
+We verify that the argument of Robbins for the Fibonacci sequence applies more generally.
 
 **TODO: Remove constraint on d**
 \begin{prop}
-Suppose $b^2 + 4 = d < 100000$, d prime. If $b \neq 1$, there are no solutions $F(2n) = c^p$, $c > 1$, such that $F(m) \neq z^p$ for $m < 2n$.
+Let $p \geq 5$ a prime. Suppose $b^2 + 4 = d < 100000$, d prime. If $b \neq 1$, $b not a perfect power$, then there are no solutions $F(2n) = c^p$, $c > 1$, such that $F(m) \neq z^p$ for $m < 2n$. (ie a minimal index solution has odd index)
 \end{prop}
 \begin{proof}
 We consider $F(n)$ mod 4, hence n mod 6.
 \begin{itemize}
 \item{$n \not\equiv 0 \mod 3$}
 
-$c^p = F(2n) = F(n)L(n)$, and $(F(n), L(n)) = 1$, so $F(n) = x^p$, contradicting minimality unless $x=1$, in which case $n=2$. Thus $c^p = F(4) = L(2)F(2) = b^2 + 2$. For $d < 100000$, the only solution to this is $(b,c,p) = 5, 27, 3)$. **TODO - Solve equation fully, using Thue equations, perhaps?**
+$c^p = F(2n) = F(n)L(n)$, and $(F(n), L(n)) = 1$, so $F(n) = x^p$, contradicting minimality unless $x=1$, in which case $n=1,2$ for $b=1$, $n=1$ for $b>1$. Since $b$ is not a perfect power by assumption, $n \neq 1$. Thus $c^p = F(4) = L(2)F(2) = b(b^2 + 2)$. But $L(2), F(2)$ coprime for $b \neq 2$, which implies $b, b^2+2$ are perfect powers, hence $b=1$ by minimality. But $b^2+2=3$ is then not a perfect power.
  
 \item{$n \equiv 3 \mod 6$}
 
@@ -723,16 +783,21 @@ Let $h_0 = n_j, h_i = 2^{-i}h_0$, so $F(h_0) = 2u_0^p$. Let $g = (F(h_i), \frac{
 
 Since $u_k^p = F(t) < F(6t) \leq F(n) < F(2n) = c^p$, the minimality of the index implies $u_k = 1, t = 1$. If $k \geq 2$, then $\frac{F(h_{k-2})}{F(h_{k-1})} = \frac{F(9)}{F(3)} = v_{k-1}^p$. If $k = 1, j \geq 2$, then $L(n_{j-2}) = L(12) = 2 s_{j-1}^p$. If $k = j = 1$, then $n = 6$, $F(12) = c^p$. 
 
-At this point, we run a computer search. For $1 \leq d \le 10^5$, we find that none of $F(12), 2^{-1}L(12), \frac{F(9)}{F(3)}$ are perfect powers, with the exception of the Fibonacci sequence itself, where only $F(12)$ is a perfect power.
+Now, $F(12) = F(6)L(6)$, and as before, the mod 8 period says $8 || F(6), 2 || L(6)$, so $c^p = 2^4rs$ with $rs$ odd, so $p|4$, $p=2$.
+
+At this point, we run a computer search. For $1 \leq d \le 10^5$, we find that none of $2^{-1}L(12), \frac{F(9)}{F(3)}$ are perfect powers, with the exception of the Fibonacci sequence itself, where only $F(12)$ is a perfect power.
 \end{itemize}
 \end{proof}
 
 \begin{prop}With the same conditions on $b$, if $F(m) = y^p$ has a solution with $m$ odd, $p \geq 5$, then there exists a solution $F(n) = z^p$ with n prime.
 \end{prop}
 \begin{proof}
-Robbins proof for Fibonacci works for our sequences as well, since d is prime, and we check that $\frac{d^2}{d^2}$ is not a perfect power for $d < 100000$.
-**VERIFY If $p < q$ primes, $p \mid F(q^k)$, then p = 2, q = 3.
+Robbins proof for Fibonacci works for our sequences as well, since d is prime, and we check that $\frac{F(d^2)}{d^2}$ is not a perfect power for $d < 100000$.
+**VERIFY If $p < q$ primes, $p \mid F(q^k)$, then p = 2, q = 3.**
 \end{proof}
+\begin{rem}
+How on earth could you go about proving that $\frac{F(d^2)}{d^2}$ is not a perfect power for all d? It is a degree $2^{d^2-2}$ polynomial in $b$!
+\end{rem}
 
 \section{Kraus' Method applied to b odd, c=1, $F_n$ odd}
 We consider $b$ odd.
