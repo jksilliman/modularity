@@ -494,6 +494,20 @@ $n \pmod{6}$ & $F_n \pmod{4}$ & $L_n \pmod{4}$ \\ \hline \hline
 \end{tabular}
 \end{center}
 
+The sage \texttt{find\_levels()} returns:
+
+\begin{lstlisting}
+
+D is 13
+For term 0 mod 6 F is 0 mod 4 and L is 2 mod 4; it descends to level 26
+For term 1 mod 6 F is 1 mod 4 and L is 3 mod 4; it descends to level 52
+For term 2 mod 6 F is 3 mod 4 and L is 3 mod 4; it descends to level 104
+For term 3 mod 6 F is 2 mod 4 and is not a perfect power
+For term 4 mod 6 F is 1 mod 4 and L is 3 mod 4; it descends to level 104
+For term 5 mod 6 F is 1 mod 4 and L is 1 mod 4; it descends to level 52
+
+\end{lstlisting}
+
 First we deal with the small exponents $p = 2,3,5$.  That is first we want to rule out solutions to
 \[ 13y^{4} -x^{2} = \pm 4 \]
 
