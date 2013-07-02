@@ -1,5 +1,7 @@
 c = 1
 for b in range(1,100000,2):
+  if (b-1)%1000==0:
+    print b
   d = b^2+4*c
   if not is_prime(d):
     continue
@@ -9,7 +11,7 @@ for b in range(1,100000,2):
   L = b
   Lprev = 2 
   n = 1
-  while n <= 12:
+  while n <= d^2:
     temp = Fprev
     Fprev = F
     F = temp + b*F
@@ -30,9 +32,9 @@ for b in range(1,100000,2):
         print "b =", b, "L/2 =", factor(L/2)
       if Integer(F).is_perfect_power():
         print "For b = ", b, "F(12) =", factor(F), " is the only perfect power of even index"
-    #if n==d^2:
-    #  if Integer(F/d^2).is_perfect_power():
-    #    good == False
+    if n==d^2:
+      if Integer(F/d^2).is_perfect_power():
+        good == False
   if good:
     pass
     #print b, "good"

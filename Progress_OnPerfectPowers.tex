@@ -143,7 +143,7 @@ We seek to enumerate the perfect powers in binary linear recurrence relations. T
 	\end{rem}    
 
 	\begin{rem}
-	If we descend to a curve (or abelian variety) with complex multiplication, we can likely find an immediate contradiction. However, this is of little use to us, as we are often in square-free levels, i.e. semistable elliptic curves, which cannot be CM, since CM implies potentially good. To tell if your abelian varieties have complex multiplication, the only method we know of is to construct enough distinct Hecke characters of the specified conductor. This appears to work only if all abelian varieties at the level had complex multiplication. **QUESTION Can we detect CM abelian varieties?**
+	If we descend to a curve (or abelian variety) with complex multiplication, we can likely find an immediate contradiction. However, this is of little use to us, as we are often in square-free levels, i.e. semistable elliptic curves, which cannot be CM, since CM implies potentially good. To tell if your abelian varieties have complex multiplication, the only method we know of is to construct enough distinct Hecke characters of the specified conductor. This appears to work only if all abelian varieties at the level had complex multiplication. We only need to study Galois conjugacy classes of abelian varieties/modular forms? **QUESTION Can we detect CM abelian varieties?**
 	\end{rem}
 
 \item If such tricks do not work, we imitate the paper of Siksek. 
@@ -177,7 +177,7 @@ If $b^2+4$ is a prime less than $100000$, say, we can use an elementary argument
 \[\frac{F(d^2)}{d^2} = y^p, \]
 or even simpler equations such as
 \[\frac{F(9)}{F(3)} = y^p,\]
-when the best tools we have seen can only potentially solve such an equation for \textbf{fixed} $p$ using Chabauty's method.
+when the best tools we have seen can only potentially solve such an equation for \textbf{fixed} $p$ using Chabauty's method. We might be able to solve the latter for an infinite family if we could find lower bounds of the divisors of class numbers of $\mathbb{Q}(-d),\mathbb{Q}(-2d)$.
 
 Then, for $F_n$ odd, Kraus' method then gives, for $p$ as large as we can compute, either that there are no solutions, or that $n \equiv \pm 1 \mod p$. If the level has \textbf{no abelian varieties}, then at this point, we \textbf{expect} to be able to use linear forms in logs and sieves as in [BMS] to complete any specific recurrence relation in about $150*N$ hours (N=\# of remaining elliptic curves) , but this has not been verified.
 
@@ -185,6 +185,7 @@ For $F_n$ even, we would have to use a different Frey curve, which descends to l
 
 \textbf{Questions:}
 \begin{enumerate}
+\item Can we detect CM abelian varieties?
 \item What can be done for non-CM abelian varieties, besides the most naive congruences?
 \item Does Kraus work for $F_n$ even?
 \item Verify linear forms in logs, etc, for at least 1 sequence.
@@ -229,8 +230,8 @@ $y^{2p} + 4(-c)^n = x^2$, which is specialization of Fermat $(p, (4(-c)^n, p), 2
 
 \textbf{Questions:}
 \begin{enumerate}
-\item  Can we deal with $p=5$ by methods of [Bro]? 
-\item Can we utilize two Frey curves, since we have two Diophantine equations?
+\item  Can we deal with $p=5$ by methods of [Bro]? Our discriminants here are always squares, which at first glance makes the use of his curve $X_{\Delta,E}$ too easy.
+\item Can we utilize two Frey curves, since we have two Diophantine equations? If we assume the conjectures in Frietas, can we attack large levels with multi-Frey techniques?
 \end{enumerate}
 
 
@@ -763,10 +764,17 @@ $(F(n), \frac{F(kn)}{F(n)}) | k$
 We have verified that Halton's General Fibonacci Identity works for general Lucas sequences. This is surely well known, but we have not seen it in the literature. Then identity (34) in that paper proves Lemma 16 in his Divisibility Properties paper, which is exactly this lemma.
 \end{proof}
 
+\begin{lem}
+Let $K = \mathbb{Q}(\sqrt{-D}), L = \mathbb{Q}(\sqrt{-2D})$. If $p \nmid h_Kh_L$, then $L(2m) = y^p + 1$ has no solutions for $m > 0$.
+\end{lem}
+\begin{proof}
+We have verified that the proof in [Steiner] for $b=1, c=1$ works for general Lucas sequences, given these hypotheses.
+\end{proof}
+We only want to use this for $m=3$, although it is not strong enough, due to the hypotheses.
+
 
 We verify that the argument of Robbins for the Fibonacci sequence applies more generally.
 
-**TODO: Remove constraint on d**
 \begin{prop}
 Let $p \geq 5$ a prime. Suppose $b^2 + 4 = d < 100000$, d prime. If $b \neq 1$, $b not a perfect power$, then there are no solutions $F(2n) = c^p$, $c > 1$, such that $F(m) \neq z^p$ for $m < 2n$. (ie a minimal index solution has odd index)
 \end{prop}
@@ -794,6 +802,19 @@ Now, $F(12) = F(6)L(6)$, and as before, the mod 8 period says $8 || F(6), 2 || L
 At this point, we run a computer search. For $1 \leq d \le 10^5$, we find that none of $2^{-1}L(12), \frac{F(9)}{F(3)}$ are perfect powers, with the exception of the Fibonacci sequence itself, where only $F(12)$ is a perfect power.
 \end{itemize}
 \end{proof}
+
+\begin{rem}
+Note that $\frac{F(9)}{F(3)} = L(6) - 1$, so by above lemma, $\frac{F(9)}{F(3)} = c^p$ has no solutions for $p$ odd, not dividing the class numbers of either $\mathbb{Q}(\sqrt{-D}), \mathbb{Q}(\sqrt{-2D})$. This is not helpful yet, but perhaps if we could show that these had only arbitrary large primes relative to $D$. In particular, I could get a contradiction if I could bound the prime divisors of those class numbers below by \[\log(3)\log\left(\left(\frac{1+\sqrt{D}}{2}\right)^6 + \frac{1}{2}\right),\]
+i.e. approximately
+\[ C\log(D)\]
+Perhaps looks at:
+
+Kohnen-Ono - Indivisibility of Class Numbers
+
+Cohen-Lenstra Heuristics 
+
+Goldfeld-Gross-Zagier - Gauss' Class Number Problem
+\end{rem}
 
 \begin{prop}With the same conditions on $b$, if $F(m) = y^p$ has a solution with $m$ odd, $p \geq 5$, then there exists a solution $F(n) = z^p$ with n prime.
 \end{prop}
