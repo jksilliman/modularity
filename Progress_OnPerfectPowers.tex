@@ -1040,6 +1040,50 @@ $6$ & $20570$
 We could derive better bounds on $p$ using the Theorem 1 of [LMN].  This will be necessary, as the bound on $n$ in terms of $p$ is of the order $p^{10p}$.
 
 
+\section{A General Theorem}
+
+To prove a general theorem we are going to take the approach of trying to look for a contradiction from the fact that many recurrence relations map to the same level.
+
+\subsection{Flooding the Levels}
+
+We begin with the Diophantine equation
+\[ (b^2+4c) y^{2p} +4(-c)^n = L_n^2. \]
+In order to apply the techniques of Bennett and Skinner, $(b^2+4c)y$, $4c$ and $L_n$ need to be relatively prime.  The only time that this will be a problem is if $L_n$, $c$, and $b^2+4c$ are divisible by some odd prime $\ell$ (with proper division of $b^2+4c$) as this will introduce additive reduction.  Let $\ell$ be the product of all such primes.  The new Diophantine equation looks like
+\[ \frac{b^2+4c}{\ell} y^{2p} + 4\ell^{n-1}\pfrac{-c}{\ell}^{n} = \ell \pfrac{L_n}{\ell}^2 \]
+The level that it descends to will be bounded by
+\[ 2^8 \cdot \rad(\ell)^2 \cdot  \rad(c\cdot (b^2+4c)). \]
+However, the condition that $\ell |b^2+4c$ and $\ell | c$ is the condition that $\rad(\ell) | \rad(c)$, so we can form an bound
+\[ 2^8 \cdot \rad(c)^3 \rad(b^2+4c). \]
+
+Now, if we were to naively choose $b \leq N$ and $c \leq N^2$, then we would get $N^3$ different recurrence relations, but our level is bounded by $O(N^4)$.  This is certainly not going to get us anywhere.
+
+So we need to be more clever about restricting to only some $b,c$.  In particular, if we can choose $c$ such that it is particularly smooth, we win.
+
+Let $b \leq N$ but $c \leq N^2$ and $N^{2/a}$ smooth, for some $a$.  Then
+\[ \rad(c) \leq \prod_{p \leq N^{2/a}} p \sim e^{N^{2/a}}. \]
+So choosing $a$ such that
+\[ \rad(c) \leq N^{\epsilon} \]
+for some $0<\epsilon <1$, we get that the level is bounded by
+\[ O(N^{2+\epsilon}). \]
+
+This alone does not flood the levels as there are $O(X^2)$ modular forms of conductor bounded by $X$.  But, say that we can separately rule out modular forms corresponding to abelian varieties.  Then we can say (paper of William Duke) that there are
+\[ O(X^{1+\epsilon}) \]
+elliptic curves of conductor bounded by $X$.  In this case we have 
+\[ O(N^{2 +\epsilon}) \]
+isogeny classes of elliptic curves available.  To see precisely what we get in terms of binary recurrence sequences, we need to make the $\epsilon$ and $a$ more precise.
+
+\[ N^\epsilon \leq e^{N^{2/a}} \Rightarrow \log(\epsilon) +\log\log{N} = \frac{2}{a} \log{N}\]
+In other words
+\[ a = \frac{2\log{N}}{\log\epsilon +\log\log{N}} \]
+So we have $O(N^3 \rho(a))$ possible recurrence sequences.
+\[\rho(a) \sim a^{-a}  \sim \pfrac{\log{N}}{\log\log{N}}^{-\log{N}/\log\log{N}} \]
+So we have
+\[ \sim O \left(  \pfrac{\log{N}}{\log\log{N}}^{-\log{N}/\log\log{N}} N^3 \right) \]
+sequences.  Note that this is not a set of positive density, as $\rho(\log(N)/\log\log(N))$ goes to 0
+
+
+
+
 
 \pagebreak
 
