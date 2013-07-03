@@ -95,7 +95,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\Cl}{\text{Cl}}
 \renewcommand{\sp}[1]{\text{Sp}_{#1}}
 \newcommand{\GL}{\text{GL}}
-\newcommand{\pgl}[1]{\text{PGL}_{#1}}
+\newcommand{\PGL}{\text{PGL}}
 \renewcommand{\sl}[1]{\text{SL}_{#1}}
 \newcommand{\so}[1]{\text{SO}_{#1}}
 \newcommand{\SO}{\text{SO}}
@@ -113,6 +113,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
 \newcommand{\Ell}{\rm Ell}
 \newcommand{\AV}{\rm AV}
+\newcommand{\Gal}{\rm Gal}
 
 \newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
 \newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
@@ -248,27 +249,98 @@ The result for $b = 3, c = -2$ follows from Catalan's Conjecture on perfect powe
 
 \section{A general theorem}
 
-For a binary recursion sequence $u_n$ characterized by $(b,c)$ relatively prime and starting conditions $u_0=0,u_1=1$, let $N = 2c * (b^2+4c)$.  Further let $\alpha,\beta$ be roots of the characteristic polynomial for $(b,c)$, with $\alpha$ the dominant root.  Define the bounds:
-\begin{align*}
-\Ell(N) & = \max\{30, N\}*\log{\alpha}/\log{2} \\
-\AV(N) & \sim N^N. 
-\end{align*}
+We begin by proving some general results on 
 
-\begin{lem}[Bound on Irrational Newforms]\label{irnewbound1}
-Let $E$ be an elliptic curve of level $M \cdot N$ with mod-$p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $N$, and flat at $p$.
+Let $E$ be an elliptic curve of level $M \cdot N$ with mod-$p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $N$, and flat at $p$.  Denote by $a_\ell$ the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \rho_f$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K_f = \Q(...,c_\ell,...)$ of degree $n_{K_f} = [K_f,\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
+
+\begin{lem}[Congruence conditions.]\label{irnewbound1}
+There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\ell$ prime:
+\begin{itemize}
+\item $c_\ell \equiv a_\ell(E) \mod \mathfrak{p}$, if $\ell \nmid pN$
+\item $c_\ell^2 \equiv (\ell+1)^2 \mod \mathfrak{p}$, if $\ell \mid N$
+\end{itemize}
+Further, as $|a_\ell| < 2\sqrt{\ell}$,
+\[p \mid \gcd_{\ell \nmid N}(B(\ell)C(\ell)), \] for
+\[B(\ell) = \ell \cdot N_{K_f / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \]
+\[C(\ell) = \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K_f / \mathbb{Q}}}(c_\ell - r).\]
+For $d > 1$, this gives a nontrivial bound on $p$ as there exists an $\ell$ such that $c_\ell \notin \mathbb{Z}$ and as such the product is nonzero.
 \end{lem}
+
+\begin{proof}
+See (cite Bennett and Skinner).
+\end{proof}
+
+Let $\ell$ be the smallest prime number such that $c_\ell \notin \mathbb{Z}$. Then, since $c_\ell$ is an $\ell$-Weil number, we see that for $k \leq \ell+1$, $N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^d$.  A specialization of effective Chebotarev gives the following bound on the size of $\ell$.
+
+\begin{thm}[Effective Chebotarev]\label{effcheb}
+There exists an absolute, effectively computable constant $A_1$ such that for every Galois extension $K/\mathbb{Q}$ of degree $n_K$ and discriminant $\Delta_K$, every conjugacy class $C \subset \Gal(K/\mathbb{Q})$, there exists a rational prime $q$ unramified in $K$, such that 
+\[\Frob_q \in C, \qquad q \leq |\Delta_K|^{A_1}. \]  
+Further, under the assumption of GRH, we can take \[q \leq A_2 (\log |\Delta_K|)^2. \]
+\end{thm}
+\begin{proof}
+See (cite Lagarias).
+\end{proof}
+
+\begin{rem}\label{bounddisc} The discriminant (as the norm of the different ideal) is bounded as
+\[|\Delta_K| \leq \left( \prod_{\substack{p \\ \text{ramified}}} p \right)^{C_1n_K} \]
+for $C_1$ a constant depending on nothing.
+\end{rem}
+
+In addition we need the following result on the least prime $q$ that does not split completely in a number field $K$.
+
+\begin{thm}\label{nonsplitcom}
+For $K/\Q$ a nontrivial extension of degree $n_K$ and discriminant $\Delta_K$ (note that $K$ need not be Galois), there exists a rational unramified prime $q$ that is not split completely in $K$ with
+\[ q \leq A\pfrac{\log |\Delta_K|}{n_K-1}^2.\] 
+for $A$ an effective constant.
+\end{thm}
+\begin{proof}
+See (cite Murty).
+\end{proof}
+
+Now we address the question of finding a bound on the smallest prime $\ell$ such that the $\ell$th fourier coefficient of an irrational modular form at level $N$, $c_\ell \not\in\Z$.
+
+\begin{thm}\label{notinZ}
+Let $f$ be an irrational modular form of level $N$, then there exists a rational prime
+\[\ell \leq C_1 \left( \log{N} \right)^{C_2N},  \]
+for $C_1$ and $C_2$ effective constants, such that $c_\ell \not\in \Z$.
+\end{thm}
+\begin{proof}
+Let $q$ be an unramified prime of $K_f$ of residue field degree $r \neq 1$ (ie $q$ does not split completely).  By corollary \ref{nonsplitcom} and remark \ref{effcheb} we can assume $q \leq A(\log N)^2$ for some constant $A$, as all ramified primes divide $N$ and $d_{K_f} = O(N)$.  Let $\mathfrak{q}$ be a prime above $q$.
+
+Consider the 2-dimensional mod $\mathfrak{q}$ Galois representation $\bar{\rho_{f,q}}$ given by the composition of
+\[ G_{\Q} \rightarrow\GL_2(\hat{\O_f}) \rightarrow \GL_2(\F_{q^r}) \rightarrow \PGL_2(\F_{q^r})  \]
+where the last two maps are reduction mod $\mathfrak{q}$ and then projectivization.  The statement that $c_\ell \not\in \Z$ is exactly the statement that the image of Frobenius $\pi_\ell \in \PGL_2(\F_{q^r})$ but $\pi_\ell \not\in \PGL_2(\F_q)$.  Let $L/\Q$ be the Galois number field associated to $\bar{\rho_{f,q}}$.  We know
+\[ n_L \leq |\PGL_2(\F_{q^r})| = (q^{r}+1)(q^{2r}-q) \qquad |\Delta_L| \leq N^{cn_L} \]
+\[\Rightarrow \log|\Delta_L| \leq C(q^{r}+1)(q^{2r}-q) \cdot \log{N} \]
+and using the bound for $q$ and $r \leq n_K$ we get
+\[  \log|\Delta_L| \leq C_1 \left( \log{N} \right)^{cN} \]
+Now we apply Effective Chebotarev \ref{effcheb} to conclude that
+\[ \ell \leq C_1 \left( \log{N} \right)^{C_2N} \]
+for some effective constants $C_1$ and $C_2$.
+\end{proof}
+
+This leads immediately to the following upper bound on $p$ such that the mod $p$ representation of an irrational newform is isomorphic to one arising from an elliptic curve.
+
+\begin{lem}
+Let $E$ be an elliptic curve and $f$ an irrational newform of level $N$ such that 
+\[\rho_{E,p} \simeq \bar{\rho_{f,p}}.\]
+Assuming GRH, by theorem \ref{notinZ}, $\ell \leq C_1 \left( \log{N} \right)^{C_2N}$, and thus
+\[ p \leq \left( \left(C_1 \left( \log{N} \right)^{C_2N}\right)^2 + 1 + 2 \sqrt{C_1} \left( \log{N} \right)^{C_2N}\right)^N = A_1 \left( \log{N} \right)^{A_2N^2}, \]
+for $A_1$ and $A_2$ an effectively computable constants depending on nothing.
+\end{lem}
+
+To apply this result, for a binary recurrence sequence $u_n$ characterized by $(b,c)$ relatively prime and starting conditions $u_0=0,u_1=1$, let $\alpha,\beta$ be roots of the characteristic polynomial, with $\alpha$ the dominant root.  
+
+For any $N$, define the functions:
+\begin{align*}
+\Ell(N) & = \max\{30, N\} \cdot \log{\alpha}/\log{2} \\
+\AV(N) & = C\log(N)^{2N}. 
+\end{align*}
 
 
 \begin{thm}[Upper Bound on $p$]
 
 \end{thm}
-
-
-
-
-
-
-
 
 
 
