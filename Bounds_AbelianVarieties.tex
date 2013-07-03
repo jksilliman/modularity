@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+\usepackage{latexsym}
+\usepackage{amssymb,amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{enumerate}
+\usepackage{endnotes}
+%\usepackage{extpfeil}
+\usepackage{stackrel}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+
+\lstset{
+	basicstyle=\small\ttfamily,
+	keywordstyle=\color{blue},
+	language=python,
+	xleftmargin=16pt,
+}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{ithm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newtheorem{defi}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+
+   
+\def\B{{\mathbb B}}
+\def\C{{\mathbb C}}
+\def\D{{\mathbb D}}
+\def\Fp{{\mathbb F}_p}
+\def\Fell{{\mathbb F}_{\ell}}
+\def\F{{\mathbb F}}
+\def\H{{\mathbb H}}
+\def\M{{\mathbb M}}
+\def\N{{\mathbb N}}
+\def\O{{\mathcal O}}
+\def\0{{\mathbb 0}}
+\def\P{{{\mathbb P}}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\T{{\mathbb T}}
+\def\Z{{\mathbb Z}}
+
+\newcommand{\sol}{_{a^p,b^p,c^p}}
+\newcommand{\bound}{\partial}
+\newcommand{\la}[1]{\mathfrak{#1}}
+\newcommand{\im}{\text{Im} \hspace{0.1em} }
+\newcommand{\ann}{\text{Ann} \hspace{0.1em} }
+\newcommand{\rank}{\text{rank} \hspace{0.1em} }
+\newcommand{\coker}[1]{\text{coker}\hspace{0.1em}{#1}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\re}{\text{Re}  \hspace{0.1em} }
+\newcommand{\ext}[1]{\text{Ext}(#1)}
+\newcommand{\Hom}[1]{\text{Hom}(#1)}
+\newcommand{\End}[1]{\text{End(#1)}}
+\newcommand{\bs}{\setminus}
+\newcommand{\rpp}[1]{\mathbb{R}\text{P}^{#1}}
+\newcommand{\cpp}[1]{\mathbb{C}\text{P}^{#1}}
+\newcommand{\tr}{\text{tr}\hspace{0.1em} }
+\newcommand{\inner}[1]{\langle {#1}\rangle}
+\newcommand{\tensor}{\otimes}
+\newcommand{\Cl}{\text{Cl}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\GL}{\text{GL}}
+\newcommand{\pgl}[1]{\text{PGL}_{#1}}
+\renewcommand{\sl}[1]{\text{SL}_{#1}}
+\newcommand{\so}[1]{\text{SO}_{#1}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\pso}[1]{\text{PSO}_{#1}}
+\renewcommand{\o}[1]{\text{O}_{#1}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\psp}[1]{\text{PSp}_{#1}}
+\newcommand{\Span}{\rm Span}
+\newcommand{\Frob}{\rm Frob}
+\newcommand{\tor}{\rm tor}
+\newcommand{\rad}{\rm rad}
+\newcommand{\denom}{\rm denom}
+\renewcommand{\bar}{\overline}
+\newcommand{\notdiv}{\nshortmid}
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
+
+\newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
+\newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+\begin{document}
+
+
+\begin{center}
+{\bf \large{Bounds on Abelian Varieties}} \\
+\smallskip
+Isabel Vogt, Jesse Silliman\\
+Last Edited: \today \\
+\end{center}
+
+\section{Bounds on p for Abelian Varieties}
+We state a standard lemma: [Cohen]
+
+If an elliptic curve $E$ arises mod p from a modular form $f$ of level N with field of coefficients $K_f = \mathbb{Q}(...,c_l,...)$, $d = [K_f,\mathbb{Q}]$, there exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $l$ prime:
+\begin{itemize}
+\item $c_l \equiv a_l(E) \mod \mathfrak{p}$, if $l \nmid pN$
+\item $c_l^2 \equiv (l+1)^2 \mod \mathfrak{p}$, if $l \mid N$
+\end{itemize}
+
+Further, $|a_l| < 2\sqrt{l}$ (Weil Bound), so we have
+\[p \mid \gcd_{l \nmid N}(B(l)C(l)), \] where
+\[B(l) = lN_{K_f / \mathbb{Q}}(c_l^2-(l+1)^2) \]
+\[C(l) = \prod_{-2\sqrt{l} < r < 2\sqrt{l}}{N_{K_f / \mathbb{Q}}}(c_l - r)\]
+
+
+For $d > 1$, this gives us a nontrivial bound on $p$: since there exists an $l$ such that $c_l \notin \mathbb{Z}$, and then the product is nonzero.
+
+\begin{rem}
+If $q^2 \mid N$, we believe that $\gcd_{l \nmid N}(c_l - (l+1)) = 1$, for if it were divisible by $p$, the Galois representation would be reducible, isomorphic to $\chi_p \oplus 1$, and this should not happen, by looking at the action of the $q$-inertia subgroup. It is unclear if this can be used to help our bound. We would at very least need to rule out $c_l + (l+1)$ as well.
+\end{rem}
+
+Let $l$ be the smallest prime number such that $c_l \notin \mathbb{Z}$. Then, since $c_l$ is an $l$-Weil number, we see that for $k \leq l+1$, $N(c_l - k) \leq (l+1 + 2\sqrt{l})^d$
+
+Using an effective version of Chebotarev's Density Theorem, we can obtain a computable bound. A specialization of a theorem of Lagarias:
+
+\begin{thm}
+There exists an absolute, effectively computable const $A_1$ such that for every Galois extension $K/\mathbb{Q}$ of degree d, every conjugacy class $C \subset G(K/\mathbb{Q})$, there exists a prime $p \in Z$, unramified in $K$, such that $Frob_p = C$, $p \leq d^{A_1}$. 
+
+**CHECK**
+%Algebraic number fields : (L-functions and Galois properties) : proceedings of a symposium / organised by the London Mathematical Society with the support of the Science Research Council and the Royal Society ; edited by A. Frohlich.%
+Further, under the assumption of GRH, we have the bound \[p \leq A_2 (\log d)^2 \].
+\end{thm}
+
+Assuming GRH, then, we see that $l$, as above, is less than $A_2 (\log d)^2$, so we conclude that
+\[ p \leq (A_2 (\log d)^2 + 1 + 2\sqrt{A_2}\log(d))^d \]
+
+
+\end{document}
