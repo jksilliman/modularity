@@ -45,6 +45,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{ithm}{Theorem}
 \newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
 
@@ -123,7 +124,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 \begin{document}
 
-\title{Perfect Powers in Lucas Sequences}
+\title{Perfect Powers in Lucas Sequences via Galois Representations}
 \author{Jesse Silliman and Isabel Vogt}
 
 \maketitle
@@ -253,7 +254,7 @@ We begin by proving some general results on
 
 Let $E$ be an elliptic curve of level $M \cdot N$ with mod-$p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $N$, and flat at $p$.  Denote by $a_\ell$ the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \rho_f$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K_f = \Q(...,c_\ell,...)$ of degree $n_{K_f} = [K_f,\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
 
-\begin{lem}[Congruence conditions.]\label{irnewbound1}
+\begin{lem}[Congruence conditions.]\label{ircong1}
 There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\ell$ prime:
 \begin{itemize}
 \item $c_\ell \equiv a_\ell(E) \mod \mathfrak{p}$, if $\ell \nmid pN$
@@ -307,9 +308,9 @@ for $C_1$ and $C_2$ effective constants, such that $c_\ell \not\in \Z$.
 \begin{proof}
 Let $q$ be an unramified prime of $K_f$ of residue field degree $r \neq 1$ (ie $q$ does not split completely).  By corollary \ref{nonsplitcom} and remark \ref{effcheb} we can assume $q \leq A(\log N)^2$ for some constant $A$, as all ramified primes divide $N$ and $d_{K_f} = O(N)$.  Let $\mathfrak{q}$ be a prime above $q$.
 
-Consider the 2-dimensional mod $\mathfrak{q}$ Galois representation $\bar{\rho_{f,q}}$ given by the composition of
-\[ G_{\Q} \rightarrow\GL_2(\hat{\O_f}) \rightarrow \GL_2(\F_{q^r}) \rightarrow \PGL_2(\F_{q^r})  \]
-where the last two maps are reduction mod $\mathfrak{q}$ and then projectivization.  The statement that $c_\ell \not\in \Z$ is exactly the statement that the image of Frobenius $\pi_\ell \in \PGL_2(\F_{q^r})$ but $\pi_\ell \not\in \PGL_2(\F_q)$.  Let $L/\Q$ be the Galois number field associated to $\bar{\rho_{f,q}}$.  We know
+Consider the 2-dimensional projectivization of the mod $\mathfrak{q}$ Galois representation $\widetilde{\rho_{f,q}}$ given by the composition of
+\[ G_{\Q} \rightarrow\GL_2(\hat{\O}_f) \rightarrow \GL_2(\F_{q^r}) \rightarrow \PGL_2(\F_{q^r})  \]
+where the last two maps are reduction mod $\mathfrak{q}$ and then projectivization.  The statement that $c_\ell \not\in \Z$ is exactly the statement that the image of Frobenius $\pi_\ell \in \PGL_2(\F_{q^r})$ but $\pi_\ell \not\in \PGL_2(\F_q)$.  Let $L/\Q$ be the Galois number field associated to $\widetilde{\rho_{f,q}}$.  We know
 \[ n_L \leq |\PGL_2(\F_{q^r})| = (q^{r}+1)(q^{2r}-q) \qquad |\Delta_L| \leq N^{cn_L} \]
 \[\Rightarrow \log|\Delta_L| \leq C(q^{r}+1)(q^{2r}-q) \cdot \log{N} \]
 and using the bound for $q$ and $r \leq n_K$ we get
@@ -321,26 +322,79 @@ for some effective constants $C_1$ and $C_2$.
 
 This leads immediately to the following upper bound on $p$ such that the mod $p$ representation of an irrational newform is isomorphic to one arising from an elliptic curve.
 
-\begin{lem}
+\begin{lem}\label{irboundp}
 Let $E$ be an elliptic curve and $f$ an irrational newform of level $N$ such that 
 \[\rho_{E,p} \simeq \bar{\rho_{f,p}}.\]
-Assuming GRH, by theorem \ref{notinZ}, $\ell \leq C_1 \left( \log{N} \right)^{C_2N}$, and thus
-\[ p \leq \left( \left(C_1 \left( \log{N} \right)^{C_2N}\right)^2 + 1 + 2 \sqrt{C_1} \left( \log{N} \right)^{C_2N}\right)^N = A_1 \left( \log{N} \right)^{A_2N^2}, \]
+Assuming GRH, 
+\[ p \leq  A_1 \left( \log{N} \right)^{A_2N^2}, \]
 for $A_1$ and $A_2$ an effectively computable constants depending on nothing.
 \end{lem}
+\begin{proof}
+By lemma \ref{ircong1}, for $\ell$ a prime such that the $\ell$th Fourier coefficient $c_\ell$ of $f$ is not in $\Z$, 
+\[ p \mid \ell \cdot N_{K_f / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \cdot \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K_f / \mathbb{Q}}}(c_\ell - r).\]
+Thus $p$ is bounded by the largest factor in the above product of integers as,
+\[ p \leq N_{K_f / \mathbb{Q}}(c_\ell+(\ell+1)) .\]
+Further $|c_\ell| \leq 2\sqrt{\ell}$.  By theorem \ref{notinZ}, we may take $\ell \leq C_1 \left( \log{N} \right)^{C_2N}$, and thus
+\[ p \leq \left( C_1 \left( \log{N} \right)^{C_2N} + 1 + 2 \sqrt{C_1  \left(\log{N} \right)^{C_2N}}\right)^N = A_1 \left( \log{N} \right)^{A_2N^2}. \]
+\end{proof}
 
 To apply this result, for a binary recurrence sequence $u_n$ characterized by $(b,c)$ relatively prime and starting conditions $u_0=0,u_1=1$, let $\alpha,\beta$ be roots of the characteristic polynomial, with $\alpha$ the dominant root.  
 
-For any $N$, define the functions:
+For any $N$, we can define the functions:
 \begin{align*}
-\Ell(N) & = \max\{30, N\} \cdot \log{\alpha}/\log{2} \\
-\AV(N) & = C\log(N)^{2N}. 
+\Ell(N) & = \max\{30, N+1\} \cdot A_3\log{\alpha} \\
+\AV(N) & = A_1 \left( \log{N} \right)^{A_2N^2}. 
 \end{align*}
+for $A_1,A_2, A_3$ absolute effective constants.
+
+\begin{lem}[Smooth Terms]\label{smoothterm}
+Let $S$ be the set of all integers composed entirely of primes in some finite set $\{p_1,p_2,...,p_m\}$ with $p_m \geq p_i$ for all $i$.  Let $u_n$ be a Lucas sequence.  For $n > 6$, if $u_n \in S$ then
+\[ n \leq \max\{30, p_m +1 \}. \]
+\end{lem}
+\begin{proof}
+See (cite Gyory + Kiss + Schinzel) and (cite Gyory).
+\end{proof}
+
+\begin{conj}[Frey-Mazur]\label{FreyMazur}
+Let $p > 17$, and $E_1$ and $E_2$ elliptic curves over $\Q$, with mod $p$ Galois representations $\rho_{E_1,p}$ and $\rho_{E_2,p}$ respectively.  If
+\[ \rho_{E_1,p} \simeq \rho_{E_2,p} \]
+then $E_1$ is isogenous to $E_2$.
+\end{conj}
 
 
-\begin{thm}[Upper Bound on $p$]
+We prove our main result \textbf{conditionally on the Generalized Riemann Hypothesis (GRH) and the Frey-Mazur Conjecture}.
 
+
+\begin{thm}\label{condbound}
+Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$.  Let 
+\[ N = 2^8 \cdot c \cdot (b^2+4c) \]
+Then if $u_n = y^p$ for $n> 6$, then assuming GRH and the Frey Mazur conjecture,
+\[ p \leq \max\{ \Ell(N), \AV(N) \}. \]
 \end{thm}
+
+\begin{proof}
+Assume there exists a solution $u_n = y^p$ for 
+\[ p > \max\{ \Ell(N), \AV(N) \}. \]
+To our hypothetical solution we associate a Frey curve $E$ to the Diophantine equation
+\[ y^{2p} +4(-c)^n = v_n^2 \]
+as in (add in section).  By proposition (add in proposition) the conductor of $E$ is bounded by
+\[ N_E \leq 2^8 \prod_{\substack{ \ell \mid 2c*(b^2+4c) \\ \ell \mid y}} \ell. \]
+By a Tate curve argument the mod $2$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and is flat at $p$.  Thus there exists a modular form $f$ of level bounded by 
+\[ 2^8 \rad(c \cdot (b^2+4c)) \leq N \]
+such that $\rho_{E,p} \simeq \bar{\rho_{f,p}} $.  However, by lemma \ref{irboundp}, $f$ must be rational, ie correspond to an elliptic curve $E_f$ such that
+\[ \rho_{E,p} \simeq \rho_{E_f,p}. \]  
+Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $E_f$ are isogenous, and thus $N_E = N_{E_f}$.  But these differ only in the primes dividing $y$, thus
+\[ \rad(y) | \rad(2c \cdot (b^2+4c)). \]
+However, the largest prime factor of $2c \cdot (b^2+4c)$ is bounded by $N$.  Further by lemma (make lemma), $p \leq n \cdot C_3\log{\alpha}$.  We conclude the theorem by contradiction.
+\end{proof}
+
+
+
+
+
+
+
+
 
 
 
