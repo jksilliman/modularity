@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: perfect_powers_draft2.aux
 The style file: amsalpha.bst
 Database file #1: bib.bib
-You've used 17 entries,
+You've used 15 entries,
             2624 wiz_defined-function locations,
-            687 strings with 7104 characters,
-and the built_in function-call counts, 6927 in all, are:
-= -- 676
-> -- 277
-< -- 8
-+ -- 93
-- -- 91
-* -- 672
-:= -- 1110
-add.period$ -- 17
-call.type$ -- 17
-change.case$ -- 101
-chr.to.int$ -- 17
-cite$ -- 17
-duplicate$ -- 246
-empty$ -- 535
-format.name$ -- 116
-if$ -- 1363
+            671 strings with 6824 characters,
+and the built_in function-call counts, 6119 in all, are:
+= -- 597
+> -- 244
+< -- 7
++ -- 80
+- -- 80
+* -- 592
+:= -- 984
+add.period$ -- 15
+call.type$ -- 15
+change.case$ -- 89
+chr.to.int$ -- 15
+cite$ -- 15
+duplicate$ -- 217
+empty$ -- 473
+format.name$ -- 102
+if$ -- 1204
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 34
-newline$ -- 61
-num.names$ -- 51
-pop$ -- 59
+missing$ -- 30
+newline$ -- 55
+num.names$ -- 45
+pop$ -- 52
 preamble$ -- 1
-purify$ -- 118
+purify$ -- 104
 quote$ -- 0
-skip$ -- 181
+skip$ -- 159
 stack$ -- 0
-substring$ -- 567
-swap$ -- 34
-text.length$ -- 8
-text.prefix$ -- 8
+substring$ -- 501
+swap$ -- 30
+text.length$ -- 7
+text.prefix$ -- 7
 top$ -- 0
-type$ -- 136
+type$ -- 120
 warning$ -- 0
-while$ -- 77
-width$ -- 23
-write$ -- 212
+while$ -- 68
+width$ -- 22
+write$ -- 188

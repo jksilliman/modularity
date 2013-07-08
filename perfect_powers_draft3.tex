@@ -64,7 +64,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \def\Fp{{\mathbb F}_p}
 \def\Fell{{\mathbb F}_{\ell}}
 \def\F{{\mathbb F}}
-\def\H{{\mathbb H}}
+%\def\H{{\mathbb H}}
 \def\M{{\mathbb M}}
 \def\N{{\mathbb N}}
 \def\O{{\mathcal O}}
@@ -137,10 +137,67 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 \section{Classical Facts about Linear Binary Recurrence Sequences}
 
+Let $(b,c) \in \Z \times \Z$ define the linear binary recurrence relation
+\[ U_{n+2} = b\cdot U_{n+1}+ c\cdot U_n, \]
+with characteristic polynomial and roots
+\[ g(z) = z^2 - bz - c, \qquad \qquad \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2}.\]
+Throughout this paper, we will refer to integral linear binary recurrence sequences as simply binary recurrence sequences.  In particular, let $u_n$ and $v_n$ denote the companion sequences specified by starting conditions
+\[ u_0 = 0, u_1 = 1 \qquad \qquad v_0 = 2, v_1 = b .\]
+The $n$th terms of these sequences are given by
+\begin{equation}\label{binetform} u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n. \end{equation}
+This formula easily implies the following two key facts
+\begin{equation}\label{fib2} u_{2k} = u_kv_k \end{equation}
+\begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}
+
+Using elementary methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a binary recurrence sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequence in Table (FIX ME).  Then we have the following lemmas in the direction of Theorem (CITE).
+
+\begin{lem}\label{relprime}
+Let $(b,c)$ be any binary recurrence sequence such that $b^2+4c=1$.  For $n \geq 1$,  $u_n$, $v_n$, and $c$ are relatively prime.
+\end{lem}
+
+\begin{proof}
+We prove this by induction on $n$.  First note that $b^2 +4c = 1$ forces $b$ and $c$ to be relatively prime and $c$ to be even.  Clearly as
+\[ u_2 = b \cdot u_1 + c \cdot u_0 \]
+and $u_1$ is relatively prime to $c$, $u_2$ is relatively prime to $c$.  Thus by induction $u_n$ is relatively prime to $c$.  Similarly for $v_n$.  And further as $u_n^2  = v_n^2 - 4(-c)^n$, no primes except perhaps those dividing $c$ can divide $u_n$ and $v_n$.  Thus they are pairwise relatively prime.
+\end{proof}
+
+\begin{lem}[Ruling out small primes]\label{smallp}
+There are no nontrivial squares or cube terms in any of the examples in Table (CITE) except $u_2 = 9$ for the sequence $(9,-20)$.
+\end{lem}
+
+\begin{proof}
+
+We first deal with the case of $p=2$; we will derive our contradiction from the relation \eqref{gen_diophan}, which in this case reduces to
+\begin{equation}\label{D1dio} \alpha^n - (\alpha-1)^n = z^2.\end{equation} 
+Assume that the index $n$, for which $u_n = z^2$, is odd; in this case we can absorb the sign and have a nontrivial integral solution to
+\[ x^n +y^n = z^2 \]
+But there are no nontrivial solutions to the $(n,n,2)$ Diophantine equation for $n \geq 4$  \cite{darmon97} .  We easily check that in our examples, there are no solutions for $n=3$.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then we can write
+\begin{align*}
+\alpha^{2^rk} - \beta^{2^rk} & = (\alpha^{2^{r-1}k} - \beta^{2^{r-1}k})(\alpha^{2^{r-1}k} + \beta^{2^{r-1}k}) \\
+& = (\alpha^{2^{r-1}k} + \beta^{2^{r-1}k})(\alpha^{2^{r-2}k} + \beta^{2^{r-2}k}) \cdots (\alpha^{k} - \beta^{k}) (\alpha^{k} + \beta^{k})
+\end{align*}
+by \eqref{fib2}.  Further by Lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $\alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition of a nontrivial solution $(n,n2)$, which yields a contradiction.  If $k = 1$ (ie $n$ is powers of $2$), then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  Further, $u_2 = 3^2$ is the only square in the sequence $(9,-20)$ as any other square term of index $n = 2^r$ would require that all of $u_m$ for $m = 2^{r-1},...,2^2$ also be squares.  As $u_4 = 369$, which is not a square, $u_2$ is the only perfect square in $(9,-20)$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
+
+\end{proof}
+
+In addition, in some specific cases it is possible to find all perfect powers in a binary recurrence sequence by elementary methods alone.  For example, in \cite{petho92}, Peth{\H{o}} proved that $u_7 = 13^2$ is the only nontrivial perfect power in the Pell sequence $(2,1)$.  This method is unsuccessful in general, so we introduce the heavy machinery of the modular method.
 
 
 \section{The Modular Method and Theorem 1.1}
 
+\subsection{The modular method applied to binary recurrence sequences}
+
+The modular method is a modern approach to solving classically-intractable Diophantine equations that builds upon the theory of Galois representations associated to elliptic curves combined with the deep theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
+
+First, to a hypothetical solution to a Diophantine equation we associate a Frey elliptic curve with coefficients depending on the solution.  To these Frey curves we associate the mod $p$ Galois representation
+\[ \rho_{E,p}: G_{\Q} \rightarrow \GL_2(\F_p) \]
+corresponding to the $p$-torsion number field $\Q(E[p])$.
+
+
+
+
+
+\vspace{100pt}
 
 \section{The Frey-Mazur Conjecture and Theorem 1.2}
 
