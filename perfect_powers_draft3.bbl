@@ -13,16 +13,30 @@ Yann Bugeaud, Maurice Mignotte, and Samir Siksek, \emph{Classical and modular
   {L}ucas perfect powers}, Ann. of Math. (2) \textbf{163} (2006), no.~3,
   969--1018. \MR{2215137 (2007f:11031)}
 
+\bibitem[BS04]{bennett04}
+Michael~A. Bennett and Chris~M. Skinner, \emph{Ternary {D}iophantine equations
+  via {G}alois representations and modular forms}, Canad. J. Math. \textbf{56}
+  (2004), no.~1, 23--54. \MR{2031121 (2005c:11035)}
+
 \bibitem[DM97]{darmon97}
 Henri Darmon and Lo{\"{\i}}c Merel, \emph{Winding quotients and some variants
   of {F}ermat's last theorem}, J. Reine Angew. Math. \textbf{490} (1997),
   81--100. \MR{1468926 (98h:11076)}
+
+\bibitem[Pet82]{petho82}
+Attila Petho, \emph{Perfect powers in second order linear recurrences}, J.
+  Number Theory \textbf{15} (1982), no.~1, 5--13. \MR{666345 (84f:10024)}
 
 \bibitem[Pet92]{petho92}
 A.~Peth{\H{o}}, \emph{The {P}ell sequence contains only trivial perfect
   powers}, Sets, graphs and numbers ({B}udapest, 1991), Colloq. Math. Soc.
   J\'anos Bolyai, vol.~60, North-Holland, Amsterdam, 1992, pp.~561--568.
   \MR{1218218 (94e:11031)}
+
+\bibitem[SS83]{shorey83}
+T.~N. Shorey and C.~L. Stewart, \emph{On the {D}iophantine equation
+  {$ax^{2t}+bx^{t}y+cy^{2}=d$} and pure powers in recurrence sequences}, Math.
+  Scand. \textbf{52} (1983), no.~1, 24--36. \MR{697495 (84g:10038)}
 
 \bibitem[TW95]{taylorwiles95}
 Richard Taylor and Andrew Wiles, \emph{Ring-theoretic properties of certain
