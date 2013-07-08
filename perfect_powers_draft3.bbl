@@ -1,0 +1,30 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{BMS06}
+
+\bibitem[BMS06]{siksek06}
+Yann Bugeaud, Maurice Mignotte, and Samir Siksek, \emph{Classical and modular
+  approaches to exponential {D}iophantine equations. {I}. {F}ibonacci and
+  {L}ucas perfect powers}, Ann. of Math. (2) \textbf{163} (2006), no.~3,
+  969--1018. \MR{2215137 (2007f:11031)}
+
+\bibitem[BS04]{bennett04}
+Michael~A. Bennett and Chris~M. Skinner, \emph{Ternary {D}iophantine equations
+  via {G}alois representations and modular forms}, Canad. J. Math. \textbf{56}
+  (2004), no.~1, 23--54. \MR{2031121 (2005c:11035)}
+
+\bibitem[Pet82]{petho82}
+Attila Petho, \emph{Perfect powers in second order linear recurrences}, J.
+  Number Theory \textbf{15} (1982), no.~1, 5--13. \MR{666345 (84f:10024)}
+
+\bibitem[SS83]{shorey83}
+T.~N. Shorey and C.~L. Stewart, \emph{On the {D}iophantine equation
+  {$ax^{2t}+bx^{t}y+cy^{2}=d$} and pure powers in recurrence sequences}, Math.
+  Scand. \textbf{52} (1983), no.~1, 24--36. \MR{697495 (84g:10038)}
+
+\end{thebibliography}

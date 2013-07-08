@@ -133,10 +133,34 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction and Statement of Results}
+The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[0,\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233.\] Note that the underlined terms are perfect powers. It was a folklore conjecture that these terms are in fact the only perfect powers in the Fibonacci sequence. Various partial results in this direction, using classical methods, ruled out other $p$-th powers for small primes $p$. Finally, in a deep paper \cite{siksek06}, the conjecture was proven. However, in contrast with previous results, this proof relied upon the Modularity Theorem of Wiles et al., connecting the Diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves.
+
+Here, we revisit this strategy with 2 aims: First, we would like to apply these methods to other recurrence relations, listing explicitly the perfect powers occuring in them. In order to do this, we look at the generalizations of the Fibonacci sequence known as Lucas sequences, that is, binary recurrence relations of the forms \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers, and study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p\end{equation}
+
+\begin{thm}\label{explicit_eg_thm}
+\end{thm}
+\begin{rem}
+CATALAN, MIHAILESCU
+\end{rem}
+
+
+The proof of \ref{explicit_eg_thm} relies upon modular methods for $p \geq 7$ and a combination of elementary and elliptic curve techniques for the remaining primes. 
+
+These sorts of examples are easy, in the same way that Fermat's Last Theorem is easy: any particular solution to EQUATION is associated to a weight 2 newforms of some level $N \sim \rad(c(b^2+4c))$, and for some small levels, there are no newforms.
+
+As $N \to \infty$, many difficulties arise. The number of newforms grows linearly with $N$ (CHECK). For each newform corresponding to an elliptic curve, one might proceed as in \cite{siksek06}, deriving "local conditions" on the index of the solution, which then allows linear forms in two logarithms to give a useful upper bound on $p$, below which sieve methods can feasibly check for solutions. When there are newforms with irrational coefficients, corresponding to abelian varieties of dimension $>$ 1, exceptional situations (IS THIS TRUE), such as CM abelian varieties, can be dealt with as in \cite{bennett04}. However, we do not know of any techniques to deal with abelian varieties in general.
+
+This leads to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. In particular, we sought to derive explicit upper bounds on $p$, depending on the parameters $(b,c)$, avoiding the use of the effectively computable, but inexplicit, bounds of \cite{petho82}\cite{shorey83}. We obtain a conditional result (dependent on the Frey-Mazur Conjecture - see SECTION):
+
+\begin{thm}\label{condbound}
+Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
+\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}, \]
+
+\end{thm}
+
 
 
 \section{Classical Facts about Linear Binary Recurrence Sequences}
-
 
 
 \section{The Modular Method and Theorem 1.1}
