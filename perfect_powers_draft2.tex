@@ -113,6 +113,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \renewcommand{\bar}{\overline}
 \newcommand{\notdiv}{\nmid}
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
+\newcommand{\bfrac}[2]{\left| \frac{#1}{#2} \right|}
 \newcommand{\Ell}{\rm Ell}
 \newcommand{\AV}{\rm AV}
 \newcommand{\Gal}{\rm Gal}
@@ -130,16 +131,15 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 \maketitle
 
+
 \section{Preliminaries}
 
-
-We define a binary recurrence relation by the identifiers $(b,c)$ defining the relation
+Let $(b,c)$ define the linear binary recurrence relation.
 \[ u_{n+2} = b\cdot u_{n+1}+ c\cdot u_n. \]
-To this we associate the characteristic polynomial
-\[ g(z) = z^2 - bz - c\]
-with roots
-\[ \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2}. \]
-Specific binary recurrence sequences require the additional identifier of initial conditions $u_0$ and $u_1$.  We will be primarily interested in two companion sequences for a given recurrence relation $(b,c)$, which we will refer to as $u_n$ and $v_n$, specified by the starting conditions
+with characteristic polynomial with roots
+\[ g(z) = z^2 - bz - c, \qquad \qquad \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2}.\]
+
+We will be primarily interested in the companion sequences for a given recurrence relation $(b,c)$, refered to as $u_n$ and $v_n$, specified by the starting conditions
 \[ u_0 = 0, u_1 = 1 \qquad \qquad v_0 = 2, v_1 = b \]
 The $n$th terms of these sequence are specified by the formulas
 \[u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n \]
@@ -148,11 +148,10 @@ It is straightforward to verify the following facts
 \begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n \end{equation}
 The second fact in the list allows us to generate Frey curves.  In particular, say that we posit a solution $u_n = y^p$, that is
 \begin{equation}\label{rel_diophan} (b^2+4c)y^{2p}+4(-c)^n = v_n^2 .\end{equation}
-This is a solution to the diophantine equation
-\[ (b^2+4c)X^p +4(-c)^nY^p = Z^2 \]
-$(p,p,2)$ with nontrivial coefficients.
+This is a solution to the $(p,p,2)$-with-coefficients Diophantine equation
+\[ (b^2+4c)X^p +4(-c)^nY^p = Z^2. \]
 
-Using \cite{bennett04} we associate a \textit{primitive} solution to a Frey curve in the following way.  
+Using \cite{bennett04} we associate a \textit{primitive} solution to an elliptic curve (a Frey curve) in such a way that the discriminant and conductor of our Frey curve take a particularly simple form by virtue of the solution to the Diophantine equation.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor in the following way.
 
 \begin{prop}\label{freycurves}
 Assume $u_n = y^p$ for $p,n \geq 5$.  We may write the associated Diophantine equation as
@@ -212,10 +211,10 @@ To these Frey curves we associate the mod $p$ Galois representation
 corresponding to the $p$-torsion number field $\Q(E[p])$.
 
 \begin{lem}\label{unram}
-The mod $p$ Galois representation $\rho_{E,p}$ associated to one of the above Frey curves is unramified at any odd prime $\ell$ dividing $y$ and not dividing $c \cdot (b^2+4c)$.  Further it is flat at $p$ if $p \notdiv 2c\cdot (b^2+4c)$.
+The mod $p$ Galois representation $\rho_{E,p}$ associated to one of the above Frey curves is unramified at any odd prime $\ell$ not dividing $c \cdot (b^2+4c)$.  Further it is flat at $p$ if $p \notdiv 2c\cdot (b^2+4c)$.
 \end{lem}
 \begin{proof}
-This is an application of the Tate curve, $E(\bar{\Q}_\ell) \simeq \bar{\Q}_\ell^\ast / q^{\Z}$ with $E[p](\bar{\Q}_\ell) = \langle \zeta_p, q^{1/p} \rangle$, so in particular the ramification comes from primes ramified in $\Q(\zeta_p)$ and primes $\ell | q$ such that $p \notdiv \upnu_\ell(q) = \upnu_\ell(\Delta)$.  Let $\ell$ be an odd prime dividing $y$ and not dividing $c \cdot(b^2+4c)$.  Then as $p \mid \upnu_\ell(\Delta)$, $\rho_{E,p}$ is unramified at $\ell$.  Further as $\Q(\zeta_p) \subset \Q(E[p])$, $\rho_{E,p}$ will be ramified at $p$; however, if $p \mid N$, but $p \notdiv 2c \cdot (b^2+4c)$, then $p \mid y$, and the above argument shows this does not contribute to the ramification.
+By the N\'{e}ron-Ogg-Shafarevich criterion, the mod $p$ Galois representation is unramified outside $pN_E$.  By the theory of Tate curves, $E(\bar{\Q}_\ell) \simeq \bar{\Q}_\ell^\ast / q^{\Z}$ with $E[p](\bar{\Q}_\ell) = \langle \zeta_p, q^{1/p} \rangle$, so in particular the ramification comes from primes $\ell$ ramified in $\Q(\zeta_p)$ and those such that $p \notdiv \upnu_\ell(q) = \upnu_\ell(\Delta)$.  If $\ell | y$, then as $p \mid \upnu_\ell(\Delta)$, $\rho_{E,p}$ is unramified at $\ell$.  Further as $\Q(\zeta_p) \subset \Q(E[p])$, $\rho_{E,p}$ will be ramified at $p$; however, if $p \mid N$, but $p \notdiv 2c \cdot (b^2+4c)$, then $p \mid y$, and the above argument shows this does not contribute to the ramification.
 \end{proof}
 
 Galois representations are particularly useful because of the following two influential theorems of \cite{wiles95}, \cite{taylorwiles95}, \cite{conrad01} and \cite{ribet91}  on the modularity of elliptic curves and level lowering.
@@ -234,9 +233,12 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 The remaining sections of the paper apply these deep theorems to the Frey curves generated from binary recurrence relations to prove nonexistence theorems in a similar style to \cite{siksek06}, \cite{siksek05}.
 
 
+
 \section{Results for Specific Sequences}
 
-We begin with some specific sequences we can deal with easily.  One simple class of examples are those where $b^2+4c = 2$.  It is this case that we deal with first.
+We now demonstrate the feasibility of these methods to sharply bound $p$ and determine all perfect powers in a recurrence sequence.  We prove both conditional and unconditional bounds in this way. 
+
+We first deal with several examples where $b^2+4c = 1$.
 
 \begin{thm}\label{noforms1}
 Let $u_n$ be the binary recursion sequence defined by 
@@ -252,7 +254,7 @@ b & c \\  \hline \hline
 9 & -20 \\ \hline \hline
 \end{tabular}
 \end{center}
-$u_n$ has no nontrivial $p$th powers, except perhaps for 5th powers in $(9,-20)$.
+$u_n$ has no nontrivial $p$th powers. %except perhaps for 5th powers in $(9,-20)$.
 \end{thm}
 
 In order to prove the above theorem we first establish the following lemmas.
@@ -274,14 +276,17 @@ There are no nontrivial squares or cube terms in any of the above examples excep
 \begin{proof}
 
 We first deal with the case of $p=2$; we will derive our contradiction from the relation \eqref{gen_diophan}, which in this case reduces to
-\begin{equation}\label{D1dio} \alpha^n - (\alpha-1)^n = z^2.\end{equation} 
-Assume that the index $n$, for which $u_n = z^2$, is odd; in this case we can absorb the sign and have a nontrivial solution to
+\begin{equation}\label{D1dio} \frac{\alpha^n - (\alpha-1)^n}{1} = z^2.\end{equation} 
+Assume that the index $n$, for which $u_n = z^2$, is odd; in this case we can absorb the sign and have a nontrivial integral solution to
 \begin{equation}\label{diophanpp2}
 x^n +y^n = z^2
 \end{equation}
-But there are no nontrivial solutions to \eqref{diophanpp2} for $n \geq 4$ by the solution to $(n,n,2)$ in \cite{darmon97} .  We easily check that there are no solutions for $n=3$.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then we can write
-\[ \alpha^{2^rk} - \beta^{2^rk} = (\alpha^{2^{r-1}k} - \beta^{2^{r-1}k}) (\alpha^{2^{r-1}k} + \beta^{2^{r-1}k}) \cdots (\alpha^{k} - \beta^{k}) (\alpha^{k} + \beta^{k}). \]
-Further by lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $\alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition, which yields a contradiction.  If $k = 1$, then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
+But there are no nontrivial solutions to \eqref{diophanpp2} for $n \geq 4$ by the solution to $(n,n,2)$ in \cite{darmon97} .  We easily check that in our examples, there are no solutions for $n=3$.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then we can write
+\begin{align*}
+\alpha^{2^rk} - \beta^{2^rk} & = (\alpha^{2^{r-1}k} - \beta^{2^{r-1}k})(\alpha^{2^{r-1}k} + \beta^{2^{r-1}k}) \\
+& = (\alpha^{2^{r-1}k} + \beta^{2^{r-1}k})(\alpha^{2^{r-2}k} + \beta^{2^{r-2}k}) \cdots (\alpha^{k} - \beta^{k}) (\alpha^{k} + \beta^{k}). 
+\end{align*}
+Further by lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $\alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition, which yields a contradiction.  If $k = 1$, then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  Further, $u_2 = 3^3$ is the only square in the sequence $(9,-20)$ as $u_4 = 369$ which is not a square.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
 
 \end{proof}
 
@@ -315,7 +320,7 @@ where $X$ is the normalization of the fiber product $X_{\Delta} \times_{X(1)} X_
 \[X: \qquad  y^2 = x^3 + 22x^2 +125x .\]
 The map to $X_{\Delta}$ is given by
 \[ (x,y) \mapsto \frac{y(x^2-500x -15625)}{x^3}. \]
-Sage easily determines that $X$ is rank $0$, with rational point $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  Thus our Elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible.  Further, irreducible implies absolutely irreducible as we know that the determinant is the cyclotomic character $\chi_p$.
+Sage easily determines that $X$ is rank $0$, with rational point $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible.  Further, irreducible implies absolutely irreducible as $\det: G_\Q \rightarrow \F_p^*$ is the cyclotomic character $\chi_p$ and $\chi_p(c)=-1$ for $c$ complex conjugation.
 \end{proof}
 \begin{cor}\label{frey5irr}
 Let $E$ be a Frey curve arising from a solution $u_n = y^5$ for $b^2+4c = 1$ and $n\geq 5$, then $\rho_{E,5}$ is absolutely irreducible.
@@ -334,7 +339,7 @@ To this hypothetical solution we associate a Frey curve
 \[E: Y^2 + XY = X^3 + \frac{w_n - 1}{4} X^2 + 2^{-4}c^nX \]
 for $w_n = \pm v_n$ such that $w_n \equiv 1 \pmod{4}$; note that $2|c$.  This has conductor and minimal discriminant
 \begin{equation}\label{conddis1} N_E =\prod_{\ell | cy} \ell  \qquad \qquad \Delta_E = 2^{-8} \cdot (-c)^{2n} \cdot y^{2p} \end{equation}
-and the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and flat at $p$ (except at $p=5$ in the last example), by a proposition \ref{freycurves} and lemma \ref{unram}.   By a theorem of Mazur it is irreducible for $p \geq 7$ (argued explicitly in \cite{bennett04}) and thus absolutely irreducible.  By lemma \ref{frey5irr} it is also absolutely irreducible at $p=5$.  By the modularity of elliptic curves \ref{modularity} Ribet's level-lowering theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$.
+and the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and flat at $p$ (except at $p=5$ in the last example), by a proposition \ref{freycurves} and lemma \ref{unram}.   By a theorem of Mazur it is irreducible for $p \geq 7$ ($E$ has a rational two torsion point and thus reducible would imply a rational, noncuspidal, non-CM point on $X_0(2p)$) and thus absolutely irreducible.  By lemma \ref{frey5irr} it is also absolutely irreducible at $p=5$.  By the modularity of elliptic curves \ref{modularity} Ribet's level-lowering theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$.
 
 Invoking lemma \ref{smallp} completes the proof of the theorem.
 \end{proof}
@@ -344,11 +349,12 @@ The result for $b = 3, c = -2$ follows from Catalan's Conjecture on perfect powe
 \end{rem}
 
 
+
 \section{A general theorem}
 
 In general, the result of level lowering may be a level for which there exist modular forms corresponding to both elliptic curves (rational newforms) and higher dimensional abelian varieties (irrational newforms).  In what follows, we develop techniques to deal with these seperately.
 
-Let $E$ be an elliptic curve of level $M \cdot N$ with mod-$p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $N$, and flat at $p$.  Denote by $a_\ell$ the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \rho_f$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K_f = \Q(...,c_\ell,...)$ of degree $n_{K_f} = [K_f,\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
+Let $E$ be an elliptic curve of level $M \cdot N$ with mod-$p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $pM\cdot N$, and flat at $p$.  Denote by $a_\ell$ the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K_f = \Q(...,c_\ell,...)$ of degree $n_{K_f} = [K_f,\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
 
 \begin{lem}[Congruence conditions.]\label{ircong1}
 There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\ell$ prime:
@@ -364,56 +370,32 @@ For $d > 1$, this gives a nontrivial bound on $p$ as there exists an $\ell$ such
 \end{lem}
 
 \begin{proof}
-See \cite{bennett04}.
+This is well-known, see \cite{bennett04}.
 \end{proof}
 
-Let $\ell$ be the smallest prime number such that $c_\ell \notin \mathbb{Z}$. Then, since $c_\ell$ is an $\ell$-Weil number, we see that for $k \leq \ell+1$, $N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^d$.  Using Effective Chebotarev, we can bound the size of $\ell$ and thus use the above lemma \ref{ircong1} to bound $p$ in the case that our representation corresponds to an irrational newform.
+Let $\ell$ be the smallest prime number such that $c_\ell \notin \mathbb{Z}$. Then, since $c_\ell$ is an $\ell$-Weil number, we see that for $k \leq \ell+1$, $N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K_f}}$.  Using the Sturm bound, we can bound the size of $\ell$ and thus use the above lemma \ref{ircong1} to bound $p$ in the case that our representation corresponds to an irrational newform.
 
-\begin{thm}[Effective Chebotarev]\label{effcheb}
-There exists an absolute, effectively computable constant $A_1$ such that for every Galois extension $K/\mathbb{Q}$ of degree $n_K$ and discriminant $\Delta_K$, every conjugacy class $C \subset \Gal(K/\mathbb{Q})$, there exists a rational prime $q$ unramified in $K$, such that 
-\[\Frob_q \in C, \qquad q \leq |\Delta_K|^{A_1}. \]  
-Further, under the assumption of GRH, we can take \[q \leq A_2 (\log |\Delta_K|)^2. \]
+\begin{thm}[Sturm Bound]\label{sturm}
+Let $f,g \in M_k(\Gamma_0(N))$ have Fourier expansions $\sum_n a_nq^n$ and $\sum_n b_n q^n$ respectively.  Then if $a_n = b_n$ for all
+\[ n \leq \frac{k \cdot  [\Gamma : \Gamma_0(N)]}{12} \]
+$f \simeq g$.
 \end{thm}
+
 \begin{proof}
-See \cite{lagarias79}.
+See (cite someone, William Stein maybe).
 \end{proof}
 
-\begin{rem}\label{bounddisc} The discriminant (as the norm of the different ideal) is bounded as
-\[|\Delta_K| \leq \left( \prod_{\substack{p \\ \text{ramified}}} p \right)^{C_1n_K} \]
-for $C_1$ a constant.
-\end{rem}
+Further 
+\[ [\Gamma : \Gamma_0(N)] = N \cdot \prod_{p|N} \left(1 + \frac{1}{p} \right). \]
 
-In addition we need the following result on the least prime $q$ that does not split completely in a number field $K$.
+\begin{lem}\label{boundell}
+Let $f$ be an irrational newform of level $N$.  If $\ell$ is the first prime such that $c_\ell \not\in \Z$, then
+\[ \ell \leq A \cdot N^{1+\epsilon} .\]
+\end{lem}
 
-\begin{thm}\label{nonsplitcom}
-For $K/\Q$ a nontrivial extension of degree $n_K$ and discriminant $\Delta_K$ (note that $K$ need not be Galois), there exists a rational unramified prime $q$ that is not split completely in $K$ with
-\[ q \leq A\pfrac{\log |\Delta_K|}{n_K-1}^2.\] 
-for $A$ an effective constant.
-\end{thm}
 \begin{proof}
-See \cite{murty94}.
-\end{proof}
-
-Now we address the question of finding a bound on the smallest prime $\ell$ such that the $\ell$th fourier coefficient of an irrational modular form at level $N$, $c_\ell \not\in\Z$.
-
-\begin{thm}\label{notinZ}
-Let $f$ be an irrational modular form of level $N$, then there exists a rational prime
-\[\ell \leq C_1 \left( \log{N} \right)^{C_2N},  \]
-for $C_1$ and $C_2$ effective constants, such that $c_\ell \not\in \Z$.
-\end{thm}
-\begin{proof}
-Let $q$ be an unramified prime of $K_f$ of residue field degree $r \neq 1$ (ie $q$ does not split completely).  By corollary \ref{nonsplitcom} and remark \ref{effcheb} we can assume $q \leq A(\log N)^2$ for some constant $A$, as all ramified primes divide $N$ and $d_{K_f} = O(N)$.  Let $\mathfrak{q}$ be a prime above $q$.
-
-Consider the 2-dimensional projectivization of the mod $\mathfrak{q}$ Galois representation $\widetilde{\rho_{f,q}}$ given by the composition of
-\[ G_{\Q} \rightarrow\GL_2(\hat{\O}_f) \rightarrow \GL_2(\F_{q^r}) \rightarrow \PGL_2(\F_{q^r})  \]
-where the last two maps are reduction mod $\mathfrak{q}$ and then projectivization.  The statement that $c_\ell \not\in \Z$ is exactly the statement that the image of Frobenius $\pi_\ell \in \PGL_2(\F_{q^r})$ but $\pi_\ell \not\in \PGL_2(\F_q)$.  Let $L/\Q$ be the Galois number field associated to $\widetilde{\rho_{f,q}}$.  We know
-\[ n_L \leq |\PGL_2(\F_{q^r})| = (q^{r}+1)(q^{2r}-q) \qquad |\Delta_L| \leq N^{cn_L} \]
-\[\Rightarrow \log|\Delta_L| \leq C(q^{r}+1)(q^{2r}-q) \cdot \log{N} \]
-and using the bound for $q$ and $r \leq n_K$ we get
-\[  \log|\Delta_L| \leq C_1 \left( \log{N} \right)^{cN} \]
-Now we apply Effective Chebotarev \ref{effcheb} to conclude that
-\[ \ell \leq C_1 \left( \log{N} \right)^{C_2N} \]
-for some effective constants $C_1$ and $C_2$.
+If $f$ is an irrational newform, then there exists a distinct Galois conjugate $g \not \simeq f$ also of level $N$.  As these newforms are not isomorphic, by \ref{sturm}, they must differ in an irrational coefficient $c_\ell$ for
+\[ \ell \leq \frac{1}{6} N \cdot \prod_{p|N} \left(1 + \frac{1}{p} \right) = A \cdot N^{1+\epsilon}. \]
 \end{proof}
 
 This leads immediately to the following upper bound on $p$ such that the mod $p$ representation of an irrational newform is isomorphic to one arising from an elliptic curve.
@@ -421,32 +403,32 @@ This leads immediately to the following upper bound on $p$ such that the mod $p$
 \begin{lem}\label{irboundp}
 Let $E$ be an elliptic curve and $f$ an irrational newform of level $N$ such that 
 \[\rho_{E,p} \simeq \bar{\rho_{f,p}}.\]
-Assuming GRH, 
-\[ p \leq  A_1 \left( \log{N} \right)^{A_2N^2}, \]
-for $A_1$ and $A_2$ an effectively computable constants depending on nothing.
+Then, 
+\[ p \leq  A_1 \left( N \right)^{N+\epsilon}, \]
+for $A_1$ an effectively computable constant depending on nothing.
 \end{lem}
 \begin{proof}
 By lemma \ref{ircong1}, for $\ell$ a prime such that the $\ell$th Fourier coefficient $c_\ell$ of $f$ is not in $\Z$, 
 \[ p \mid \ell \cdot N_{K_f / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \cdot \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K_f / \mathbb{Q}}}(c_\ell - r).\]
-Thus $p$ is bounded by the largest factor in the above product of integers as,
+Thus $p$ is bounded by the largest factor in the above product of integers, clearly
 \[ p \leq N_{K_f / \mathbb{Q}}(c_\ell+(\ell+1)) .\]
-Further $|c_\ell| \leq 2\sqrt{\ell}$.  By theorem \ref{notinZ}, we may take $\ell \leq C_1 \left( \log{N} \right)^{C_2N}$, and thus
-\[ p \leq \left( C_1 \left( \log{N} \right)^{C_2N} + 1 + 2 \sqrt{C_1  \left(\log{N} \right)^{C_2N}}\right)^N = A_1 \left( \log{N} \right)^{A_2N^2}. \]
+Further $|c_\ell| \leq 2\sqrt{\ell}$.  By lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$, and $n_{K_f} \leq N^{1+\epsilon}$, thus
+\[ p \leq A_1 \cdot N^{N+\epsilon}. \]
 \end{proof}
 
 To apply this result, for a binary recurrence sequence $u_n$ characterized by $(b,c)$ relatively prime and starting conditions $u_0=0,u_1=1$, let $\alpha,\beta$ be roots of the characteristic polynomial, with $\alpha$ the dominant root.  
 
 For any $N$, we can define the functions:
 \begin{align*}
-\Ell(N) & = \max\{17, \max\{30, N+1\} \cdot A_3\log{\alpha} \} \\
-\AV(N) & = A_1 \left( \log{N} \right)^{A_2N^2}. 
+\Ell(N) & = \max\{17, \max\{30, N+1\} \cdot A_2\log{\alpha} \} \\
+\AV(N) & = A_1 \left( N \right)^{N + \epsilon}. 
 \end{align*}
-for $A_1,A_2, A_3$ absolute effective constants.
+for $A_1,A_2$ absolute effective constants.
 
 To deal with the possible elliptic curves at the level reached via level lowering, we will make use of the following theorems that bound the index $n$ of a term smooth by a finite set of primes, and then bound $p$ such that $y^p = u_n$ in terms of $n$.
 
 \begin{lem}[Smooth Terms]\label{smoothterm}
-Let $S$ be the set of all integers composed entirely of primes in some finite set $\{p_1,p_2,...,p_m\}$ with $p_m \geq p_i$ for all $i$.  Let $u_n$ be a Lucas sequence.  For $n > 6$, if $u_n \in S$ then
+Let $S$ be the set of all integers composed entirely of primes in some finite set $\{p_1,p_2,...,p_m\}$ with $p_m \geq p_i$ for all $i$.  Let $u_n$ be a binary recurrence sequence with starting conditions $u_0 = 0, u_1 = 1$.  For $n > 6$, if $u_n \in S$ then
 \[ n \leq \max\{30, p_m +1 \}. \]
 \end{lem}
 \begin{proof}
@@ -461,12 +443,13 @@ for $A$ an absolutely, effective constant.
 
 \begin{proof}
 It is clear that
-\[p\log{2} \leq \log \pfrac{\alpha^n - \beta^n}{\alpha-\beta}  = \log(\alpha^{n-1}+ \alpha^{n-2}\beta+...+\beta^{n-1}). \]
+\[p\log{2} \leq \log \bfrac{\alpha^n - \beta^n}{\alpha-\beta}  = \log|\alpha^{n-1}+ \alpha^{n-2}\beta+...+\beta^{n-1}|. \]
 Thus
 \begin{align*}
-p & \leq  \frac{1}{\log{2}} \cdot \log(n\alpha^{n-1}) = \frac{1}{\log{2}} \cdot (n-1)\log(\alpha) + \frac{1}{\log{2}} \log(n)  \\
-& \leq A\cdot n \log(\alpha).
+p & \leq  \frac{1}{\log{2}} \cdot \log|n\alpha^{n-1}| = \frac{1}{\log{2}} \cdot (n-1)\log|\alpha| + \frac{1}{\log{2}} \log(n)  \\
+& \leq A\cdot n \log|\alpha|.
 \end{align*}
+as $|\alpha| \geq 2$, so $\log_2|\alpha| \geq 1$ so $n\log|\alpha| \geq  \log(n)$.
 \end{proof}
 
 In the results that follow, we rely upon the following empirically-supported question of Mazur \cite{mazur78}, now referred to as the Frey-Mazur Conjecture, concerning the possibility of isomorphic Galois representations arising from non-isogenous elliptic curves.
@@ -478,7 +461,7 @@ then $E_1$ is isogenous to $E_2$.
 \end{conj}
 
 
-We prove our main result \textbf{conditionally on the Generalized Riemann Hypothesis (GRH) and the Frey-Mazur Conjecture}.
+We prove our main result \textbf{conditionally on the Frey-Mazur Conjecture}.
 
 
 \begin{thm}\label{condbound}
@@ -493,31 +476,61 @@ Assume there exists a solution $u_n = y^p$ for
 \[ p > \max\{ \Ell(N), \AV(N) \}. \]
 To our hypothetical solution we associate a Frey curve $E$ to the Diophantine equation
 \[ y^{2p} +4(-c)^n = v_n^2 \]
-as in \ref{freycurves}.  By proposition \ref{freycurves} the conductor of $E$ is bounded by
-\[ N_E \leq 2^8 \prod_{\substack{ \ell \mid 2c*(b^2+4c) \\ \ell \mid y}} \ell. \]
-By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and is flat at $p$ (as $p>N>N_E$).  Thus there exists a modular form $f$ of level bounded by 
-\[ 2^8 \rad(c \cdot (b^2+4c)) \leq N \]
+as in \ref{freycurves}.  By proposition \ref{freycurves}, we can exactly find the conductor of $E$
+\[ N_E = 2^{\alpha}  \cdot \prod_{\substack{ \ell \mid c*(b^2+4c) \\ \ell \mid y \\ \ell \text{ odd}}} \ell \qquad \qquad \alpha \leq 8. \]
+Thus we have a bound
+\[ N_E \leq  2^{8} \cdot c \cdot (b^2+4c) \cdot y.\] 
+By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and flat at $p \notdiv c(b^2+4c)$.  Thus there exists a modular form $f$ of level 
+\[N_f = 2^{\alpha} \cdot \prod_{\substack{ \ell \mid c*(b^2+4c) \\ \ell \text{ odd}}} \ell \]
+bounded by 
+\[ 2^8 \cdot  \rad(c \cdot (b^2+4c)) \leq N \]
 such that $\rho_{E,p} \simeq \bar{\rho_{f,p}} $.  However, by lemma \ref{irboundp}, $p>\AV(N)$ and thus $f$ must be rational, ie correspond to an elliptic curve $E_f$ such that
 \[ \rho_{E,p} \simeq \rho_{E_f,p}. \]  
-Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $E_f$ are isogenous, and thus $N_E = N_{E_f}$.  But these differ only in the primes dividing $y$, thus
+Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $E_f$ are isogenous, and thus $N_E = N_{E_f}$.  But these differ exactly in the primes dividing $y$, thus
 \[ \rad(y) | \rad(2c \cdot (b^2+4c)). \]
-However, the largest prime factor of $2c \cdot (b^2+4c)$ is bounded by $N$.  Further by lemma \ref{boundpintermsn}, $p \leq n \cdot C_3\log{\alpha}$.  We conclude the theorem by contradiction.
+However, the largest prime factor of $2c \cdot (b^2+4c)$ is bounded by $N$.  Further by lemma \ref{boundpintermsn}, $p \leq n \cdot A\log{\alpha}$.  We conclude the theorem by contradiction.
 \end{proof}
 
 \begin{rem}
-A bound for $p$ in any recurrence relation $(b,c)$ has been proven independently by \cite{petho82} and \cite{shorey83}, but their results use the technique of lower bounds on linear forms in logarithms, and are not written explicitly in terms of absolute effective constants.
+Although a finiteness result for $p$ in any recurrence relation $(b,c)$ has been proven independently by \cite{petho82} and \cite{shorey83}, this is the first result seen by the authors of an explicit bound for $p$ in terms of absolute constants.
 \end{rem}
 
 
 \begin{rem}
-Although the bound cited here of $p\leq A_1 \left( \log{N} \right)^{A_2N^2}$ for an isomorphism between the mod $p$ Galois representation of an elliptic curve and an irrational newform, we have empirically observed that in fact $p \leq N/2$ for $N \leq 1000$.
+Although the bound proven here is $p\leq A \cdot  N^{N+\epsilon}$ for an isomorphism between the mod $p$ Galois representation of an elliptic curve and an irrational newform, we have empirically observed that in fact $p \leq N/2$ for $N \leq 1000$.
 \end{rem}
 
 
 
+\section{Specific Conditional Results}
 
+As noted in the remarks above, in many cases the conditional bounds achieved are in fact much better than recorded in theorem \ref{condbound}.  For any recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the lower-level representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p$.  This technique proves very efficient.  The following table provides all of the perfect powers for $c = \pm 1$ and $b \leq 10$ except for a finite set of recorded primes.
 
+\begin{center}
+\begin{tabular}{c c c c}
+$(b,c)$ & Known $u_n = y^p$ & Except perhaps for & Conditional?  \\  \hline \hline
+$(1,1)$ & $u_6=2^3, u_{12} = 12^2$ & $p\leq 17$ & yes \\
+$(2,1)$ & $u_7=13^2$ & $p \leq 17$ & yes \\
+$(3,1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(3,-1)$ & $u_3 = 2^3, u_6 = 12^2$ & $p \leq 17$ & yes \\
+$(4,1)$ & $u_2 = 2^2$ & $p \leq 17$ & yes \\
+$(4,-1)$ & $u_2 = 2^2$ & $p \leq 17$ & yes \\
+$(5,1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(5,-1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(6,1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(6,-1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(7,1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(7,-1)$ & $\emptyset$ & $p \leq 17$ & yes \\
+$(8,1)$ & $u_2 = 2^3$ & $p \leq 17$ & yes \\
+$(8,-1)$ & $u_2 = 2^3$ & $p \leq 17$ & yes \\
+$(9,1)$ & $u_2 = 3^3$ & $p \leq 17$ & yes \\
+$(9,-1)$ & $u_2 = 3^3$ & $p \leq 17$ & yes \\
+$(10,1)$ & $\emptyset$ & $p\leq 17$ & yes \\
+$(10,-1)$ & $\emptyset$ & $p=2,3,5$ & no \\ \hline \hline
+\end{tabular}
+\end{center}
 
+\pagebreak
 \bibliography{bib}{}
 \bibliographystyle{amsalpha}
 

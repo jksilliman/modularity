@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: perfect_powers_draft2.aux
+The style file: amsalpha.bst
+Database file #1: bib.bib
+You've used 17 entries,
+            2624 wiz_defined-function locations,
+            687 strings with 7104 characters,
+and the built_in function-call counts, 6927 in all, are:
+= -- 676
+> -- 277
+< -- 8
++ -- 93
+- -- 91
+* -- 672
+:= -- 1110
+add.period$ -- 17
+call.type$ -- 17
+change.case$ -- 101
+chr.to.int$ -- 17
+cite$ -- 17
+duplicate$ -- 246
+empty$ -- 535
+format.name$ -- 116
+if$ -- 1363
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 34
+newline$ -- 61
+num.names$ -- 51
+pop$ -- 59
+preamble$ -- 1
+purify$ -- 118
+quote$ -- 0
+skip$ -- 181
+stack$ -- 0
+substring$ -- 567
+swap$ -- 34
+text.length$ -- 8
+text.prefix$ -- 8
+top$ -- 0
+type$ -- 136
+warning$ -- 0
+while$ -- 77
+width$ -- 23
+write$ -- 212
