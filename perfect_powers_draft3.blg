@@ -1,46 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2010)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: perfect_powers_draft3.aux
 The style file: amsalpha.bst
 Database file #1: bib.bib
-You've used 8 entries,
+Warning--I didn't find a database entry for "cohen06"
+You've used 12 entries,
             2624 wiz_defined-function locations,
-            620 strings with 5688 characters,
-and the built_in function-call counts, 3269 in all, are:
-= -- 320
-> -- 125
-< -- 4
-+ -- 40
-- -- 39
-* -- 302
-:= -- 518
-add.period$ -- 8
-call.type$ -- 8
-change.case$ -- 46
-chr.to.int$ -- 8
-cite$ -- 8
-duplicate$ -- 128
-empty$ -- 255
-format.name$ -- 50
-if$ -- 656
+            654 strings with 6365 characters,
+and the built_in function-call counts, 4813 in all, are:
+= -- 472
+> -- 174
+< -- 7
++ -- 55
+- -- 54
+* -- 452
+:= -- 761
+add.period$ -- 12
+call.type$ -- 12
+change.case$ -- 68
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 187
+empty$ -- 382
+format.name$ -- 72
+if$ -- 963
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 16
-newline$ -- 34
-num.names$ -- 24
-pop$ -- 27
+missing$ -- 24
+newline$ -- 46
+num.names$ -- 36
+pop$ -- 40
 preamble$ -- 1
-purify$ -- 54
+purify$ -- 80
 quote$ -- 0
-skip$ -- 101
+skip$ -- 140
 stack$ -- 0
-substring$ -- 243
-swap$ -- 26
-text.length$ -- 4
-text.prefix$ -- 3
+substring$ -- 380
+swap$ -- 34
+text.length$ -- 7
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 64
+type$ -- 96
 warning$ -- 0
-while$ -- 38
-width$ -- 11
-write$ -- 107
+while$ -- 55
+width$ -- 17
+write$ -- 155
+(There was 1 warning)
