@@ -211,7 +211,7 @@ But there are no nontrivial solutions to the $(n,n,2)$ Diophantine equation for 
 \alpha^{2^rk} - \beta^{2^rk} & = (\alpha^{2^{r-1}k} - \beta^{2^{r-1}k})(\alpha^{2^{r-1}k} + \beta^{2^{r-1}k}) \\
 & = (\alpha^{2^{r-1}k} + \beta^{2^{r-1}k})(\alpha^{2^{r-2}k} + \beta^{2^{r-2}k}) \cdots (\alpha^{k} - \beta^{k}) (\alpha^{k} + \beta^{k})
 \end{align*}
-by \eqref{fib2}.  Further by Lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $\alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition of a nontrivial solution $(n,n2)$, which yields a contradiction.  If $k = 1$ (ie $n$ is powers of $2$), then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  Further, $u_2 = 3^2$ is the only square in the sequence $(9,-20)$ as any other square term of index $n = 2^r$ would require that all of $u_m$ for $m = 2^{r-1},...,2^2$ also be squares.  As $u_4 = 369$, which is not a square, $u_2$ is the only perfect square in $(9,-20)$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
+by \eqref{fib2}.  Further by Lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $\alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition of a nontrivial solution to the $(n,n,2)$ Diophantine equation, which yields a contradiction.  If $k = 1$ (ie $n$ is powers of $2$), then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  Further, $u_2 = 3^2$ is the only square in the sequence $(9,-20)$ as any other square term of index $n = 2^r$ would require that all of $u_m$ for $m = 2^{r-1},...,2^2$ also be squares.  As $u_4 = 369$, which is not a square, $u_2$ is the only perfect square in $(9,-20)$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
 
 \end{proof}
 
@@ -220,7 +220,7 @@ In addition, in some specific cases it is possible to find all perfect powers in
 
 \section{The Modular Method and Theorem 1.1}
 
-\subsection{The modular method applied to binary recurrence sequences}
+\subsection{The modular method applied to Lucas sequences}
 
 The modular method is a modern approach to solving classically-intractable Diophantine equations that builds upon the theory of Galois representations associated to elliptic curves combined with the important theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
 
@@ -240,19 +240,19 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 
 In general, to a hypothetical solution of a Diophantine equation with exponent $p$ we associate a Frey elliptic curve with coefficients depending on the solution.  To these Frey curves we associate the mod $p$ Galois representation
 \[ \rho_{E,p}: G_{\Q} \rightarrow \GL_2(\F_p) \]
-corresponding to the $p$-torsion number field $\Q(E[p])$.  These Frey curves will have minimal discriminant of the form $\Delta_E = C \cdot D^p$ for $C$ depending only upon the Diophantine equation, and $D$ depending only upon the hypothetical solution.  The goal is to use level lowering to show that the Frey curve is not modular, and thus the hypothetical solution cannot exist. 
+corresponding to the $p$-torsion number field $\Q(E[p])$.  These Frey curves will have minimal discriminant of the form $\Delta_E = C \cdot D^p$ for $C$ depending only upon the Diophantine equation, and $D$ depending only upon the hypothetical solution.  The goal is to either to use level lowering to show that the Frey curve is not modular, and thus the hypothetical solution cannot exist, or to derive local information about a solution that could exist. 
 
 For binary recurrence sequences, we will use the fundamental relation \eqref{gen_diophan} as our Diophantine equation.  In particular, say that we posit a solution $u_n = y^p$, that is
 \begin{equation}\label{rel_diophan} (b^2+4c)y^{2p}+4(-c)^n = v_n^2 .\end{equation}
 This is a solution to the $(p,p,2)$-with-coefficients Diophantine equation
 \[ (b^2+4c)X^p +4(-c)^nY^p = Z^2. \]
 
-Using \cite{bennett04} we associate a \textit{primitive} to \eqref{rel_diophan} solution to a Frey curve.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following fundamental Lemma.
+Using \cite{bennett04} we associate a Frey curve to a \textit{primitive} solution to \eqref{rel_diophan}.  Here primitive denotes $\gcd((b^2+4c)y^2, 4(-c)^n, v_n ) = 1$.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following fundamental Lemma.
 
 \begin{lem}[Frey Curves]\label{freycurves}
 Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$.  We may write the associated Diophantine equation as
 \[ (b^2+4c)y^{2p} + 4(-c)^n = z^2.\]
-As a convention let $k_1 = \upnu_2(b^2+4c)$, $k_2 = \upnu_2(y^{2p})$, and $k = k_1+k_2$.  Without loss of generality we may assume that we are in one of the following situations:
+for $b$ and $c$ relatively prime. As a convention let $k_1 = \upnu_2(b^2+4c)$, $k_2 = \upnu_2(y^{2p})$, and $k = k_1+k_2$.  Without loss of generality we may assume that we are in one of the following situations:
 
 
 
@@ -300,7 +300,7 @@ We use the formulas of \cite{bennett04}.  For the ease of the reader, the parame
 Note that if $c \neq 1$, then $c \notdiv y$ by induction on the recurrence relation, thus the only common factors we need to account for powers of $2$.
 \end{proof}
 
-In order to show that the Frey curve associated to any particular hypothetical solution is not modular, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p$.  In this way, we can level-lower to a level independent of the solution.  This is achieved in the following Lemmas.
+In order to derive a contradiction or nontrivial local data, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p \geq 7$, and some cases $p=5$.  In this way, we can level-lower to a level independent of the solution.  
 
 
 \begin{lem}\label{unram}
@@ -349,6 +349,43 @@ The map to $X_{\Delta}$ is given by
 \[ (x,y) \mapsto \frac{y(x^2-500x -15625)}{x^3}. \]
 Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible and thus absolutely irreducible.
 \end{proof}
+
+\subsection{Proof of Theorem 1.1}
+
+In this section we use the techniques of the modular method developed in the previous section to give a proof of our first theorem:
+
+\begin{thm}\label{explicit_eg_thm}
+For the following values of $b$ and $c$:
+\begin{center}
+\begin{tabular}{c | c }
+b & c \\  \hline \hline
+3 & -2 \\
+5 & -6  \\
+7 & -12 \\
+17 & -72  \\
+9 & -20 \\ \hline \hline
+\end{tabular}
+\end{center}
+the Lucas sequence $u_n$ has no nontrivial $p$th powers except $u_2=3^2$ in $(9,-20)$. 
+\end{thm}
+
+
+If there exists a solution $u_n = y^p$ for $u_n$ in Table (CITE) and $p \geq 5$, then by Lemma \ref{relprime} there exists a primitive solution to 
+\[ X^p + 4(-c)^n Y^p = Z^p. \]
+To this we associate the Frey curve of case (viii) in Lemma \ref{freycurves}
+\[E: Y^2 + XY = X^3 + \frac{w_n - 1}{4} X^2 + 2^{-4}c^nX \]
+for $w_n = \pm v_n$ such that $w_n \equiv 1 \pmod{4}$.  The Frey curve $E$ has conductor and minimal discriminant
+\[ N_E =\prod_{\ell | cy} \ell  \qquad \qquad \Delta_E = 2^{-8} \cdot (-c)^{2n} \cdot y^{2p}. \]
+As $\Delta_E$ is a square, Lemma \ref{absirr} implies $\rho_{E,5}$ is absolutely irreducible.  In fact, as the Frey curve will fall into the same case (viii) for all Lucas sequences with $b^2+4c=1$, this follows from the following more general Lemma.
+
+\begin{lem}\label{frey5irr}
+Let $E$ be a Frey curve arising from a solution $u_n = y^5$ for $b^2+4c = 1$ and $n\geq 5$, then $\rho_{E,5}$ is absolutely irreducible.
+\end{lem}
+\begin{proof}
+By proposition \ref{freycurves} all of the discriminants of these Frey curves are rational squares.
+\end{proof}
+
+
 
 \section{Proof of Theorem 1.2}
 
@@ -485,6 +522,11 @@ By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$
 \[ p \leq A_1 \cdot N^{N+\epsilon}. \]
 \end{proof}
  
+ 
+ \begin{proof}[Proof of Theorem \ref{condbound}]
+ 
+ 
+ \end{proof}
 
 \section{Examples}
 
