@@ -133,9 +133,9 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction}
-The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[0,\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$-th powers for small primes $p$ (CITE STUFF). In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves.
+The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$-th powers for small primes $p$ (CITE STUFF). In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves. (WEIRD WORDING)
 
-Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other linear binary recurrence relations.  We will be particularly interested in natural generalizations of the Fibonacci sequence, known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
+Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other linear binary recurrence relations.  In particular, we study a natural generalization of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
 
 Using techniques similar to \cite{siksek06}, we prove the following theorem on specific sequences.
 
@@ -156,9 +156,9 @@ $u_n$ has no nontrivial $p$th powers. %except perhaps for 5th powers in $(9,-20)
 
 Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.
 
-These sorts of examples are easy, in the same way that Fermat's Last Theorem is easy: as we will see, any particular solution to \eqref{the_eqn} is associated to a weight 2 newforms of some level $N \sim \rad(c(b^2+4c))$, and for some small levels, there are no newforms.
+(REWRITE, NOT "EASY") These sorts of examples are easy, in the same way that Fermat's Last Theorem is easy: as we will see, any particular solution to \eqref{the_eqn} is associated to a weight 2 newforms of some level $N \sim \rad(c(b^2+4c))$, and for some small levels, there are no newforms.
 
-As $N \to \infty$, many difficulties arise. The number of newforms grows linearly with $N$ (CHECK). For each newform corresponding to an elliptic curve, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which then allows linear forms in two logarithms to give a useful upper bound on $p$, below which sieve methods can feasibly check for solutions. When there are newforms with irrational coefficients, corresponding to abelian varieties of dimension $>$ 1, exceptional situations (IS THIS TRUE), such as CM abelian varieties, can be dealt with as in \cite{bennett04}. However, we do not know of any techniques, in general, to completely deal with abelian varieties.
+As $N \to \infty$, many difficulties arise. The number of newforms of level N grows linearly with $N$. For each newform corresponding to an elliptic curve, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which then allows linear forms in two logarithms to give a useful upper bound on $p$, below which sieve methods can feasibly check for solutions. When there are newforms with irrational coefficients, corresponding to abelian varieties of dimension $>$ 1, exceptional situations (IS THIS TRUE), such as CM abelian varieties, can be dealt with as in \cite{bennett04}. However, we do not know of any techniques, in general, to completely deal with abelian varieties.
 
 This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. In particular, we attempt to derive explicit upper bounds on $p$ in terms of $(b,c)$, avoiding the use of the effectively computable, but inexplicit, bounds by Petho and Shorey \cite{petho82}\cite{shorey83}. We obtain the following result, conditional on the Frey-Mazur Conjecture - see \ref{FreyMazur}:
 
@@ -248,7 +248,7 @@ For binary recurrence sequences, we will use the fundamental relation \eqref{gen
 This is a solution to the $(p,p,2)$-with-coefficients Diophantine equation
 \[ (b^2+4c)X^p +4(-c)^nY^p = Z^2. \]
 
-Using \cite{bennett04} we associate a Frey curve to a \textit{primitive} solution to \eqref{rel_diophan}.  Here primitive denotes $\gcd((b^2+4c)y^2, 4(-c)^n, v_n ) = 1$.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following fundamental Lemma.
+Using \cite{bennett04} we associate a Frey curve to a \textit{primitive} solution to \eqref{rel_diophan}.  Here primitive denotes $\gcd((b^2+4c)y^2, 4(-c)^n, v_n ) = 1$.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following:
 
 \begin{lem}[Frey Curves]\label{freycurves}
 Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$.  We may write the associated Diophantine equation as
@@ -393,7 +393,7 @@ Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the the
 \end{proof}
 
 
-\section{Proof of Theorem 1.2}
+\section{Proof of Theorem \ref{condbound}}
 
 In this section we give a proof of the following general theorem.
 
@@ -403,17 +403,17 @@ Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot
 
 \end{thm}
 
-Define $AV(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, dimension $> 1$. 
+Define $\AV(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, dimension $> 1$. 
 
-Similarly, define $Ell(b,c)$ to be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.
+Similarly, define $\Ell(b,c)$ to be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.
 
 \begin{thm}\label{bound_ell}
 Assuming the Frey-Mazur Conjecture, there exists an effectively computable constant $A_2$, depending on nothing, such that
-\[Ell(b,c) \leq \max\{17, \max\{30, 2^{8} \cdot c(b^2+4c)+1\} \cdot A_2\log{\alpha} \} \]
+\[\Ell(b,c) \leq \max\{17, \max\{30, 2^{8} \cdot c(b^2+4c)+1\} \cdot A_2\log{\alpha} \} \]
 \end{thm}
 \begin{thm}\label{bound_av}
 For all $\epsilon > 0$, there exists an effectively computable constants $A_1$, depending only on $\epsilon$, such that
-\[AV(N) \leq A_1 \left( N \right)^{N + \epsilon}. \]
+\[\AV(N) \leq A_1 \left( N \right)^{N + \epsilon}. \]
 \end{thm}
 
 
@@ -456,8 +456,8 @@ as $|\alpha| \geq 2$, so $\log_2|\alpha| \geq 1$ so $n\log|\alpha| \geq  \log(n)
 \end{proof}
 
 \begin{thm}\label{ell_bound_final}
-Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$. If $u_n = y^p$ for $n>6$, and if the associated Frey curve level lowers mod p to an elliptic curve of level N, then assuming the Frey Mazur conjecture, there exists an absolute, effectively computable constant $A_2$ such that
-\[ p \leq \max\{17, \max\{30, 2^{8} \cdot c (b^2+4c)+1\} \cdot A_2\log{\alpha} \}. \]
+Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$. If $u_n = y^p$, and if the associated Frey curve level lowers mod p to an elliptic curve of level N, then assuming the Frey Mazur conjecture, there exists an absolute, effectively computable constant $A_2$ such that
+\[ p \leq \max\{17, \max\{30, 2^8 \cdot \rad(c(b^2+4c))+1\} \cdot A_2\log{\alpha} \}. \]
 \end{thm}
 
 \begin{proof}
@@ -466,19 +466,15 @@ We associate a Frey curve $E$ to the Diophantine equation
 \[ y^{2p} +4(-c)^n = v_n^2 \]
 as in \ref{freycurves}.  By proposition \ref{freycurves}, the conductor of $E$ is
 \[ N_E = 2^{\alpha}  \cdot \prod_{\substack{ \ell \mid c(b^2+4c) \\ \ell \mid y \\ \ell \text{ odd}}} \ell \qquad \qquad \alpha \leq 8. \]
-Thus we have a bound
-\[ N_E \leq  2^{8} \cdot c \cdot (b^2+4c) \cdot y.\] 
 By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and flat at $p \notdiv c(b^2+4c)$.  Thus there exists a modular form $f$ of level 
-\[N_f = 2^{\alpha} \cdot \prod_{\substack{ \ell \mid c(b^2+4c) \\ \ell \text{ odd}}} \ell \]
-bounded by 
-\[ 2^8 \cdot  \rad(c \cdot (b^2+4c)) \leq N \]
+\[N_f = 2^{\alpha} \cdot \prod_{\substack{ \ell \mid c(b^2+4c) \\ \ell \text{ odd}}} \ell \leq 2^8 \cdot \rad(c(b^2+4c))  \]
 such that $\rho_{E,p} \simeq \bar{\rho_{f,p}} $.  
 
-Now, assume that $f$ is rational, i.e. corresponds to an elliptic curve $E_f$ such that
-\[ \rho_{E,p} \simeq \rho_{E_f,p}. \]  
-Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $E_f$ are isogenous, and thus $N_E = N_{E_f}$.  But these differ exactly in the primes dividing $y$, thus
+Now, assume that $f$ is rational, i.e. corresponds to an elliptic curve $F$ such that
+\[ \rho_{E,p} \simeq \rho_{F,p}. \]  
+Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $F$ are isogenous, and thus $N_E = N_{f}$.  But these differ exactly in the primes dividing $y$, thus
 \[ \rad(y) | \rad(2c \cdot (b^2+4c)). \]
-However, the largest prime factor of $2c \cdot (b^2+4c)$ is bounded by $N$.  Further by lemma \ref{boundpintermsn}, $p \leq n \cdot A\log{\alpha}$.  We conclude the theorem by contradiction.
+ By lemma \ref{boundpintermsn}, $p \leq n \cdot A\log{\alpha}$. An application of \ref{smoothterm} concludes the proof.
 \end{proof}
 
 
@@ -501,13 +497,13 @@ There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\e
 \end{itemize}
 Further, as $|a_\ell| < 2\sqrt{\ell}$,
 \[p \mid \gcd_{\ell \nmid N}(B(\ell)C(\ell)), \] where
-\[B(\ell) = \ell \cdot N_{K_f / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \]
-\[C(\ell) = \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K_f / \mathbb{Q}}}(c_\ell - r).\]
+\[B(\ell) = \ell \cdot N_{K / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \]
+\[C(\ell) = \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
 \end{lem}
 
 For $n_K > 1$, this gives a nontrivial bound on $p$, as there exists an $\ell$ such that $c_\ell \notin \mathbb{Z}$ and $\ell^2 \nmid N$. For such an $\ell$, the product above is nonzero. We can bound the first such $\ell$ using the following well-known theorem:
 \begin{thm}[Sturm's Bound]\label{sturm}
-Let $f,g \in M_k(\Gamma_0(N))$ have Fourier expansions $\sum_n a_nq^n$ and $\sum_n b_n q^n$ respectively.  Then $f = g$ iff $a_n = b_n$ for all
+Let $f,g \in M_k(\Gamma_0(N))$ have Fourier expansions $\sum_n a_nq^n$ and $\sum_n b_n q^n$ respectively.  Then $f = g$ if and only if $a_n = b_n$ for all
 \[ n \leq \frac{k}{12} \cdot N \prod_{p|N} \left(1 + \frac{1}{p} \right) \]
 \end{thm}
 
