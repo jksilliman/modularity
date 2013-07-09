@@ -78,7 +78,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\sol}{_{a^p,b^p,c^p}}
 \newcommand{\bound}{\partial}
 \newcommand{\la}[1]{\mathfrak{#1}}
-\newcommand{\im}{\text{Im} \hspace{0.1em} }
+\newcommand{\im}{\text{im} \hspace{0.1em} }
 \newcommand{\ann}{\text{Ann} \hspace{0.1em} }
 \newcommand{\rank}{\text{rank} \hspace{0.1em} }
 \newcommand{\coker}[1]{\text{coker}\hspace{0.1em}{#1}}
@@ -133,11 +133,13 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction}
-The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[0,\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233.\] Note that the underlined terms are perfect powers. It was a folklore conjecture that these terms are in fact the only perfect powers in the Fibonacci sequence. Various partial results in this direction, using classical methods, ruled out other $p$-th powers for small primes $p$. Finally, in a deep paper \cite{siksek06}, the conjecture was proven. However, in contrast with previous results, this proof relied upon the Modularity Theorem of Wiles et al., connecting the diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves.
+The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[0,\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$-th powers for small primes $p$ (CITE STUFF). In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves.
 
-Here, we revisit this strategy with 2 aims. First, we would like to apply this modular method to other recurrence relations, listing explicitly the perfect powers occuring in them. In order to do this, we look at the generalizations of the Fibonacci sequence known as Lucas sequences, that is, recurrence relations of the forms \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers, and study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p\end{equation}
+Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other linear binary recurrence relations.  We will be particularly interested in natural generalizations of the Fibonacci sequence, known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
 
-\begin{thm}\label{explicit_eg_thm}
+Using techniques similar to \cite{siksek06}, we prove the following theorem on specific sequences.
+
+\begin{ithm}[Theorem \ref{explicit_eg_thm_inplace}]\label{explicit_eg_thm}
 For the following values of $b$ and $c$:
 \begin{center}
 \begin{tabular}{c | c }
@@ -150,10 +152,9 @@ b & c \\  \hline \hline
 \end{tabular}
 \end{center}
 $u_n$ has no nontrivial $p$th powers. %except perhaps for 5th powers in $(9,-20)$.
-\end{thm}
-Note that for (b,c) = ???, this provides an alternate proof to a case of Catalan's Conjecture, recently proven by Mihaelescu \cite{mih04}.
+\end{ithm}
 
-The proof of \ref{explicit_eg_thm} relies upon modular methods for $p \geq 7$ and a combination of elementary and elliptic curve techniques for the remaining primes. 
+Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.
 
 These sorts of examples are easy, in the same way that Fermat's Last Theorem is easy: as we will see, any particular solution to \eqref{the_eqn} is associated to a weight 2 newforms of some level $N \sim \rad(c(b^2+4c))$, and for some small levels, there are no newforms.
 
@@ -161,30 +162,30 @@ As $N \to \infty$, many difficulties arise. The number of newforms grows linearl
 
 This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. In particular, we attempt to derive explicit upper bounds on $p$ in terms of $(b,c)$, avoiding the use of the effectively computable, but inexplicit, bounds by Petho and Shorey \cite{petho82}\cite{shorey83}. We obtain the following result, conditional on the Frey-Mazur Conjecture - see \ref{FreyMazur}:
 
-\begin{thm}\label{condbound}
+\begin{ithm}[Theorem \ref{condbound_inplace}]\label{condbound}
 Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
-\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}, \]
+\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
 
-\end{thm}
+\end{ithm}
 
 \tableofcontents
 
 \section{Classical Facts about Lucas Sequences}
 
 
-Let $(b,c) \in \Z \times \Z$ define the linear binary recurrence relation
+Let $(b,c) \in \Z \times \Z$ define the integral linear binary recurrence relation
 \[ U_{n+2} = b\cdot U_{n+1}+ c\cdot U_n, \]
 with characteristic polynomial and roots
 \[ g(z) = z^2 - bz - c, \qquad \qquad \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2}.\]
 Throughout this paper, we will refer to integral linear binary recurrence sequences as simply binary recurrence sequences.  In particular, let $u_n$ and $v_n$ denote the companion sequences specified by starting conditions
 \[ u_0 = 0, u_1 = 1 \qquad \qquad v_0 = 2, v_1 = b .\]
-The $n$th terms of these sequences are given by
+The sequence $u_0$ is termed a Lucas sequence, and will be our main focus.  The $n$th terms of these sequences are given by 
 \begin{equation}\label{binetform} u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n. \end{equation}
 This formula easily implies the following two key facts
 \begin{equation}\label{fib2} u_{2k} = u_kv_k \end{equation}
 \begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}
 
-Using elementary methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a binary recurrence sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequence in Table (FIX ME).  Then we have the following lemmas in the direction of Theorem (CITE).
+Using elementary methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequence in Table (FIX ME).  Then we have the following Lemmas in the direction of Theorem \ref{explicit_eg_thm}.
 
 \begin{lem}\label{relprime}
 Let $(b,c)$ be any binary recurrence sequence such that $b^2+4c=1$.  For $n \geq 1$,  $u_n$, $v_n$, and $c$ are relatively prime.
@@ -222,7 +223,7 @@ In addition, in some specific cases it is possible to find all perfect powers in
 
 \subsection{The modular method applied to Lucas sequences}
 
-The modular method is a modern approach to solving classically-intractable Diophantine equations that builds upon the theory of Galois representations associated to elliptic curves combined with the important theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
+The modular method is a modern approach to solving classically-intractable Diophantine equations.  It builds upon the theory of Galois representations associated to elliptic curves combined with the important theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
 
 Our proof relies heavily on the following two deep theorems .
 
@@ -240,7 +241,7 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 
 In general, to a hypothetical solution of a Diophantine equation with exponent $p$ we associate a Frey elliptic curve with coefficients depending on the solution.  To these Frey curves we associate the mod $p$ Galois representation
 \[ \rho_{E,p}: G_{\Q} \rightarrow \GL_2(\F_p) \]
-corresponding to the $p$-torsion number field $\Q(E[p])$.  These Frey curves will have minimal discriminant of the form $\Delta_E = C \cdot D^p$ for $C$ depending only upon the Diophantine equation, and $D$ depending only upon the hypothetical solution.  The goal is to either to use level lowering to show that the Frey curve is not modular, and thus the hypothetical solution cannot exist, or to derive local information about a solution that could exist. 
+corresponding to the $p$-torsion number field $\Q(E[p])$.  Note that as the Galois action respects the Weierstrass curve group law, $\im(\rho_{E,p}) \subseteq \GL_2(\F_p)$. These Frey curves will have minimal discriminant of the form $\Delta_E = C \cdot D^p$ for $C$ depending only upon the Diophantine equation, and $D$ depending only upon the hypothetical solution.  The goal is to either to use level lowering to show that the Frey curve is not modular, and thus cannot exist, or to derive local information about a solution that could exist. 
 
 For binary recurrence sequences, we will use the fundamental relation \eqref{gen_diophan} as our Diophantine equation.  In particular, say that we posit a solution $u_n = y^p$, that is
 \begin{equation}\label{rel_diophan} (b^2+4c)y^{2p}+4(-c)^n = v_n^2 .\end{equation}
@@ -300,7 +301,7 @@ We use the formulas of \cite{bennett04}.  For the ease of the reader, the parame
 Note that if $c \neq 1$, then $c \notdiv y$ by induction on the recurrence relation, thus the only common factors we need to account for powers of $2$.
 \end{proof}
 
-In order to derive a contradiction or nontrivial local data, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p \geq 7$, and some cases $p=5$.  In this way, we can level-lower to a level independent of the solution.  
+In order to derive a contradiction or nontrivial local data, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p \geq 7$, and some cases $p=5$.  In this way, we can apply Theorem \ref{levellow} and level-lower to a level independent of the solution.  
 
 
 \begin{lem}\label{unram}
@@ -350,11 +351,11 @@ The map to $X_{\Delta}$ is given by
 Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible and thus absolutely irreducible.
 \end{proof}
 
-\subsection{Proof of Theorem 1.1}
+\subsection{Proof of Theorem \ref{explicit_eg_thm}}
 
 In this section we use the techniques of the modular method developed in the previous section to give a proof of our first theorem:
 
-\begin{thm}\label{explicit_eg_thm}
+\begin{thm}\label{explicit_eg_thm_inplace}
 For the following values of $b$ and $c$:
 \begin{center}
 \begin{tabular}{c | c }
@@ -382,12 +383,25 @@ As $\Delta_E$ is a square, Lemma \ref{absirr} implies $\rho_{E,5}$ is absolutely
 Let $E$ be a Frey curve arising from a solution $u_n = y^5$ for $b^2+4c = 1$ and $n\geq 5$, then $\rho_{E,5}$ is absolutely irreducible.
 \end{lem}
 \begin{proof}
-By proposition \ref{freycurves} all of the discriminants of these Frey curves are rational squares.
+By Lemma \ref{freycurves} all of the discriminants of Frey curves of case (viii) are rational squares.  The result follows from Lemma \ref{absirr}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{explicit_eg_thm}]
+Posit a solution $u_n = y^p$ for $n \geq 7$ and $p \geq 5$.  To this solution, we associate a Frey curve $E$, as in the discussion above.  The mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and flat at $p$ (except at $p=5$ in the last example) by Lemma \ref{unram}.   By Lemma \ref{absirr} and \ref{frey5irr} $\rho_{E,p}$ is absolutely irreducible for $p\geq 5$.  By the modularity of elliptic curves \ref{modularity} Ribet's level-lowering theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$.
+
+Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the theorem.
 \end{proof}
 
 
-
 \section{Proof of Theorem 1.2}
+
+In this section we give a proof of the following general theorem.
+
+\begin{thm}\label{condbound_inplace}
+Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
+\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
+
+\end{thm}
 
 Define $AV(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, dimension $> 1$. 
 
@@ -530,6 +544,9 @@ By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$
 
 \section{Examples}
 
+As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  
+
+Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To deal with these primes, we develop a \textbf{completely elementary} sieve resembling the s
 
 
 
@@ -537,6 +554,10 @@ By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$
 
 
 
+
+
+
+\vspace{200pt}
 
 
 
