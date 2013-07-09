@@ -213,13 +213,133 @@ In addition, in some specific cases it is possible to find all perfect powers in
 
 \subsection{The modular method applied to binary recurrence sequences}
 
-The modular method is a modern approach to solving classically-intractable Diophantine equations that builds upon the theory of Galois representations associated to elliptic curves combined with the deep theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
+The modular method is a modern approach to solving classically-intractable Diophantine equations that builds upon the theory of Galois representations associated to elliptic curves combined with the important theorems of level-lowering and modularity of elliptic curves.  Most famously, the modular method was the key to the celebrated proof of Fermat's Last Theorem \cite{wiles95}, \cite{taylorwiles95}, as well as the determination of perfect powers in the Fibonacci sequence in \cite{siksek06}.
 
-First, to a hypothetical solution to a Diophantine equation we associate a Frey elliptic curve with coefficients depending on the solution.  To these Frey curves we associate the mod $p$ Galois representation
+Our proof relies heavily on the following two deep theorems .
+
+\begin{thm}[Modularity of Elliptic Curves \cite{wiles95}, \cite{taylorwiles95}, \cite{conrad01}]\label{modularity}
+Let $E$ be an elliptic curve with conductor $N$.  For any prime $p$, there exists a weight 2 newform $f \in S_2(\Gamma_0(N))$ such that
+\[ \rho_{E,p} \simeq \bar{\rho_{f,p}} \]
+for $\rho_{f,p}$ the 2-dimensional $p$-adic Galois representation of $f$ and $\bar{\rho_{f,p}}$ the reduction of $\rho_{f,p}$ mod $p$.
+\end{thm}
+
+\begin{thm}[Level Lowering \cite{ribet91}]\label{levellow}
+Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional mod $p$ Galois representation $\bar{\rho_{f,p}}$ unramified at $\ell$ if $\ell \neq p$ and flat at $\ell = p$.  Then there exists a weight 2 newform $g$ of level $N$ such that
+\[ \bar{\rho_{f,p}} \simeq \bar{\rho_{g,p}}. \]
+\end{thm}
+
+
+In general, to a hypothetical solution of a Diophantine equation with exponent $p$ we associate a Frey elliptic curve with coefficients depending on the solution.  To these Frey curves we associate the mod $p$ Galois representation
 \[ \rho_{E,p}: G_{\Q} \rightarrow \GL_2(\F_p) \]
-corresponding to the $p$-torsion number field $\Q(E[p])$.
+corresponding to the $p$-torsion number field $\Q(E[p])$.  These Frey curves will have minimal discriminant of the form $\Delta_E = C \cdot D^p$ for $C$ depending only upon the Diophantine equation, and $D$ depending only upon the hypothetical solution.  The goal is to use level lowering to show that the Frey curve is not modular, and thus the hypothetical solution cannot exist. 
+
+For binary recurrence sequences, we will use the fundamental relation \eqref{gen_diophan} as our Diophantine equation.  In particular, say that we posit a solution $u_n = y^p$, that is
+\begin{equation}\label{rel_diophan} (b^2+4c)y^{2p}+4(-c)^n = v_n^2 .\end{equation}
+This is a solution to the $(p,p,2)$-with-coefficients Diophantine equation
+\[ (b^2+4c)X^p +4(-c)^nY^p = Z^2. \]
+
+Using \cite{bennett04} we associate a \textit{primitive} to \eqref{rel_diophan} solution to a Frey curve.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following fundamental Lemma.
+
+\begin{lem}[Frey Curves]\label{freycurves}
+Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$.  We may write the associated Diophantine equation as
+\[ (b^2+4c)y^{2p} + 4(-c)^n = z^2.\]
+As a convention let $k_1 = \upnu_2(b^2+4c)$, $k_2 = \upnu_2(y^{2p})$, and $k = k_1+k_2$.  Without loss of generality we may assume that we are in one of the following situations:
 
 
+
+\begin{enumerate}[(i)]
+
+\item $b^2+4c \equiv 1 \pmod{4}$, and $2 \notdiv y,z,c$, and $z \equiv -(-c)^n \pmod{4}$.
+\[ E_i: Y^2 = X^3 + zX^2 + (-c)^nX \]
+\[ \Delta = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N = 2^{\alpha} \prod_{\substack{ \ell | 2c \cdot (b^2+4c) \\ \ell | y}} \ell, \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
+\item $b^2+4c \equiv 1 \pmod{4}$, $2|y,z$, $2 \notdiv c$, let $y = 2\hat{y}, z = 2\hat{z}$, with $\hat{z} \equiv 1 \pmod{4}$.
+\[ E_{ii} : Y^2 +XY = X^3 + \frac{\hat{z} - 1}{4} X^2 + (b^2+4c)2^{2p-8}\hat{y}^{2p}X \]
+\[ \Delta = 2^{2p-14}(b^2+4c)^2(-c)^ny^{4p}, \qquad N = \prod_{\substack{ \ell | c \cdot (b^2+4c) \\ \ell | y}} \ell  \]
+\item $b^2+4c \equiv 1 \pmod{4}$, $2|c$, $2 \notdiv y,z$, and $z \equiv 1 \pmod{4}$
+\[ E_{iii}: Y^2 +XY = X^3 +\frac{z-1}{4}X^2 +2^{-4}(-c)^nX \]
+\[ \Delta = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N = \prod_{\substack{ \ell | c \cdot (b^2+4c) \\ \ell | y}} \ell  \]
+\item $k = 2$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$
+\[D \equiv -1 \pmod{4} \qquad \qquad E_{iv} : Y^2 = X^3 +2\hat{z}X^2 +D\hat{y}^{2p}X \]
+\[\Delta = 2^{6}D^2(-c)^n\hat{y}^{2p}, \qquad \qquad N = 2^{5}\prod_{\substack{ \ell | c \cdot D \\ \ell | \hat{y}}} \ell  \]
+
+\[D \equiv \ \ 1 \pmod{4}  \qquad \qquad  E_{iv} : Y^2 = X^3 +2\hat{z}X^2 +(-c)^nX \]
+\[\Delta = 2^{6}D(-c)^{2n}\hat{y}^{2p}, \qquad \qquad N = 2^{5}\prod_{\substack{ \ell | c \cdot D \\ \ell | \hat{y}}} \ell  \]
+
+\item $k = 3$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$
+\[ E_{v} : Y^2 = X^3 + 2\hat{z}X^2 + 2D\hat{y}^{2p}X \]
+\[ \Delta = 2^8D^2(-c)^n\hat{y}^{4p} , \qquad \qquad N = 2^6 \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell  \]
+
+\item $k=4$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv -D \pmod{4}$
+\[ E_{vi} : Y^2 = X^3 +\hat{z}X^2 + D \hat{y}^{2p} X \]
+\[ \Delta = 2^4D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} 1: D \equiv -1 \pmod{4}\\ 2 : D \equiv 1 \pmod{4} \end{cases} \]
+
+
+\item $k = 5,6,7$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv 1 \pmod{4}$
+\[ E_{vii} : Y^2 = X^3 + \hat{z}X^2 + 2^{k-4}D \hat{y}^{2p} X \]
+\[ \Delta = 2^{2k-4}D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} 1: k = 5 \\ 2 : k = 6,7 \end{cases} \]
+
+\item $k\geq 8$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv 1 \pmod{4}$
+\[ E_{viii} : Y^2 + XY = X^3 + \frac{\hat{z}-1}{4} X^2 + 2^{k-8}D \hat{y}^{2p} X \]
+\[ \Delta = 2^{2k-16}D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} -1: k = 8 \\ 0 : k > 8 \end{cases} \]
+
+
+\end{enumerate}
+\end{lem}
+\begin{proof}
+We use the formulas of \cite{bennett04}.  For the ease of the reader, the parameters of \cite{bennett04} are 
+\begin{center} TABLE to be made... \end{center}
+Note that if $c \neq 1$, then $c \notdiv y$ by induction on the recurrence relation, thus the only common factors we need to account for powers of $2$.
+\end{proof}
+
+In order to show that the Frey curve associated to any particular hypothetical solution is not modular, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p$.  In this way, we can level-lower to a level independent of the solution.  This is achieved in the following Lemmas.
+
+
+\begin{lem}\label{unram}
+The mod $p$ Galois representation $\rho_{E,p}$ associated to one of the above Frey curves is unramified at any odd prime $\ell$ not dividing $c \cdot (b^2+4c)$.  Further it is flat at $p$ if $p \notdiv 2c\cdot (b^2+4c)$.
+\end{lem}
+\begin{proof}
+By the N\'{e}ron-Ogg-Shafarevich criterion, the mod $p$ Galois representation is unramified outside $pN$.  By the theory of Tate curves, $E(\bar{\Q}_\ell) \simeq \bar{\Q}_\ell^\ast / q^{\Z}$ with $E[p](\bar{\Q}_\ell) = \langle \zeta_p, q^{1/p} \rangle$, so in particular the ramification comes from primes $\ell$ ramified in $\Q(\zeta_p)$ and those such that $p \notdiv \upnu_\ell(q) = \upnu_\ell(\Delta)$.  If $\ell | y$, then as $p \mid \upnu_\ell(\Delta)$, $\rho_{E,p}$ is unramified at $\ell$.  Further as $\Q(\zeta_p) \subset \Q(E[p])$, $\rho_{E,p}$ will be ramified at $p$; however, if $p \mid N$, but $p \notdiv 2c \cdot (b^2+4c)$, then $p \mid y$, and the above argument shows this does not contribute to the ramification.
+\end{proof}
+
+\begin{lem}\label{absirr}
+Let $E$ be an elliptic curve with a rational $2$-torsion point.   
+\begin{enumerate}[(i)]
+\item If there exists a prime of multiplicative reduction for $E$, then $\rho_{E,p}$ is absolutely irreducible for $p \geq 7$
+\item Further if $\Delta_E$ is a square, then $\rho_{E,5}$ is absolutely irreducible.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+An irreducible mod $p$ representation implies that $E$ has a $\Q$-rational $p$ isogeny.  And as $\rho_{E,p}$ is odd ($\det: G_\Q \rightarrow \F_p^*$ is the cyclotomic character $\chi_p$ and $\chi_p(c)=-1$ for $c$ complex conjugation), irreducible implies absolutely irreducible.  
+Now, first take $p =11$, or $p \geq 17$.  Then by \cite{mazur78} Cor 4.4, $\rho_{E,p}$ is irreducible.  Further, as $E$ has a rational 2-torsion point, reducible implies that $E$ corresponds to a rational point on the modular curve $X_0(2p)$ parameterizing elliptic curves with cyclic $2p$-isogenies.  But there are no noncuspidal, non-CM rational points for $p = 7,13$.
+
+Now assume that $\Delta_E$ is a rational square.  If $\rho_{E,5}$ were reducible, it would give rise to a rational point on $X_0(5) \simeq \P_1$.  Let $X_{\Delta} \simeq \P_1$ be the degree $2$ cover of $X(1)$ parameterizing an elliptic curve $E'$ and a choice of square root of its discriminant $\Delta_{E'}$.  The map to $X(1)$ is given by
+\[z \mapsto z^2 + 12^3. \]
+As $\Delta_E$ is a rational square, $E$ gives rise to a rational point on $X_{\Delta}$.
+As in \cite{brown12} we construct the following diagram
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+{ X(10) & & X(5)  \\
+ & X & X_0(5)  \\
+X(2) & X_{\Delta} & X(1)\\};
+\path[->,font=\scriptsize,>=angle 90]
+(m-1-1) edge  (m-3-1)
+(m-1-1) edge (m-1-3)
+(m-1-3) edge  (m-2-3)
+(m-1-1) edge[dashed]  (m-2-2)
+(m-2-3) edge  (m-3-3)
+(m-2-2) edge  (m-2-3)
+(m-2-2) edge  (m-3-2)
+(m-3-1) edge  (m-3-2)
+(m-3-2) edge  (m-3-3);
+\end{tikzpicture}
+\end{center}
+where $X$ is the normalization of the fiber product $X_{\Delta} \times_{X(1)} X_0(5)$.  $X$ is an elliptic curve given by the equation
+\[X: \qquad  y^2 = x^3 + 22x^2 +125x .\]
+The map to $X_{\Delta}$ is given by
+\[ (x,y) \mapsto \frac{y(x^2-500x -15625)}{x^3}. \]
+Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible and thus absolutely irreducible.
+\end{proof}
 
 
 
