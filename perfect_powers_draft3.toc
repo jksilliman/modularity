@@ -7,4 +7,5 @@
 \contentsline {subsection}{\tocsubsection {}{4.1}{Elliptic Curves Case and the Frey-Mazur Conjecture}}{10}{subsection.4.1}
 \contentsline {subsection}{\tocsubsection {}{4.2}{Abelian Varieties Case}}{11}{subsection.4.2}
 \contentsline {section}{\tocsection {}{5}{Examples}}{13}{section.5}
-\contentsline {section}{\tocsection {}{}{References}}{13}{section*.2}
+\contentsline {subsection}{\tocsubsection {}{5.1}{The Sieve}}{13}{subsection.5.1}
+\contentsline {section}{\tocsection {}{}{References}}{14}{section*.2}

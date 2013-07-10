@@ -66,7 +66,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \def\F{{\mathbb F}}
 %\def\H{{\mathbb H}}
 \def\M{{\mathbb M}}
-\def\N{{\mathbb N}}
+\def\N{{\mathcal N}}
 \def\O{{\mathcal O}}
 \def\0{{\mathbb 0}}
 \def\P{{{\mathbb P}}}
@@ -546,18 +546,26 @@ By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$
 
 As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  
 
-Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To deal with these primes, we develop a \textbf{completely elementary} sieve resembling the s
+Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To deal with these primes, we develop a \textbf{completely elementary} sieve resembling that used in \cite{siksek06}, but not relying upon Frey curves.
+
+\subsection{The Sieve}
+
+Given a recurrence sequence $(b,c)$, fix $p$ a prime.  We want to find the complete list of solutions to $u_n = y^p$.  Let $q \equiv 1 \pmod{p}$ be a prime.  Define $K(q)$ to be the period of the Fibonacci sequence mod $q$.  As $p$ necessarily divides the order of $\F_q^\times$, there should be only $1/p$ perfect $p$th powers in our sequence modulo $q$.  
+
+Construct a set $\N(q) \subseteq \Z/K(q)\Z $ consisting of possible values of the index $n \mod{K(q)}$ such that $u_n$ is perfect $p$th power mod $q$.  For any set $S = (q_1,q_2,...,q_m)$, denote $K(S) = \lcm(K(q_1),...,K(q_m))$ and $\N(S)$ the ``intersection" of the sets $K(q_1)$ coming from the Chinese Remainder Theorem.
+
+
+As in \cite{siksek06}, we choose $q_i$ such that $K(q_i)$ are all particularly smooth, ie such that 
+\[K(S) \mid M = 2^5 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 11.\]
+With enough primes $q_i$, we will get a small number of congruences modulo a large modulus.  Once $K(S) = M$, we replace $M$ by $M  \cdot 13$ and continue again. 
+
+The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another nontrivial $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  However, if in fact these are the only $p$th powers, then any remaining elements of $\N(S)$ should grow with the modulus $M$.  
+
+Coming from Thue equations and linear forms in logarithms, we have a bound $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
 
 
 
 
-
-
-
-
-
-
-\vspace{200pt}
 
 
 
