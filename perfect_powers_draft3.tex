@@ -416,10 +416,11 @@ Let ${\Ell}(b,c)$ be the maximum prime $p \in \Z$ such that any Frey curve for t
 \end{thm}
 
 
-We spend the rest of this section proving these theorems. Theorem \ref{condbound} immediately follows.
+We spend the rest of this section proving these theorems. Theorem \ref{condbound} immediately follows.  Note that the bound for higher dimension abelian varieties is not conditional on the Frey-Mazur conjecture.
 
 
-\subsection{Elliptic Curves Case and the Frey-Mazur Conjecture}
+
+\subsection{Elliptic Curve Case and the Frey-Mazur Conjecture}
 
 In the results that follow, we rely upon the following empirically-supported question of Mazur \cite{mazur78}, now referred to as the Frey-Mazur Conjecture, concerning the possibility of isomorphic Galois representations arising from non-isogenous elliptic curves.
 
@@ -474,10 +475,10 @@ Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $F$ are isogenous, a
 \end{proof}
 
 
-\subsection{Abelian Varieties Case}
-First, we prove a general upper bound on the primes $p$ for which an irrational newform has mod $p$ Galois representation isomorphic to that of an elliptic curve.
+\subsection{Higher Dimensional Abelian Variety Case}
+We prove a general upper bound on the primes $p$ for which an irrational newform has mod $p$ Galois representation isomorphic to that of an elliptic curve.
  
-Let $E$ be an elliptic curve of level $M \cdot N$ with mod $p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $pN$, and flat at $p$. Let $a_\ell$ denote the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K = K_f = \Q(...,c_\ell,...)$ of degree $n_K = [K:\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
+Let $E$ be an elliptic curve and let $a_\ell$ denote the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K =  \Q(...,c_\ell,...)$ of degree $n_K = [K:\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
 
 \begin{lem}[\cite{cohen06}]\label{ircong1}
 There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\ell$ prime:
@@ -517,10 +518,17 @@ By Lemma \ref{boundell}, we may take $\ell \leq (1/6)f(N)$, and $n_{K} \leq f(N)
  
  
  \begin{proof}[Proof of Theorem \ref{condbound}]
- 
- 
+ Let $E$ be a Frey curve, such as in \ref{freycurves}.  Then if
+ \[N_E = 2^\alpha {\rad}'(c(b^2+4c)y), \qquad \alpha \leq 8\]
+where ${\rad}'$ denotes radical over odd primes, then $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for a newform $f$ of level
+\[N_f =  2^\alpha {\rad}'(c(b^2+4c))\leq 2^8  {\rad}'(c(b^2+4c)) = N.\]
+ If $f$ is irrational, we apply Theorem \ref{bound_av} to conclude that
+ \[ p \leq f(N)^{f(N)}. \]
+ If $f$ is rational, then we apply Theorem \ref{bound_ell} to conclude that
+ \[ p \leq \max\left\{ 17, 3 \log|\alpha| \cdot (N+1) \right\}. \]
+ The theorem easily follows.
  \end{proof}
-
+ 
 \section{Examples}\label{examples}
 
 As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  
