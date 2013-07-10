@@ -114,9 +114,9 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\notdiv}{\nmid}
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
 \newcommand{\bfrac}[2]{\left| \frac{#1}{#2} \right|}
-\newcommand{\Ell}{\rm Ell}
-\newcommand{\AV}{\rm AV}
-\newcommand{\Gal}{\rm Gal}
+\newcommand{\Ell}{\rm{Ell}}
+\newcommand{\AV}{\rm{AV}}
+\newcommand{\Gal}{\text{Gal}}
 
 \newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
 \newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
@@ -393,26 +393,26 @@ Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the the
 
 \section{Proof of Theorem \ref{condbound}}\label{genthmproof}
 
-In this section we give a proof of the following general theorem.  Let 
+In this section we give a proof of the following general theorem \textbf{conditional on the Frey-Mazur Conjecture}.  Let 
 \[f(N) = N \cdot \prod_{p \mid N} \left( 1 + \frac{1}{p} \right) \]
 be the index of $\Gamma_0(N)$ in the full modular group $\Gamma$.
 
 \begin{thm}\label{condbound_inplace}
-Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
-\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
+Assume the Frey-Mazur conjecture.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then 
+\[ p \leq \max\left\{17,   f(N)^{f(N)}, 3\log{|\alpha|} \cdot ( N+1)  \right\}. \]
 
 \end{thm}
 
 We break this into the following two theorems
 
-\begin{thm}\label{bound_av}
-Define $\AV(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, and dimension $> 1$.  Then
-\[\AV(N) \leq  \pfrac{ f(N)}{6}^{f(N)}. \]
+\begin{thm}[]\label{bound_av}
+Define ${\AV}(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, and dimension $> 1$.  Then
+\[{\AV(N)} \leq f(N)^{f(N)}. \]
 \end{thm}
 
-\begin{thm}\label{bound_ell}
-Let $\Ell(b,c)$ be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.  Assuming the Frey-Mazur Conjecture, 
-\[\Ell(b,c) \leq \max\{17, 3\log{\alpha} \cdot \max\{30, 2^{8} \cdot c(b^2+4c)+1\}  \} \]
+\begin{thm}[]\label{bound_ell}
+Let ${\Ell}(b,c)$ be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.  Assuming the Frey-Mazur Conjecture, 
+\[{\Ell}(b,c) \leq \max\left\{17, 3\log{|\alpha|} \cdot (2^{8} \cdot \rad(c(b^2+4c))+1) \right\}. \]
 \end{thm}
 
 
@@ -471,8 +471,8 @@ Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $F$ are isogenous, a
 
 
 \subsection{Abelian Varieties Case}
-First, we prove a general upper bound on the primes $p$ for which an irrational newform can arise as the mod $p$ level-lowering of an elliptic curve.
-
+First, we prove a general upper bound on the primes $p$ for which an irrational newform has mod $p$ Galois representation isomorphic to that of an elliptic curve.
+ 
 Let $E$ be an elliptic curve of level $M \cdot N$ with mod $p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $pN$, and flat at $p$. Let $a_\ell$ denote the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K = K_f = \Q(...,c_\ell,...)$ of degree $n_K = [K:\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
 
 \begin{lem}[\cite{cohen06}]\label{ircong1}
@@ -504,11 +504,11 @@ Since $f$ has some irrational coefficient, we know there exists $\sigma \in G_\Q
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{bound_av}]
-If $\ell^2 \mid N$, then $a_\ell = 0$. Thus we can apply Lemma \ref{ircong1}, for $\ell$ a prime such that the $\ell$th Fourier coefficient $c_\ell$ of $f$ is not in $\Z$, 
+Let $\ell$ be a prime such that $c_\ell \notin \Z$.  If $\ell^2 \mid N$, then $c_\ell = 0 \in \Z$, so we can assume $\ell^2 \notdiv N$. Thus we can apply Lemma \ref{ircong1}, 
 \[ p \mid \ell \cdot N_{K / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \cdot \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
-Note that $c_\ell$, being the trace of $\Frob_\ell$, is the sum of two $\ell$-Weil numbers, hence satisfies $|c_\ell^{\sigma}| < 2\sqrt{l}$ for all $\sigma \in \Gal(K/\Q)$. Thus, for $k \leq \ell+1$, \[N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K}}.\] 
-By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$, and $n_{K} \leq N^{1+\epsilon}$ (REF), thus
-\[ p \leq A_1 \cdot N^{N+\epsilon}. \]
+It is clear that $|c_\ell^{\sigma}| < 2\sqrt{\ell}$ for all $\sigma \in \Gal(K/\Q)$. Thus, for $k \leq \ell+1$, \[N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K}}.\] 
+By Lemma \ref{boundell}, we may take $\ell \leq (1/6)f(N)$, and $n_{K} \leq f(N)$, thus
+\[ p \leq f(N)^{f(N)}. \]
 \end{proof}
  
  
