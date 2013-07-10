@@ -114,9 +114,9 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\notdiv}{\nmid}
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
 \newcommand{\bfrac}[2]{\left| \frac{#1}{#2} \right|}
-\newcommand{\Ell}{\rm Ell}
-\newcommand{\AV}{\rm AV}
-\newcommand{\Gal}{\rm Gal}
+\newcommand{\Ell}{\rm{Ell}}
+\newcommand{\AV}{\rm{AV}}
+\newcommand{\Gal}{\text{Gal}}
 
 \newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
 \newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
@@ -137,14 +137,12 @@ The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins 
 
 Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other examples of linear binary recurrence relations.  In particular, we study natural generalizations of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, \qquad u_0 = 0, u_1 = 1, \] for $b$ and $c$ nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0$, $p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
 
-We develop an efficient method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
+We develop aneffective method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
 
-\begin{ithm}\label{cond_ex}
+\begin{ithm}[Theorem \ref{cond_ex_inplace}]\label{cond_ex}
 Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) occur for $n \leq 7$.
 \end{ithm}
-
-
-In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
+The exact perfect powers are given in \ref{cond_ex_inplace}.  In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
 
 \begin{ithm}[Theorem \ref{explicit_eg_thm_inplace}]\label{explicit_eg_thm}
 For the following values of $b$ and $c$:
@@ -171,7 +169,7 @@ Let $(b,c) \in \Z \times \Z$ define the integral linear binary recurrence relati
 \[ U_{n+2} = b\cdot U_{n+1}+ c\cdot U_n, \]
 with characteristic polynomial and roots
 \[ g(z) = z^2 - bz - c, \qquad \qquad \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2}.\]
-Throughout this paper, we will refer to integral linear binary recurrence sequences as simply binary recurrence sequences.  In particular, let $u_n$ and $v_n$ denote the companion sequences specified by starting conditions
+The sequence is nondegenerate if $\alpha/\beta$ is not a root of unity.  Throughout this paper, we will refer to nondegenerate integral linear binary recurrence sequences as simply binary recurrence sequences.  In particular, let $u_n$ and $v_n$ denote the companion sequences specified by starting conditions
 \[ u_0 = 0, u_1 = 1 \qquad \qquad v_0 = 2, v_1 = b .\]
 The sequence $u_0$ is termed a Lucas sequence, and will be our main focus.  The $n$th terms of these sequences are given by 
 \begin{equation}\label{binetform} u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n. \end{equation}
@@ -179,7 +177,7 @@ This formula easily implies the following two key facts
 \begin{equation}\label{fib2} u_{2k} = u_kv_k \end{equation}
 \begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}
 
-Using elementary methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequence in Table (FIX ME).  Then we have the following Lemmas in the direction of Theorem \ref{explicit_eg_thm}.
+Using elementary methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequences in Theorem \ref{explicit_eg_thm}; we prove the following lemmas in the direction of that theorem.
 
 \begin{lem}\label{relprime}
 Let $(b,c)$ be any binary recurrence sequence such that $b^2+4c=1$.  For $n \geq 1$,  $u_n$, $v_n$, and $c$ are relatively prime.
@@ -192,7 +190,7 @@ and $u_1$ is relatively prime to $c$, $u_2$ is relatively prime to $c$.  Thus by
 \end{proof}
 
 \begin{lem}[Ruling out small primes]\label{smallp}
-There are no nontrivial squares or cube terms in any of the examples in Table (CITE) except $u_2 = 9$ for the sequence $(9,-20)$.
+There are no nontrivial squares or cube terms in any of the examples in Theorem \ref{explicit_eg_thm} except $u_2 = 9$ for the sequence $(9,-20)$.
 \end{lem}
 
 \begin{proof}
@@ -246,53 +244,68 @@ Using \cite{bennett04} we associate a Frey curve to a \textit{primitive} solutio
 
 \begin{lem}[Frey Curves]\label{freycurves}
 Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$.  We may write the associated Diophantine equation as
-\[ (b^2+4c)y^{2p} + 4(-c)^n = z^2.\]
-for $b$ and $c$ relatively prime. As a convention let $k_1 = \upnu_2(b^2+4c)$, $k_2 = \upnu_2(y^{2p})$, and $k = k_1+k_2$.  Without loss of generality we may assume that we are in one of the following situations:
+\[ (b^2+4c)y^{2p} + 4(-c)^n = v_n^2.\]
+for $b$ and $c$ relatively prime. As a convention let $k = \upnu_2(b^2+4c)$ and $w_n = \pm v_n$ as necessary in the situation (if no congruence conditions are stated then $w_n = v_n$).  Without loss of generality we may assume that we are in one of the following situations:
 
 
 
-\begin{enumerate}[(i)]
+\begin{enumerate}[1.]
 
-\item $b^2+4c \equiv 1 \pmod{4}$, and $2 \notdiv y,z,c$, and $z \equiv -(-c)^n \pmod{4}$.
-\[ E_i: Y^2 = X^3 + zX^2 + (-c)^nX \]
-\[ \Delta = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N = 2^{\alpha} \prod_{\substack{ \ell | 2c \cdot (b^2+4c) \\ \ell | y}} \ell, \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
-\item $b^2+4c \equiv 1 \pmod{4}$, $2|y,z$, $2 \notdiv c$, let $y = 2\hat{y}, z = 2\hat{z}$, with $\hat{z} \equiv 1 \pmod{4}$.
-\[ E_{ii} : Y^2 +XY = X^3 + \frac{\hat{z} - 1}{4} X^2 + (b^2+4c)2^{2p-8}\hat{y}^{2p}X \]
-\[ \Delta = 2^{2p-14}(b^2+4c)^2(-c)^ny^{4p}, \qquad N = \prod_{\substack{ \ell | c \cdot (b^2+4c) \\ \ell | y}} \ell  \]
-\item $b^2+4c \equiv 1 \pmod{4}$, $2|c$, $2 \notdiv y,z$, and $z \equiv 1 \pmod{4}$
-\[ E_{iii}: Y^2 +XY = X^3 +\frac{z-1}{4}X^2 +2^{-4}(-c)^nX \]
-\[ \Delta = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N = \prod_{\substack{ \ell | c \cdot (b^2+4c) \\ \ell | y}} \ell  \]
-\item $k = 2$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$
-\[D \equiv -1 \pmod{4} \qquad \qquad E_{iv} : Y^2 = X^3 +2\hat{z}X^2 +D\hat{y}^{2p}X \]
-\[\Delta = 2^{6}D^2(-c)^n\hat{y}^{2p}, \qquad \qquad N = 2^{5}\prod_{\substack{ \ell | c \cdot D \\ \ell | \hat{y}}} \ell  \]
+\item $b^2+4c \equiv 1 \pmod{4}$, and $2 \notdiv y,w_n,c$, and $w_n \equiv -(-c)^n \pmod{4}$.
+\[ E_1: Y^2 = X^3 + w_nX^2 + (-c)^nX \]
+\[ \Delta_{E_1} = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N_{E_1} = 2^{\alpha} \rad(2c \cdot (b^2+4c) \cdot y), \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
 
-\[D \equiv \ \ 1 \pmod{4}  \qquad \qquad  E_{iv} : Y^2 = X^3 +2\hat{z}X^2 +(-c)^nX \]
-\[\Delta = 2^{6}D(-c)^{2n}\hat{y}^{2p}, \qquad \qquad N = 2^{5}\prod_{\substack{ \ell | c \cdot D \\ \ell | \hat{y}}} \ell  \]
+\item $b^2+4c \equiv 1,0 \pmod{4}$, $2|y,w_n$, $2 \notdiv c$, let $w_n = 2\hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$.
+\[ E_{2} : Y^2 +XY = X^3 + \frac{\hat{w}_n - 1}{4} X^2 + (b^2+4c)2^{-8}u_nX \]
+\[ \Delta_{E_2} = 2^{-16}(b^2+4c)^2(-c)^ny^{4p}, \qquad N_{E_2} = \rad( c \cdot (b^2+4c)\cdot y)  \]
 
-\item $k = 3$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$
-\[ E_{v} : Y^2 = X^3 + 2\hat{z}X^2 + 2D\hat{y}^{2p}X \]
-\[ \Delta = 2^8D^2(-c)^n\hat{y}^{4p} , \qquad \qquad N = 2^6 \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell  \]
+\item $b^2+4c \equiv 1 \pmod{4}$, $2|c$, $2 \notdiv y,w_n$, and $w_n \equiv 1 \pmod{4}$
+\[ E_{3}: Y^2 +XY = X^3 +\frac{w_n-1}{4}X^2 +2^{-4}(-c)^nX \]
+\[ \Delta_{E_3} = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N_{E_3} =\rad( c \cdot (b^2+4c)\cdot y)  \]
 
-\item $k=4$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv -D \pmod{4}$
-\[ E_{vi} : Y^2 = X^3 +\hat{z}X^2 + D \hat{y}^{2p} X \]
-\[ \Delta = 2^4D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} 1: D \equiv -1 \pmod{4}\\ 2 : D \equiv 1 \pmod{4} \end{cases} \]
+\item $k = 2$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{2}D$, $D \equiv -1 \pmod{4}$
+\[ E_{4} : Y^2 = X^3 + w_nX^2 +Du_n^2X, \qquad \Delta = 2^{6}D^2(-c)^ny^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
+
+\item $k = 2$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{2}D$, $D \equiv 1 \pmod{4}$
+\[E_{5} : Y^2 = X^3 +w_nX^2 +(-c)^nX, \qquad \Delta = 2^{6}D(-c)^{2n}y^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
+
+\item $k = 3$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{3}D$
+\[ E_{6} : Y^2 = X^3 + w_nX^2 + 2Du_n^2X, \qquad  \Delta_{E_6} = 2^8D^2(-c)^ny^{4p} , \qquad N_{E_6} = 2^6 \rad( c \cdot 2D \cdot y)  \]
+
+\item $k=4$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{4}D$ with $\hat{w}_n \equiv -D \pmod{4}$
+\[ E_{7} : Y^2 = X^3 +\hat{w}_nX^2 + D u_n X\]
+ \[ \Delta_{E_7} = 2^4D^2(-c)^ny^{4p}, \qquad N_{E_7} = 2^\alpha \rad( c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} 1 & : \ D \equiv -1 \pmod{4}\\ 2 & : \ D \equiv 1 \pmod{4} \end{cases} \]
 
 
-\item $k = 5,6,7$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv 1 \pmod{4}$
-\[ E_{vii} : Y^2 = X^3 + \hat{z}X^2 + 2^{k-4}D \hat{y}^{2p} X \]
-\[ \Delta = 2^{2k-4}D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} 1: k = 5 \\ 2 : k = 6,7 \end{cases} \]
+\item $k = 5,6,7$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{k}D$ with $\hat{w}_n \equiv 1 \pmod{4}$
+\[ E_{8} : Y^2 = X^3 + \hat{w}_nX^2 + 2^{k-4}D u_n X \]
+\[ \Delta_{E_8} = 2^{2k-4}D^2(-c)^ny^{4p}, \qquad N_{E_8} = 2^\alpha \rad(c \cdot 2D \cdot y ) ,  \qquad \alpha =  \begin{cases} 1&:  \ k = 5 \\ 2 &:  \ k = 6,7 \end{cases} \]
 
-\item $k\geq 8$, $z = 2 \hat{z}, y = 2^{2pk_2}\hat{y}^{2p}$, $(b^2+4c) = 2^{k_1}D$ with $\hat{z} \equiv 1 \pmod{4}$
-\[ E_{viii} : Y^2 + XY = X^3 + \frac{\hat{z}-1}{4} X^2 + 2^{k-8}D \hat{y}^{2p} X \]
-\[ \Delta = 2^{2k-16}D^2(-c)^n\hat{y}^{4p}, \qquad N = 2^\alpha \prod_{\substack{ \ell | c \cdot 2D \\ \ell | \hat{y}}} \ell ,  \qquad \alpha =  \begin{cases} -1: k = 8 \\ 0 : k > 8 \end{cases} \]
+
+\item $k\geq 8$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{k}D$ with $\hat{w}_n \equiv 1 \pmod{4}$
+\[ E_{9} : Y^2 + XY = X^3 + \frac{\hat{w}_n-1}{4} X^2 + 2^{k-8}D u_n X \]
+\[ \Delta = 2^{2k-16}D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad(c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} -1&: \ k = 8 \\ 0 &: \ k > 8 \end{cases} \]
 
 
 \end{enumerate}
 \end{lem}
 \begin{proof}
-We use the formulas of \cite{bennett04}.  For the ease of the reader, the parameters of \cite{bennett04} are 
-\begin{center} TABLE to be made... \end{center}
-Note that if $c \neq 1$, then $c \notdiv y$ by induction on the recurrence relation, thus the only common factors we need to account for powers of $2$.
+We use the formulas of \cite{bennett04}.  For the ease of the reader, the relevant parameters of that paper are 
+\begin{center} 
+\begin{tabular}{c | c | c | c | c | c | c | c}
+Case & \cite{bennett04} Case & $A$ & $B$ & $C$ & $a$ & $b$ & $c$ \\ \hline \hline
+1 & (iii) & $b^2+4c$ & $4(-c)^n$ & 1 & $y^2$ & 1 & $w_n$ \\ \hline
+2 & (v) & $(-c)^n$ & $(b^2+4c)2^{-2}$ & 1 & 1 & $(y/2)^2$ & $w_n/2$ \\ \hline
+3 & (v) & $(b^2+4c)$ & $4(-c)^n$ & 1 & $y^2$ & $1$ & $w_n$ \\ \hline
+4 & (i) & $(-c)^n$ & $D$ & 1 & $y^2$ & 1 & $w_n/2$ \\ \hline
+5 & (i) & $D$ & $(-c)^n$ & 1 & $y^2$ & 1 & $w_n/2$ \\ \hline
+6 & (ii) & $(-c)^n$ & $2D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
+7 & (iii) & $(-c)^n$ & $2^2D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
+8 & (iv) & $(-c)^n$ & $2^{k-2}D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
+9 & (v) & $(-c)^n$ & $2^{k-2}D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
+\end{tabular}
+\end{center}
+Note that if $c \neq 1$, then $c \notdiv y$ by induction on the recurrence relation in a similar fashion to Lemma \ref{relprime}, thus the only common factors we need to account for are powers of $2$.
 \end{proof}
 
 In order to derive a contradiction or nontrivial local data, we first prove that the mod $p$ representation is unramified at any odd prime depending \emph{only} on the solution, and that it absolutely irreducible at $p \geq 7$, and some cases $p=5$.  In this way, we can apply Theorem \ref{levellow} and level-lower to a level independent of the solution.  
@@ -347,37 +360,28 @@ Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and 
 
 \subsection{Proof of Theorem \ref{explicit_eg_thm}}
 
-In this section we use the techniques of the modular method developed in the previous section to give a proof of our first theorem:
+In this section we use the techniques of the modular method developed in the previous section to give a proof of our unconditional explicit theorem:
 
 \begin{thm}\label{explicit_eg_thm_inplace}
 For the following values of $b$ and $c$:
-\begin{center}
-\begin{tabular}{c | c }
-b & c \\  \hline \hline
-3 & -2 \\
-5 & -6  \\
-7 & -12 \\
-17 & -72  \\
-9 & -20 \\ \hline \hline
-\end{tabular}
-\end{center}
-the Lucas sequence $u_n$ has no nontrivial $p$th powers except $u_2=3^2$ in $(9,-20)$. 
+\begin{equation}\label{examples} (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \end{equation}
+the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.
 \end{thm}
 
 
-If there exists a solution $u_n = y^p$ for $u_n$ in Table (CITE) and $p \geq 5$, then by Lemma \ref{relprime} there exists a primitive solution to 
+If there exists a solution $u_n = y^p$ for $u_n$ in Theorem \ref{explicit_eg_thm_inplace} and $p \geq 5$, then by Lemma \ref{relprime} there exists a primitive solution to 
 \[ X^p + 4(-c)^n Y^p = Z^p. \]
-To this we associate the Frey curve of case (viii) in Lemma \ref{freycurves}
-\[E: Y^2 + XY = X^3 + \frac{w_n - 1}{4} X^2 + 2^{-4}c^nX \]
-for $w_n = \pm v_n$ such that $w_n \equiv 1 \pmod{4}$.  The Frey curve $E$ has conductor and minimal discriminant
-\[ N_E =\prod_{\ell | cy} \ell  \qquad \qquad \Delta_E = 2^{-8} \cdot (-c)^{2n} \cdot y^{2p}. \]
-As $\Delta_E$ is a square, Lemma \ref{absirr} implies $\rho_{E,5}$ is absolutely irreducible.  In fact, as the Frey curve will fall into the same case (viii) for all Lucas sequences with $b^2+4c=1$, this follows from the following more general Lemma.
+To this we associate the Frey curve of case 3 in Lemma \ref{freycurves}
+\[E: Y^2 + XY = X^3 + \frac{w_n - 1}{4} X^2 + 2^{-4}(-c)^nX \]
+The Frey curve $E$ has conductor and minimal discriminant
+\[ N_E =\rad(c \cdot y)  \qquad \qquad \Delta_E = 2^{-8} \cdot (-c)^{2n} \cdot y^{2p}. \]
+As $\Delta_E$ is a square, Lemma \ref{absirr} implies $\rho_{E,5}$ is absolutely irreducible.  In fact, this follows in general from the following lemma.
 
 \begin{lem}\label{frey5irr}
 Let $E$ be a Frey curve arising from a solution $u_n = y^5$ for $b^2+4c = 1$ and $n\geq 5$, then $\rho_{E,5}$ is absolutely irreducible.
 \end{lem}
 \begin{proof}
-By Lemma \ref{freycurves} all of the discriminants of Frey curves of case (viii) are rational squares.  The result follows from Lemma \ref{absirr}.
+By Lemma \ref{freycurves} all of the discriminants of Frey curves of case (iii) are rational squares.  The result follows from Lemma \ref{absirr}.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{explicit_eg_thm}]
@@ -389,25 +393,26 @@ Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the the
 
 \section{Proof of Theorem \ref{condbound}}\label{genthmproof}
 
-In this section we give a proof of the following general theorem.
+In this section we give a proof of the following general theorem \textbf{conditional on the Frey-Mazur Conjecture}.  Let 
+\[f(N) = N \cdot \prod_{p \mid N} \left( 1 + \frac{1}{p} \right) \]
+be the index of $\Gamma_0(N)$ in the full modular group $\Gamma$.
 
 \begin{thm}\label{condbound_inplace}
-Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
-\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
+Assume the Frey-Mazur conjecture.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then 
+\[ p \leq \max\left\{17,   f(N)^{f(N)}, 3\log{|\alpha|} \cdot ( N+1)  \right\}. \]
 
 \end{thm}
 
-Define $\AV(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, dimension $> 1$. 
+We break this into the following two theorems
 
-Similarly, define $\Ell(b,c)$ to be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.
-
-\begin{thm}\label{bound_ell}
-Assuming the Frey-Mazur Conjecture, there exists an effectively computable constant $A_2$, depending on nothing, such that
-\[\Ell(b,c) \leq \max\{17, \max\{30, 2^{8} \cdot c(b^2+4c)+1\} \cdot A_2\log{\alpha} \} \]
+\begin{thm}[]\label{bound_av}
+Define ${\AV}(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, and dimension $> 1$.  Then
+\[{\AV(N)} \leq f(N)^{f(N)}. \]
 \end{thm}
-\begin{thm}\label{bound_av}
-For all $\epsilon > 0$, there exists an effectively computable constants $A_1$, depending only on $\epsilon$, such that
-\[\AV(N) \leq A_1 \left( N \right)^{N + \epsilon}. \]
+
+\begin{thm}[]\label{bound_ell}
+Let ${\Ell}(b,c)$ be the maximum prime $p \in \Z$ such that any Frey curve for the recurrence relation (b,c) level lowers, mod $p$, to an elliptic curve.  Assuming the Frey-Mazur Conjecture, 
+\[{\Ell}(b,c) \leq \max\left\{17, 3\log{|\alpha|} \cdot (2^{8} \cdot \rad(c(b^2+4c))+1) \right\}. \]
 \end{thm}
 
 
@@ -424,63 +429,54 @@ Let $p > 17$, and $E_1$ and $E_2$ elliptic curves over $\Q$, with mod $p$ Galois
 then $E_1$ is isogenous to $E_2$.
 \end{conj}
 
-We prove our result \textbf{conditional on the Frey-Mazur Conjecture}. Our strategy is as follows: if the Frey curve $E$ corresponding to a solution $(n,y,p)$, $p > 17$, level lowers mod $p$ to an elliptic curve $F$, then Frey-Mazur implies that $N_E = N_F$. This forces $y$ to be the product of a fixed set of primes, depending only on $(b,c)$. Then, using general results on the smoothness of values in recurrence sequences \cite{gyory81}, \cite{gyory82}, \cite{gyory03}, we obtain a bound on $n$, in terms of $(b,c)$. We can then bound $p$ such that $y^p = u_n$ in terms of $n$.
+We prove our result \textbf{conditional on the Frey-Mazur Conjecture}. Our strategy is as follows: if the Frey curve $E$ corresponding to a solution $(n,y,p)$, $p > 17$, level lowers mod $p$ to an elliptic curve $F$, then Frey-Mazur implies that $N_E = N_F$. This forces $\rad(y)$ to divide the product of a fixed set of primes, depending only on $(b,c)$. Then, using general results on smooth numbers in recurrence sequences, we obtain a bound on $n$, in terms of $(b,c)$. We can then bound $p$ such that $y^p = u_n$ in terms of $n$.
 
 
 \begin{thm}[\cite{gyory81}, \cite{gyory82}, \cite{gyory03}]\label{smoothterm}
-Let $S$ be the set of all integers composed entirely of primes in some finite set $\{p_1,p_2,...,p_m\}$ with $p_m \geq p_i$ for all $i$.  Let $u_n$ be a binary recurrence sequence with starting conditions $u_0 = 0, u_1 = 1$.  For $n > 6$, if $u_n \in S$ then
+Let $S$ be the set of all integers whose prime factors lie in some finite set $\{p_1,p_2,...,p_m\}$ with $p_m \geq p_i$ for all $i$.  Let $u_n$ be a Lucas sequence; for $n > 6$, if $u_n \in S$ then
 \[ n \leq \max\{30, p_m +1 \}. \]
 \end{thm}
 
 \begin{lem}[Bound for $p$ in terms of $n$]\label{boundpintermsn}
-There exists an absolute, effective constant $A$ such that for all solutions $u_n = y^p$, we have 
-\[ p \leq A \cdot n \log(\alpha), \]
-where $\alpha$ is the dominant root of the characteristic polynomial for $(b,c)$
+For all solutions $u_n = y^p$, 
+\[ p \leq 3n \log|\alpha|  \]
+where $\alpha$ is the dominant root of the characteristic polynomial for $(b,c)$.
 \end{lem}
 
 \begin{proof}
 It is clear that
 \[p\log{2} \leq \log \bfrac{\alpha^n - \beta^n}{\alpha-\beta}  = \log|\alpha^{n-1}+ \alpha^{n-2}\beta+...+\beta^{n-1}|. \]
-Thus
+Thus as $|\alpha| \geq 2$
 \begin{align*}
-p & \leq  \frac{1}{\log{2}} \cdot \log|n\alpha^{n-1}| = \frac{1}{\log{2}} \cdot (n-1)\log|\alpha| + \frac{1}{\log{2}} \log(n)  \\
-& \leq A\cdot n \log|\alpha|.
+p & \leq  \frac{1}{\log{2}} \cdot \log|n\alpha^{n-1}| \\
+%& \leq n \log_2|\alpha| +\log_2(n) \\
+ & \leq 3\cdot n \log|\alpha|.
 \end{align*}
-as $|\alpha| \geq 2$, so $\log_2|\alpha| \geq 1$ so $n\log|\alpha| \geq  \log(n)$.
 \end{proof}
 
 \begin{thm}\label{ell_bound_final}
 Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$. If $u_n = y^p$, and if the associated Frey curve level lowers mod p to an elliptic curve of level N, then assuming the Frey-Mazur conjecture, there exists an absolute, effectively computable constant $A_2$ such that
 \[ p \leq \max\{17, \max\{30, 2^8 \cdot \rad(c(b^2+4c))+1\} \cdot A_2\log{\alpha} \}. \]
 \end{thm}
-
-\begin{proof}
+\begin{proof}[Proof of Theorem \ref{bound_ell}]
 Assume there exists a solution $u_n = y^p$, $n > 6$.
 We associate a Frey curve $E$ to the Diophantine equation
 \[ y^{2p} +4(-c)^n = v_n^2 \]
 as in \ref{freycurves}.  By proposition \ref{freycurves}, the conductor of $E$ is
-\[ N_E = 2^{\alpha}  \cdot \prod_{\substack{ \ell \mid c(b^2+4c) \\ \ell \mid y \\ \ell \text{ odd}}} \ell \qquad \qquad \alpha \leq 8. \]
-By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and flat at $p \notdiv c(b^2+4c)$.  Thus there exists a modular form $f$ of level 
-\[N_f = 2^{\alpha} \cdot \prod_{\substack{ \ell \mid c(b^2+4c) \\ \ell \text{ odd}}} \ell \leq 2^8 \cdot \rad(c(b^2+4c))  \]
-such that $\rho_{E,p} \simeq \bar{\rho_{f,p}} $.  
-
-Now, assume that $f$ is rational, i.e. corresponds to an elliptic curve $F$ such that
-\[ \rho_{E,p} \simeq \rho_{F,p}. \]  
-Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $F$ are isogenous, and thus $N_E = N_{f}$.  But these differ exactly in the primes dividing $y$, thus
+\[ N_E = 2^{\alpha}  \cdot \rad( c \cdot (b^2+4c) \cdot y) \qquad \qquad \alpha \leq 8. \]
+By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and flat at $p \notdiv c(b^2+4c)$. By assumption, there exists an elliptic curve $F$ such that
+\[ \rho_{E,p} \simeq \rho_{F,p} \]  
+with
+\[N_F = 2^{\alpha} \cdot  \rad( c \cdot (b^2+4c)) \leq 2^8 \cdot \rad(c \cdot (b^2+4c))  \]
+Invoking the Frey-Mazur conjecture \ref{FreyMazur}, $E$ and $F$ are isogenous, and thus $N_E = N_F$.  But these differ exactly in the primes dividing $y$, thus
 \[ \rad(y) | \rad(2c \cdot (b^2+4c)). \]
- By lemma \ref{boundpintermsn}, $p \leq n \cdot A\log{\alpha}$. An application of \ref{smoothterm} concludes the proof.
+ An application of \ref{smoothterm} and \ref{boundpintermsn} concludes the proof.
 \end{proof}
 
 
-
-
-
-
-
-
 \subsection{Abelian Varieties Case}
-First, we prove a general upper bound on the primes $p$ for which an irrational newform can arise as the mod $p$ level-lowering of an elliptic curve.
-
+First, we prove a general upper bound on the primes $p$ for which an irrational newform has mod $p$ Galois representation isomorphic to that of an elliptic curve.
+ 
 Let $E$ be an elliptic curve of level $M \cdot N$ with mod $p$ Galois representation $\rho_{E,p}$ irreducible, unramified outside $pN$, and flat at $p$. Let $a_\ell$ denote the coefficients of the $L$-function of $E$.  If $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for $f$ a newform of level $N$ with Fourier coeffients $c_\ell\in \O_f$ for $K = K_f = \Q(...,c_\ell,...)$ of degree $n_K = [K:\mathbb{Q}]$, then we have the following important lemma on necessary congruences.
 
 \begin{lem}[\cite{cohen06}]\label{ircong1}
@@ -495,35 +491,28 @@ Further, as $|a_\ell| < 2\sqrt{\ell}$,
 \[C(\ell) = \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
 \end{lem}
 
-For $n_K > 1$, this gives a nontrivial bound on $p$, as there exists an $\ell$ such that $c_\ell \notin \mathbb{Z}$ and $\ell^2 \nmid N$. For such an $\ell$, the product above is nonzero. We can bound the first such $\ell$ using the following well-known theorem:
+For $n_K > 1$, this gives a nontrivial bound on $p$, as there exists an $\ell$ such that $c_\ell \notin \mathbb{Z}$ and $\ell^2 \nmid N$. For such an $\ell$, the product above is nonzero. We can bound $\ell$ using the following well-known theorem:
 \begin{thm}[Sturm's Bound]\label{sturm}
 Let $f,g \in M_k(\Gamma_0(N))$ have Fourier expansions $\sum_n a_nq^n$ and $\sum_n b_n q^n$ respectively.  Then $f = g$ if and only if $a_n = b_n$ for all
-\[ n \leq \frac{k}{12} \cdot N \prod_{p|N} \left(1 + \frac{1}{p} \right) \]
+\[ n \leq \frac{k}{12} \cdot f(N). \]
 \end{thm}
 
 \begin{lem}\label{boundell}
 Let $f$ be an irrational newform of level $N$.  If $\ell$ is the first prime such that $c_\ell \not\in \Z$, then
-\[ \ell \leq A \cdot N^{1+\epsilon} .\]
+\[ \ell \leq (1/6) \cdot f(N) .\]
 \end{lem}
 
 \begin{proof}
 Since $f$ has some irrational coefficient, we know there exists $\sigma \in G_\Q$, such that $f^{\sigma}$ is a distinct newform, also of level $N$.  Then, by \ref{sturm}, they must differ in an coefficient $c_\ell$ for some 
-\[ \ell \leq \frac{1}{6} N \cdot \prod_{p|N} \left(1 + \frac{1}{p} \right) = A \cdot N^{1+\epsilon}. \]
+\[ \ell \leq \frac{1}{6} N \cdot \prod_{p|N} \left(1 + \frac{1}{p} \right). \]
 \end{proof}
 
-\begin{prop}\label{irboundp}
-Let $E$ be an elliptic curve and $f$ an irrational newform of level $N$ such that 
-\[\rho_{E,p} \simeq \bar{\rho_{f,p}}.\]
-Then, for all $\epsilon > 0$, there exists a constant $A_1$ such that
-\[ p \leq  A_1 \cdot N^{N+\epsilon}. \]
-(IS A EFFECTIVELY COMPUTABLE? WHAT DOES IT DEPEND ON?)
-\end{prop}
-\begin{proof}
-If $\ell^2 \mid N$, then $c_l = 0$ (CHECK). Thus we can apply Lemma \ref{ircong1}, for $\ell$ a prime such that the $\ell$th Fourier coefficient $c_\ell$ of $f$ is not in $\Z$, 
+\begin{proof}[Proof of Theorem \ref{bound_av}]
+Let $\ell$ be a prime such that $c_\ell \notin \Z$.  If $\ell^2 \mid N$, then $c_\ell = 0 \in \Z$, so we can assume $\ell^2 \notdiv N$. Thus we can apply Lemma \ref{ircong1}, 
 \[ p \mid \ell \cdot N_{K / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \cdot \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
-Note that $c_\ell$, being the trace of $\Frob_\ell$, is the sum of two $\ell$-Weil numbers, hence satisfies $|c_\ell^{\sigma}| < 2\sqrt{l}$ for all $\sigma \in \Gal(K/\Q)$. Thus, for $k \leq \ell+1$, \[N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K}}.\] 
-By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$, and $n_{K} \leq N^{1+\epsilon}$ (REF), thus
-\[ p \leq A_1 \cdot N^{N+\epsilon}. \]
+It is clear that $|c_\ell^{\sigma}| < 2\sqrt{\ell}$ for all $\sigma \in \Gal(K/\Q)$. Thus, for $k \leq \ell+1$, \[N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K}}.\] 
+By Lemma \ref{boundell}, we may take $\ell \leq (1/6)f(N)$, and $n_{K} \leq f(N)$, thus
+\[ p \leq f(N)^{f(N)}. \]
 \end{proof}
  
  
