@@ -1,17 +1,17 @@
-# The mod n period
-def fib_per(b,c,n):
+def fib_per(b,c, n):
     R = Integers(n)
-    f0 = R(0); f1 = R(1)
+    f0 = 0; f1 = 1
     A1 = R(0); A2 = R(1)
+    found = False
     i = 0
-    while True:
-	      i += 1
+    while not found:
+	i += 1
         x = R(b*A2 + c*A1)
-        A1 = A2
-        A2 = x
-        if A1 == f0 and A2 == f1:
-	        return i
-    
+        A1 = R(A2)
+        A2 = R(x)
+        if i>=1 and R(A1) == R(f0) and R(A2) == R(f1):
+	    found = True
+            return i
 
 def fib_recur(b,c,u0,u1,n):
     if n == 0:
@@ -27,43 +27,49 @@ def fib_recur(b,c,u0,u1,n):
             a1 = x
         return x
 
-# Finds primes q = 1 mod p such that FibPeriod(q) | M.
-# The second condition lets us use q without increasing M.
+def fib_recur_mod(b,c,u0,u1,p,n):
+    F = GF(p)
+    if n == 0:
+        return F(u0)
+    elif  n ==1:
+        return F(u1)
+    else :
+        a0 = F(u0)
+        a1 = F(u1)
+        for i in xrange(n-1):
+            x = F(b*a1 + c*a0)
+            a0 = F(a1)
+            a1 = F(x)
+        return x
+
 def find_primes(p,b,c,M,B):
 	L = []
 	for q in prime_range(B):
+		#print q, fib_per(b,c,q)
 		if (q % p == 1) and (M % fib_per(b,c,q) == 0) :
 			L.append(q)
 	return L
 
-# Is "a" a pth power mod q?
 def is_p_power(a,q,p):
 	return GF(q)(a)^((q-1)/p) in (0,1)
 
 def find_cong(p,b,c,M, cong=[0], Modulus=1,B=10000):
 	L = find_primes(p,b,c,M,B)
+	print L
 	for ell in L:
+		print "Working on", ell
 		modu = fib_per(b,c,ell)
-		
 		F = GF(ell)
 		u0 = 0; u1 = 1
 		a0 = F(u0); a1 = F(u1)
-		
-		# Note that 0,1 are pth powers for all p
-		# This is a list of all congruences we find from working mod ell
 		cong1 = [0,1]
-		
-		# We look at our sequence mod ell
-		for m in xrange(2, modu):
+		for m in xrange(2, fib_per(b,c,ell)):
 			x = F(b*a1 + c*a0)
-  		a0 = a1
-  		a1 = x
-  		
+            		a0 = F(a1)
+            		a1 = F(x)
 			if is_p_power(x,ell,p):
 				cong1.append(m)
-				
-	  # We "intersect" the two "sets" of congruences.
-	  # CRT fails for numbers which are "in" one, but not the other.
+		print "About to CRT"
 		congnew = set([])
 		for i in cong1:
 			for j in cong:
@@ -71,14 +77,13 @@ def find_cong(p,b,c,M, cong=[0], Modulus=1,B=10000):
 					cc = crt(i,j,modu,Modulus)
 				except ValueError:
 					continue
-				congnew.add(cc)					
-		cong = list(congnew)		
+				congnew.add(cc)	
+		cong = list(congnew)
 		Modulus = lcm(modu, Modulus)
-  
-  # Note Modulus <= M, as FibPeriod(ell) divides M by choice.
-  # If Modulus did not reach M, we must increase the bound B on primes ell.
+		print Modulus
 	if Modulus != M:
 		return find_cong(p,b,c,M, cong, Modulus=Modulus, B=2*B)
+	cong.sort()
 	return cong, Modulus
 
 def is_pth_power(n, p):
@@ -102,8 +107,7 @@ def check_prime(b,c,p):
 	cong, Modulus = [0], 1
 	while True:
 		cong, Modulus = find_cong(p,b,c,M,cong,Modulus)
-		cong.sort()
-		if (len(cong) > len(powers) and cong[len(powers)] > Bound)
+		if (len(cong) > len(powers) and cong[len(powers)] > Bound):
 		  break
 		elsif M > Bound:
 			break
