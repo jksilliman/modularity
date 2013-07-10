@@ -156,7 +156,7 @@ Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theore
 
 The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of cuspforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
 
-This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. It was shown independently by by Petho \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ in terms of absolute constants has never been published.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
+This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. It was shown independently by by Peth{\H{o}} \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ in terms of absolute constants has never been published.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
 
 \begin{ithm}[Theorem \ref{condbound_inplace}]\label{condbound}
 Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
@@ -450,7 +450,7 @@ as $|\alpha| \geq 2$, so $\log_2|\alpha| \geq 1$ so $n\log|\alpha| \geq  \log(n)
 \end{proof}
 
 \begin{thm}\label{ell_bound_final}
-Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$. If $u_n = y^p$, and if the associated Frey curve level lowers mod p to an elliptic curve of level N, then assuming the Frey Mazur conjecture, there exists an absolute, effectively computable constant $A_2$ such that
+Let $(b,c)$ relatively prime be a binary recurrence sequence with $u_0=0,u_1=1$. If $u_n = y^p$, and if the associated Frey curve level lowers mod p to an elliptic curve of level N, then assuming the Frey-Mazur conjecture, there exists an absolute, effectively computable constant $A_2$ such that
 \[ p \leq \max\{17, \max\{30, 2^8 \cdot \rad(c(b^2+4c))+1\} \cdot A_2\log{\alpha} \}. \]
 \end{thm}
 
