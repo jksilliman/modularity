@@ -10,7 +10,7 @@
 \usepackage{stackrel}
 \usepackage{bbm}
 \usepackage{tikz}
-\usepackage[margin=1.25in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{courier}
@@ -133,44 +133,38 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction}
-The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$-th powers for small primes $p$ (CITE STUFF). In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci series to the arithmetic properties of elliptic curves. (WEIRD WORDING)
+The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$th powers for small primes $p$. In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci sequence to the arithmetic properties of elliptic curves.
 
-Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other linear binary recurrence relations.  In particular, we study a natural generalization of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, u_0 = 0, u_1 = 1, \] for b and c nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0, p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
+Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other examples of linear binary recurrence relations.  In particular, we study natural generalizations of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, \qquad u_0 = 0, u_1 = 1, \] for $b$ and $c$ nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0$, $p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
 
-Using techniques similar to \cite{siksek06}, we prove the following theorem on specific sequences.
+We develop an efficient method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
+
+\begin{ithm}\label{cond_ex}
+Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) occur for $n \leq 7$.
+\end{ithm}
+
+
+In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
 
 \begin{ithm}[Theorem \ref{explicit_eg_thm_inplace}]\label{explicit_eg_thm}
 For the following values of $b$ and $c$:
-\begin{center}
-\begin{tabular}{c | c }
-b & c \\  \hline \hline
-3 & -2 \\
-5 & -6  \\
-7 & -12 \\
-17 & -72  \\
-9 & -20 \\ \hline \hline
-\end{tabular}
-\end{center}
-$u_n$ has no nontrivial $p$th powers. %except perhaps for 5th powers in $(9,-20)$.
+\begin{equation}\label{examples} (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \end{equation}
+the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.
 \end{ithm}
 
-Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.
+Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.  These specific unconditional examples, as well as the necessary classical and modular techniques, are covered in Sections \ref{classicalresults} and \ref{mod_method}.
 
-(REWRITE, NOT "EASY") These sorts of examples are easy, in the same way that Fermat's Last Theorem is easy: as we will see, any particular solution to \eqref{the_eqn} is associated to a weight 2 newforms of some level $N \sim \rad(c(b^2+4c))$, and for some small levels, there are no newforms.
+The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of cuspforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
 
-As $N \to \infty$, many difficulties arise. The number of newforms of level N grows linearly with $N$. For each newform corresponding to an elliptic curve, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which then allows linear forms in two logarithms to give a useful upper bound on $p$, below which sieve methods can feasibly check for solutions. When there are newforms with irrational coefficients, corresponding to abelian varieties of dimension $>$ 1, exceptional situations (IS THIS TRUE), such as CM abelian varieties, can be dealt with as in \cite{bennett04}. However, we do not know of any techniques, in general, to completely deal with abelian varieties.
-
-This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. In particular, we attempt to derive explicit upper bounds on $p$ in terms of $(b,c)$, avoiding the use of the effectively computable, but inexplicit, bounds by Petho and Shorey \cite{petho82}\cite{shorey83}. We obtain the following result, conditional on the Frey-Mazur Conjecture - see \ref{FreyMazur}:
+This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. It was shown independently by by Petho \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ in terms of absolute constants has never been published.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
 
 \begin{ithm}[Theorem \ref{condbound_inplace}]\label{condbound}
 Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
 \[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
-
 \end{ithm}
+This Theorem allows the conditional results covered in Section \ref{examples}.
 
-\tableofcontents
-
-\section{Classical Facts about Lucas Sequences}
+\section{Classical Facts about Lucas Sequences}\label{classicalresults}
 
 
 Let $(b,c) \in \Z \times \Z$ define the integral linear binary recurrence relation
@@ -219,7 +213,7 @@ by \eqref{fib2}.  Further by Lemma \ref{relprime}, we know that that these terms
 In addition, in some specific cases it is possible to find all perfect powers in a binary recurrence sequence by elementary methods alone.  For example, in \cite{petho92}, Peth{\H{o}} proved that $u_7 = 13^2$ is the only nontrivial perfect power in the Pell sequence $(2,1)$.  This method is unsuccessful in general, so we introduce the heavy machinery of the modular method.
 
 
-\section{The Modular Method and Theorem 1.1}
+\section{The Modular Method and Theorem \ref{explicit_eg_thm}}\label{mod_method}
 
 \subsection{The modular method applied to Lucas sequences}
 
@@ -393,7 +387,7 @@ Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the the
 \end{proof}
 
 
-\section{Proof of Theorem \ref{condbound}}
+\section{Proof of Theorem \ref{condbound}}\label{genthmproof}
 
 In this section we give a proof of the following general theorem.
 
@@ -538,7 +532,7 @@ By Lemma \ref{boundell}, we may take $\ell \leq A \left( N \right)^{1+\epsilon}$
  
  \end{proof}
 
-\section{Examples}
+\section{Examples}\label{examples}
 
 As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  
 
@@ -564,8 +558,23 @@ Coming from Thue equations and linear forms in logarithms, we have a bound $B(n,
 
 
 
+\subsection{Proof of Theorem \ref{cond_ex}}
 
-
+\begin{thm}\label{cond_ex_inplace}
+Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) are:
+\begin{center}
+\begin{tabular}{c | c || c | c}
+$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
+$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
+$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
+$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
+$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
+$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
+$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
+$(2,5)$ & $u_3 = 3^2$ \\
+\end{tabular}
+\end{center}
+\end{thm}
 
 
 
