@@ -117,6 +117,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \newcommand{\Ell}{\rm{Ell}}
 \newcommand{\AV}{\rm{AV}}
 \newcommand{\Gal}{\text{Gal}}
+\newcommand{\ord}{{\rm{ord}}}
 
 \newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
 \newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
@@ -133,32 +134,42 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction}
-The Fibonacci Sequence, perhaps the simplest linear recurrence relation, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$th powers for small primes $p$. In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci sequence to the arithmetic properties of elliptic curves.
+The Fibonacci Sequence, perhaps the simplest linear recurrence sequence, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$th powers for small primes $p$. In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci sequence to the arithmetic properties of elliptic curves.
 
 Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other examples of linear binary recurrence relations.  In particular, we study natural generalizations of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, \qquad u_0 = 0, u_1 = 1, \] for $b$ and $c$ nonzero integers.  The Diophantine problem of interest, of course, is to study integer solution $(n,y,p)$, $n > 0$, $p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
+Solutions of the form $0=0^p$ or $1 = 1^p$ are called trivial, as they are perfect $p$th powers for any $p$. 
 
-We develop aneffective method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
+We develop an effective method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
 
 \begin{ithm}[Theorem \ref{cond_ex_inplace}]\label{cond_ex}
-Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) occur for $n \leq 7$.
+Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers occur for $p \leq 19$.
+%besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) occur for $n \leq 7$.
 \end{ithm}
-The exact perfect powers are given in \ref{cond_ex_inplace}.  In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
+
+***need to get the bound on $n$ in terms of $p$, then we think we can prove the stronger theorem on all of the perfect powers***
+
+%The exact perfect powers are given in \ref{cond_ex_inplace}.  
+
+In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
 
 \begin{ithm}[Theorem \ref{explicit_eg_thm_inplace}]\label{explicit_eg_thm}
 For the following values of $b$ and $c$:
 \begin{equation}\label{examples} (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \end{equation}
-the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.
+the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.  Further these are the only sequences with $b^2+4c = 1$ that map to levels $N$ such that $\dim S_2(\Gamma_0(N)) = 0$.
 \end{ithm}
 
 Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.  These specific unconditional examples, as well as the necessary classical and modular techniques, are covered in Sections \ref{classicalresults} and \ref{mod_method}.
 
 The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of cuspforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
 
-This leads us to the second goal of our paper, which is to use modular methods to obtain general results about perfect powers in Lucas sequences. It was shown independently by by Petho \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ in terms of absolute constants has never been published.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
+This leads us to the second goal of our paper, which is to use modular methods combined with the powerful Frey-Mazur Conjecture to obtain general results about perfect powers in Lucas sequences. It was shown independently by by Petho \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ has not been published to the knowledge of the authors.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
 
 \begin{ithm}[Theorem \ref{condbound_inplace}]\label{condbound}
-Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then for all $\epsilon > 0$, there exist absolute effectively computable constants $C_{\epsilon}, D$, such that
-\[ p \leq \max\{17, C_{\epsilon} \left( N \right)^{N + \epsilon}, \max\{30, N+1\} \cdot D\log{\alpha} \}. \]
+Assume the Frey-Mazur conjecture.  Let 
+\[ \psi(N) = N \cdot \prod_{p|N} \left( 1 + \frac{1}{p} \right)\]
+be the Dedekind $\psi$ function.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$ and $b,c$ relatively prime. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then 
+\[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12+1)}, 3\log{|\alpha|} \cdot ( N+1)  \right\} \]
+for $\alpha$ the dominant root of the characteristic polynomial $g(z) = z^2 -bz-c$.
 \end{ithm}
 This Theorem allows the conditional results covered in Section \ref{examples}.
 
@@ -208,7 +219,7 @@ by \eqref{fib2}.  Further by Lemma \ref{relprime}, we know that that these terms
 
 \end{proof}
 
-In addition, in some specific cases it is possible to find all perfect powers in a binary recurrence sequence by elementary methods alone.  For example, in \cite{petho92}, Peth{\H{o}} proved that $u_7 = 13^2$ is the only nontrivial perfect power in the Pell sequence $(2,1)$.  This method is unsuccessful in general, so we introduce the heavy machinery of the modular method.
+In addition, in some specific cases it is possible to find all perfect powers in a binary recurrence sequence by classical methods alone.  For example, in \cite{petho92}, Peth{\H{o}} proved that $u_7 = 13^2$ is the only nontrivial perfect power in the Pell sequence $(2,1)$.  This method is unsuccessful in general, so we introduce the heavy machinery of the modular method.
 
 
 \section{The Modular Method and Theorem \ref{explicit_eg_thm}}\label{mod_method}
@@ -237,15 +248,15 @@ corresponding to the $p$-torsion number field $\Q(E[p])$.  Note that as the Galo
 
 For binary recurrence sequences, we will use the fundamental relation \eqref{gen_diophan} as our Diophantine equation.  In particular, say that we posit a solution $u_n = y^p$, that is
 \begin{equation}\label{rel_diophan} (b^2+4c)y^{2p}+4(-c)^n = v_n^2 .\end{equation}
-This is a solution to the $(p,p,2)$-with-coefficients Diophantine equation
+This is a solution to the $(p,p,2)$-with-coefficients generalized Fermat equation
 \[ (b^2+4c)X^p +4(-c)^nY^p = Z^2. \]
 
 Using \cite{bennett04} we associate a Frey curve to a \textit{primitive} solution to \eqref{rel_diophan}.  Here primitive denotes $\gcd((b^2+4c)y^2, 4(-c)^n, v_n ) = 1$.  For any such recurrence relation (with $\gcd(b,c)=1$) we choose Frey curves with discriminant and conductor according to the following:
 
 \begin{lem}[Frey Curves]\label{freycurves}
-Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$.  We may write the associated Diophantine equation as
+Assume $u_n = y^p$ for $p\geq 5$, $n \geq 7$ and $b,c$ relatively prime.  We may write the associated Diophantine equation as
 \[ (b^2+4c)y^{2p} + 4(-c)^n = v_n^2.\]
-for $b$ and $c$ relatively prime. As a convention let $k = \upnu_2(b^2+4c)$ and $w_n = \pm v_n$ as necessary in the situation (if no congruence conditions are stated then $w_n = v_n$).  Without loss of generality we may assume that we are in one of the following situations:
+As a convention let $k = \ord_2(b^2+4c)$,  $b^2+4c = 2^kD$, and $w_n = \pm v_n$ as necessary in the situation (if no congruence conditions are stated then $w_n = v_n$).  Without loss of generality we may assume that we are in one of the following situations:
 
 
 
@@ -253,36 +264,36 @@ for $b$ and $c$ relatively prime. As a convention let $k = \upnu_2(b^2+4c)$ and 
 
 \item $b^2+4c \equiv 1 \pmod{4}$, and $2 \notdiv y,w_n,c$, and $w_n \equiv -(-c)^n \pmod{4}$.
 \[ E_1: Y^2 = X^3 + w_nX^2 + (-c)^nX \]
-\[ \Delta_{E_1} = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N_{E_1} = 2^{\alpha} \rad(2c \cdot (b^2+4c) \cdot y), \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
+\[ \Delta = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N = 2^{\alpha} \rad(2c \cdot (b^2+4c) \cdot y), \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
 
 \item $b^2+4c \equiv 1,0 \pmod{4}$, $2|y,w_n$, $2 \notdiv c$, let $w_n = 2\hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$.
 \[ E_{2} : Y^2 +XY = X^3 + \frac{\hat{w}_n - 1}{4} X^2 + (b^2+4c)2^{-8}u_nX \]
-\[ \Delta_{E_2} = 2^{-16}(b^2+4c)^2(-c)^ny^{4p}, \qquad N_{E_2} = \rad( c \cdot (b^2+4c)\cdot y)  \]
+\[ \Delta = 2^{-16}(b^2+4c)^2(-c)^ny^{4p}, \qquad N = \rad( c \cdot (b^2+4c)\cdot y)  \]
 
 \item $b^2+4c \equiv 1 \pmod{4}$, $2|c$, $2 \notdiv y,w_n$, and $w_n \equiv 1 \pmod{4}$
 \[ E_{3}: Y^2 +XY = X^3 +\frac{w_n-1}{4}X^2 +2^{-4}(-c)^nX \]
-\[ \Delta_{E_3} = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N_{E_3} =\rad( c \cdot (b^2+4c)\cdot y)  \]
+\[ \Delta = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N =\rad( c \cdot (b^2+4c)\cdot y)  \]
 
-\item $k = 2$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{2}D$, $D \equiv -1 \pmod{4}$
+\item $k = 2$, $2 \notdiv y$, $D \equiv -1 \pmod{4}$
 \[ E_{4} : Y^2 = X^3 + w_nX^2 +Du_n^2X, \qquad \Delta = 2^{6}D^2(-c)^ny^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
 
-\item $k = 2$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{2}D$, $D \equiv 1 \pmod{4}$
+\item $k = 2$, $2 \notdiv y$,  $D \equiv 1 \pmod{4}$
 \[E_{5} : Y^2 = X^3 +w_nX^2 +(-c)^nX, \qquad \Delta = 2^{6}D(-c)^{2n}y^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
 
-\item $k = 3$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{3}D$
-\[ E_{6} : Y^2 = X^3 + w_nX^2 + 2Du_n^2X, \qquad  \Delta_{E_6} = 2^8D^2(-c)^ny^{4p} , \qquad N_{E_6} = 2^6 \rad( c \cdot 2D \cdot y)  \]
+\item $k = 3$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, 
+\[ E_{6} : Y^2 = X^3 + w_nX^2 + 2Du_n^2X, \qquad  \Delta = 2^8D^2(-c)^ny^{4p} , \qquad N = 2^6 \rad( c \cdot 2D \cdot y)  \]
 
-\item $k=4$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{4}D$ with $\hat{w}_n \equiv -D \pmod{4}$
+\item $k=4$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$,  with $\hat{w}_n \equiv -D \pmod{4}$
 \[ E_{7} : Y^2 = X^3 +\hat{w}_nX^2 + D u_n X\]
- \[ \Delta_{E_7} = 2^4D^2(-c)^ny^{4p}, \qquad N_{E_7} = 2^\alpha \rad( c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} 1 & : \ D \equiv -1 \pmod{4}\\ 2 & : \ D \equiv 1 \pmod{4} \end{cases} \]
+ \[ \Delta = 2^4D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad( c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} 1 & : \ D \equiv -1 \pmod{4}\\ 2 & : \ D \equiv 1 \pmod{4} \end{cases} \]
 
 
-\item $k = 5,6,7$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{k}D$ with $\hat{w}_n \equiv 1 \pmod{4}$
+\item $k = 5,6,7$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$
 \[ E_{8} : Y^2 = X^3 + \hat{w}_nX^2 + 2^{k-4}D u_n X \]
-\[ \Delta_{E_8} = 2^{2k-4}D^2(-c)^ny^{4p}, \qquad N_{E_8} = 2^\alpha \rad(c \cdot 2D \cdot y ) ,  \qquad \alpha =  \begin{cases} 1&:  \ k = 5 \\ 2 &:  \ k = 6,7 \end{cases} \]
+\[ \Delta = 2^{2k-4}D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad(c \cdot 2D \cdot y ) ,  \qquad \alpha =  \begin{cases} 4 &:  \ k = 5 \\ 2 &:  \ k = 6,7 \end{cases} \]
 
 
-\item $k\geq 8$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, $(b^2+4c) = 2^{k}D$ with $\hat{w}_n \equiv 1 \pmod{4}$
+\item $k\geq 8$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$
 \[ E_{9} : Y^2 + XY = X^3 + \frac{\hat{w}_n-1}{4} X^2 + 2^{k-8}D u_n X \]
 \[ \Delta = 2^{2k-16}D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad(c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} -1&: \ k = 8 \\ 0 &: \ k > 8 \end{cases} \]
 
@@ -295,9 +306,9 @@ We use the formulas of \cite{bennett04}.  For the ease of the reader, the releva
 \begin{tabular}{c | c | c | c | c | c | c | c}
 Case & \cite{bennett04} Case & $A$ & $B$ & $C$ & $a$ & $b$ & $c$ \\ \hline \hline
 1 & (iii) & $b^2+4c$ & $4(-c)^n$ & 1 & $y^2$ & 1 & $w_n$ \\ \hline
-2 & (v) & $(-c)^n$ & $(b^2+4c)2^{-2}$ & 1 & 1 & $(y/2)^2$ & $w_n/2$ \\ \hline
+2 & (v) & $(-c)^n$ & $(b^2+4c)2^{2p-2}$ & 1 & 1 & $(y/2)^2$ & $w_n/2$ \\ \hline
 3 & (v) & $(b^2+4c)$ & $4(-c)^n$ & 1 & $y^2$ & $1$ & $w_n$ \\ \hline
-4 & (i) & $(-c)^n$ & $D$ & 1 & $y^2$ & 1 & $w_n/2$ \\ \hline
+4 & (i) & $(-c)^n$ & $D$ & 1 & $1$ & $y^2$ & $w_n/2$ \\ \hline
 5 & (i) & $D$ & $(-c)^n$ & 1 & $y^2$ & 1 & $w_n/2$ \\ \hline
 6 & (ii) & $(-c)^n$ & $2D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
 7 & (iii) & $(-c)^n$ & $2^2D$ & 1 & 1 & $y^2$ & $w_n/2$ \\ \hline
@@ -385,7 +396,7 @@ By Lemma \ref{freycurves} all of the discriminants of Frey curves of case (iii) 
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{explicit_eg_thm}]
-Posit a solution $u_n = y^p$ for $n \geq 7$ and $p \geq 5$.  To this solution, we associate a Frey curve $E$, as in the discussion above.  The mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and flat at $p$ (except at $p=5$ in the last example) by Lemma \ref{unram}.   By Lemma \ref{absirr} and \ref{frey5irr} $\rho_{E,p}$ is absolutely irreducible for $p\geq 5$.  By the modularity of elliptic curves \ref{modularity} Ribet's level-lowering theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$.
+Posit a solution $u_n = y^p$ for $n \geq 7$ and $p \geq 5$.  To this solution, we associate a Frey curve $E$, as in the discussion above.  The mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and flat at $p$ (except at $p=5$ in the last example) by Lemma \ref{unram}.   By Lemma \ref{absirr} and \ref{frey5irr} $\rho_{E,p}$ is absolutely irreducible for $p\geq 5$.  By the modularity of elliptic curves \ref{modularity} Ribet's level-lowering Theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$.
 
 Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the theorem.
 \end{proof}
@@ -394,20 +405,21 @@ Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the the
 \section{Proof of Theorem \ref{condbound}}\label{genthmproof}
 
 In this section we give a proof of the following general theorem \textbf{conditional on the Frey-Mazur Conjecture}.  Let 
-\[f(N) = N \cdot \prod_{p \mid N} \left( 1 + \frac{1}{p} \right) \]
-be the index of $\Gamma_0(N)$ in the full modular group $\Gamma$.
+\[\psi(N) = N \cdot \prod_{p \mid N} \left( 1 + \frac{1}{p} \right) \]
+be the Dedekind $\psi$ function.  Note that this is the index of $\Gamma_0(N)$ in the full modular group $\Gamma$. In addition 
+\[ \dim S_2(\Gamma_0(N))_{\text{new}} \leq 1 + \frac{\psi(N)}{12} \]
+for an exact formula see (cite William Stein).
 
 \begin{thm}\label{condbound_inplace}
 Assume the Frey-Mazur conjecture.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then 
-\[ p \leq \max\left\{17,   f(N)^{f(N)}, 3\log{|\alpha|} \cdot ( N+1)  \right\}. \]
-
+\[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12 + 1)}, 3\log{|\alpha|} \cdot ( N+1)  \right\}. \]
 \end{thm}
 
 We break this into the following two theorems
 
 \begin{thm}[]\label{bound_av}
 Define ${\AV}(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, and dimension $> 1$.  Then
-\[{\AV(N)} \leq f(N)^{f(N)}. \]
+\[{\AV(N)} \leq \psi(N)^{(\psi(N)/12+1)}. \]
 \end{thm}
 
 \begin{thm}[]\label{bound_ell}
@@ -430,7 +442,7 @@ Let $p > 17$, and $E_1$ and $E_2$ elliptic curves over $\Q$, with mod $p$ Galois
 then $E_1$ is isogenous to $E_2$.
 \end{conj}
 
-We prove our result \textbf{conditional on the Frey-Mazur Conjecture}. Our strategy is as follows: if the Frey curve $E$ corresponding to a solution $(n,y,p)$, $p > 17$, level lowers mod $p$ to an elliptic curve $F$, then Frey-Mazur implies that $N_E = N_F$. This forces $\rad(y)$ to divide the product of a fixed set of primes, depending only on $(b,c)$. Then, using general results on smooth numbers in recurrence sequences, we obtain a bound on $n$, in terms of $(b,c)$. We can then bound $p$ such that $y^p = u_n$ in terms of $n$.
+We prove our result \textbf{conditional on the Frey-Mazur Conjecture}. Our strategy is as follows: if the Frey curve $E$ corresponding to a solution $(n,y,p)$, $p > 17$, level lowers mod $p$ to an elliptic curve $F$, then the Frey-Mazur Conjecture implies that $N_E = N_F$. This forces $\rad(y)$ to divide the product of a fixed set of primes, depending only on $(b,c)$. Then, using general results on smooth numbers in recurrence sequences, we obtain a bound on $n$, in terms of $(b,c)$. We can then bound $p$ such that $y^p = u_n$ in terms of $n$.
 
 
 \begin{thm}[\cite{gyory81}, \cite{gyory82}, \cite{gyory03}]\label{smoothterm}
@@ -491,25 +503,25 @@ Further, as $|a_\ell| < 2\sqrt{\ell}$,
 For $n_K > 1$, this gives a nontrivial bound on $p$, as there exists an $\ell$ such that $c_\ell \notin \mathbb{Z}$ and $\ell^2 \nmid N$. For such an $\ell$, the product above is nonzero. We can bound $\ell$ using the following well-known theorem:
 \begin{thm}[Sturm's Bound]\label{sturm}
 Let $f,g \in M_k(\Gamma_0(N))$ have Fourier expansions $\sum_n a_nq^n$ and $\sum_n b_n q^n$ respectively.  Then $f = g$ if and only if $a_n = b_n$ for all
-\[ n \leq \frac{k}{12} \cdot f(N). \]
+\[ n \leq \frac{k}{12} \cdot \psi(N). \]
 \end{thm}
 
 \begin{lem}\label{boundell}
 Let $f$ be an irrational newform of level $N$.  If $\ell$ is the first prime such that $c_\ell \not\in \Z$, then
-\[ \ell \leq (1/6) \cdot f(N) .\]
+\[ \ell \leq (1/6) \cdot \psi(N) .\]
 \end{lem}
 
 \begin{proof}
 Since $f$ has some irrational coefficient, we know there exists $\sigma \in G_\Q$, such that $f^{\sigma}$ is a distinct newform, also of level $N$.  Then, by \ref{sturm}, they must differ in an coefficient $c_\ell$ for some 
-\[ \ell \leq \frac{1}{6} N \cdot \prod_{p|N} \left(1 + \frac{1}{p} \right). \]
+\[ \ell \leq \frac{1}{6} \psi(N). \]
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{bound_av}]
 Let $\ell$ be a prime such that $c_\ell \notin \Z$.  If $\ell^2 \mid N$, then $c_\ell = 0 \in \Z$, so we can assume $\ell^2 \notdiv N$. Thus we can apply Lemma \ref{ircong1}, 
 \[ p \mid \ell \cdot N_{K / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \cdot \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
 It is clear that $|c_\ell^{\sigma}| < 2\sqrt{\ell}$ for all $\sigma \in \Gal(K/\Q)$. Thus, for $k \leq \ell+1$, \[N(c_\ell - k) \leq (\ell+1 + 2\sqrt{\ell})^{n_{K}}.\] 
-By Lemma \ref{boundell}, we may take $\ell \leq (1/6)f(N)$, and $n_{K} \leq f(N)$, thus
-\[ p \leq f(N)^{f(N)}. \]
+By Lemma \ref{boundell}, we may take $\ell \leq (1/6)\psi(N)$, and $n_{K} \leq 1+\psi(N)/12$, thus
+\[ p \leq \psi(N)^{(\psi(N)/12+1)}. \]
 \end{proof}
  
  
@@ -519,7 +531,7 @@ By Lemma \ref{boundell}, we may take $\ell \leq (1/6)f(N)$, and $n_{K} \leq f(N)
 where ${\rad}'$ denotes radical over odd primes, then $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for a newform $f$ of level
 \[N_f =  2^\alpha {\rad}'(c(b^2+4c))\leq 2^8  {\rad}'(c(b^2+4c)) = N.\]
  If $f$ is irrational, we apply Theorem \ref{bound_av} to conclude that
- \[ p \leq f(N)^{f(N)}. \]
+ \[ p \leq \psi(N)^{(\psi(N)/12+1)}. \]
  If $f$ is rational, then we apply Theorem \ref{bound_ell} to conclude that
  \[ p \leq \max\left\{ 17, 3 \log|\alpha| \cdot (N+1) \right\}. \]
  The theorem easily follows.
@@ -544,30 +556,33 @@ With enough primes $q_i$, we will get a small number of congruences modulo a lar
 
 The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another nontrivial $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  However, if in fact these are the only $p$th powers, then any remaining elements of $\N(S)$ should grow with the modulus $M$.  
 
-Coming from Thue equations and linear forms in logarithms, we have a bound $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
+Coming from Thue equations and linear forms in logarithms, **we hope to have a bound**  $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} \in \N(S)$ is large enough such that $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
 
 
 
 
 
 
-\subsection{Proof of Theorem \ref{cond_ex}}
+%\subsection{Proof of Theorem \ref{cond_ex}}
 
-\begin{thm}\label{cond_ex_inplace}
-Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) are:
-\begin{center}
-\begin{tabular}{c | c || c | c}
-$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
-$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
-$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
-$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
-$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
-$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
-$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
-$(2,5)$ & $u_3 = 3^2$ \\
-\end{tabular}
-\end{center}
-\end{thm}
+%***we think we might be able to prove this theorem.  At the moment we can bound $p \leq 19$ in all of %these cases, and are running the sieve to find a lower bound on n, but we still need an upper bound %from Thue equations/lin forms in logs which might be hard***
+
+
+%\begin{thm}\label{cond_ex_inplace}
+%Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq %10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is %a perfect power) are:
+%\begin{center}
+%\begin{tabular}{c | c || c | c}
+%$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
+%$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
+%$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
+%$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
+%$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
+%$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
+%$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
+%$(2,5)$ & $u_3 = 3^2$ \\
+%\end{tabular}
+%\end{center}
+%\end{thm}
 
 
 
