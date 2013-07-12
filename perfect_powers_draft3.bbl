@@ -13,6 +13,11 @@ Christophe Breuil, Brian Conrad, Fred Diamond, and Richard Taylor, \emph{On the
   Amer. Math. Soc. \textbf{14} (2001), no.~4, 843--939 (electronic).
   \MR{1839918 (2002d:11058)}
 
+\bibitem[Ben05]{bennett05}
+Michael~A. Bennett, \emph{Powers in recurrence sequences: {P}ell equations},
+  Trans. Amer. Math. Soc. \textbf{357} (2005), no.~4, 1675--1691 (electronic).
+  \MR{2115381 (2005h:11066)}
+
 \bibitem[BMS06]{siksek06}
 Yann Bugeaud, Maurice Mignotte, and Samir Siksek, \emph{Classical and modular
   approaches to exponential {D}iophantine equations. {I}. {F}ibonacci and
@@ -27,6 +32,11 @@ David Brown, \emph{Primitive integral solutions to {$x^2+y^3=z^{10}$}}, Int.
 Michael~A. Bennett and Chris~M. Skinner, \emph{Ternary {D}iophantine equations
   via {G}alois representations and modular forms}, Canad. J. Math. \textbf{56}
   (2004), no.~1, 23--54. \MR{2031121 (2005c:11035)}
+
+\bibitem[Coh07]{cohen07}
+Henri Cohen, \emph{Number theory. {V}ol. {II}. {A}nalytic and modern tools},
+  Graduate Texts in Mathematics, vol. 240, Springer, New York, 2007.
+  \MR{2312338 (2008e:11002)}
 
 \bibitem[DM97]{darmon97}
 Henri Darmon and Lo{\"{\i}}c Merel, \emph{Winding quotients and some variants
@@ -78,6 +88,11 @@ Kenneth~A. Ribet, \emph{Lowering the levels of modular representations without
 T.~N. Shorey and C.~L. Stewart, \emph{On the {D}iophantine equation
   {$ax^{2t}+bx^{t}y+cy^{2}=d$} and pure powers in recurrence sequences}, Math.
   Scand. \textbf{52} (1983), no.~1, 24--36. \MR{697495 (84g:10038)}
+
+\bibitem[Ste07]{stein07}
+William Stein, \emph{Modular forms, a computational approach}, Graduate Studies
+  in Mathematics, vol.~79, American Mathematical Society, Providence, RI, 2007,
+  With an appendix by Paul E. Gunnells. \MR{2289048 (2008d:11037)}
 
 \bibitem[TW95]{taylorwiles95}
 Richard Taylor and Andrew Wiles, \emph{Ring-theoretic properties of certain
