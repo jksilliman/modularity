@@ -198,7 +198,8 @@ The sequence $u_n$ is termed a Lucas sequence, and will be our main focus.  The 
 \begin{equation}\label{binetform} u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n. \end{equation}
 This formula easily implies the following two key facts
 \begin{equation}\label{fib2} u_{2k} = u_kv_k \end{equation}
-\begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}
+\begin{equation}\label{gen_diophan_unred}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}, i.e.
+\begin{equation}\label{gen_diophan}(b^2+4c)u_n^2 = v_n^2 - 4(-c)^n. \end{equation}
 Both equations \ref{binetform} and \ref{gen_diophan} translate the question of perfect powers in recurrence sequences into a clear Diophantine context that will be the focus of the remaining sections of the paper.
 
 \section{Some Immediate Results}
@@ -603,6 +604,16 @@ $(2,5)$ & $u_3 = 3^2$ \\
 \caption{The only perfect powers in Lucas sequences with $1 \leq b,c \leq 10$ relative prime, besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power), except perhaps if $p \leq 17$.}
 \label{tab:perfectpowers}
 \end{table}
+
+Further, for sequences with $c = 1$, $d = b^2 + 4c$ prime, we can  easily deal wtih $p \leq 17$. For a solution $(n,y,p)$ to \eqref{gen_diophan}, with can eliminate $n$ even via an argument of Robbins **CITE** (although it is written for the fibonacci sequence, it applies to all Lucas sequences with $c = 1$, $d = b^2 + 4c$ prime).  When $n$ is odd, we imitate \cite{siksek06}, converting solutions $(n,y,p)$ to \eqref{gen_diophan} into solutions $(X,Y) \in \Z^2$ of the Thue equation \begin{equation}
+\pm 1 = F(X,Y) = A \sum_{k=0}^{\lfloor \frac{p}{2} \rfloor} (-4)^{\frac{p-2k-1}{2}} {p\choose 2k} X^{2k}Y^{p-2k} + \frac{B}{2}\sum_{k=0}^{\lfloor \frac{p}{2} \rfloor} (-4)^{\frac{p-2k-1}{2}} {p\choose 2k+1} X^{2k+1}Y^{p-2k-1},
+\end{equation} where $d = A^2+B^2$, $B$ even, and $y^2 = 4X^2 + Y^2$. We then obtain an upper bound $\max\{|X|, |Y|\} < B$ using the work of Bugeaud and Gyory on Thue equations \cite{bugeaud96}. Since $y^p = [ \frac{\alpha^n}{\sqrt{d}} ]$, we get a bound on n: \begin{equation}
+n < \frac{\log(\sqrt{5^p d}B^p + \sqrt{d})}{\log(\alpha)}.
+\end{equation}
+
+In particular, for $(b,c) = (3,1), (5,1),(7,1)$, if $p\leq17$,  then \[ n < 10^{800} \].
+
+
 
 
 To deal with these primes, we develop a \textbf{completely elementary} sieve resembling that used in \cite{siksek06}, but not relying upon Frey curves.  With this sieve we **hope to** prove that Table \ref{tab:perfectpowers} is an exhaustive list.
