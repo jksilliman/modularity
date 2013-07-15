@@ -582,7 +582,7 @@ where ${\rad}'$ denotes radical over odd primes, then $\rho_{E,p} \simeq \bar{\r
  
 \section{Examples}\label{examples}
 
-As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To demonstrate this fact, we find a sharp bound on $p$ for all Lucas sequences with $1 \leq b,c \leq 10$ and relatively prime.  This is summarized in the following theorem.
+In many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To demonstrate this fact, we find a sharp bound on $p$ for all Lucas sequences with $1 \leq b,c \leq 10$ and relatively prime.  This is summarized in the following theorem.
 
 \begin{thm}
 Let $(b,c)$ identify a Lucas sequence with $1 \leq b,c \leq 10$ and relatively prime.  Then the perfect powers in Table \ref{tab:perfectpowers} are exhaustive, except perhaps if $p \leq 19$.
@@ -600,53 +600,33 @@ $(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
 $(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
 $(2,5)$ & $u_3 = 3^2$ \\
 \end{tabular}
-\caption{The only perfect powers in Lucas sequences with $1 \leq b,c \leq 10$ relative prime, besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power), except perhaps if $p \leq 17$.}
+\caption{The conditionally complete set of perfect powers in Lucas sequences with $1 \leq b,c \leq 10$ relative prime, besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power), except perhaps if $p \leq 17$.}
 \label{tab:perfectpowers}
 \end{table}
 
+For any prime $p$, given a bound $n \leq B(n,p)$ we develop a elementary sieve to find all $p$th powers in a similar manner to \cite{siksek06}.  Although the sieve is completely general, the bound $B(n,p)$ is sharpest when $c = 1$ and $b^2+4$ is prime.  To demonstrate this method, we prove the following theorem.
 
-To deal with these primes, we develop a \textbf{completely elementary} sieve resembling that used in \cite{siksek06}, but not relying upon Frey curves.  With this sieve we **hope to** prove that Table \ref{tab:perfectpowers} is an exhaustive list.
+\begin{thm}
+Assuming the Frey-Mazur Conjecture, there are no nontrivial perfect powers in the Lucas sequences $(3,1)$, $(5,1)$, and $(7,1)$.
+\end{thm}
 
 \subsection{The Sieve}
 
-Given a recurrence sequence $(b,c)$, fix $p$ a prime.  We want to find the complete list of solutions to $u_n = y^p$.  Let $q \equiv 1 \pmod{p}$ be a prime.  Define $K(q)$ to be the period of the Fibonacci sequence mod $q$.  As $p$ necessarily divides the order of $\F_q^\times$, the proportion of $p$th powers in our sequence modulo $q$ should be $1/p$.
+For a given recurrence sequence $(b,c)$ and prime $p$, we want to find the complete list of solutions to $u_n = y^p$.  We derive congruence conditions on $n$ by examining solutions to $u_n = y^p$ over $\F_q$ for $q \equiv 1 \pmod{p}$.  Note that as $p \mid {}^{\#}\F_q^\times$, the proportion of $p$th powers in our sequence modulo $q$ should be $1/p$.
 
-Construct a set $\N(q) \subseteq \Z/K(q)\Z $ consisting of possible values of the index $n \mod{K(q)}$ such that $u_n$ is perfect $p$th power mod $q$.  For any set $S = (q_1,q_2,...,q_m)$, denote $K(S) = \lcm(K(q_1),...,K(q_m))$ and $\N(S)$ the ``intersection" of the sets $K(q_1)$ coming from the Chinese Remainder Theorem.
+For $K(q)$ the period of the Fibonacci sequence mod $q$, let $\N(q) \subseteq \Z/K(q)\Z $ be the set of possible congruences for $n$.  We tighten this set by ``intersecting" data from several primes $S = \{q_i\}$ agreeing via the Chinese Remainder Theorem, to get the set of congruences
+\[ \N(S) \subseteq \Z/K(S)\Z, \qquad \qquad K(S)= \lcm(K(q_1),K(q_2),...).\]  
+To make this computation manageable,  we choose $q_i$ such that $K(q_i) \mid q_i-1$, and $q_i-1 \mid M$, for $M$ a particularly smooth, increasing modulus.  Although the sieve is completely elementary, it seems to work as efficiently as the sieve in \cite{siksek06}.
 
-
-As in \cite{siksek06}, we choose $q_i$ such that $K(q_i)$ are all particularly smooth, i.e. such that 
-\[K(S) \mid M = 2^5 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 11.\]
-With enough primes $q_i$, we will get a small number of congruences modulo a large modulus.  Once $K(S) = M$, we replace $M$ by $M  \cdot 13$ and continue again. 
-
-The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another nontrivial $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  However, if in fact these are the only $p$th powers, then any remaining elements of $\N(S)$ should grow with the modulus $M$.  
-
-There is certainly a bound $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} \in \N(S)$ is large enough such that $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
+The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  All remaining elements of $\N(S)$ should grow with the modulus $M$.  Clearly, we can rule out these possible congruences if the smallest such $\bar{a} > B(n,p)$ .  For $N(S) > B(n,p)$, it is clear that the known $p$th powers are a complete list globally.
 
 
 
 
 
 
-%\subsection{Proof of Theorem \ref{cond_ex}}
-
-%***we think we might be able to prove this theorem.  At the moment we can bound $p \leq 19$ in all of %these cases, and are running the sieve to find a lower bound on n, but we still need an upper bound %from Thue equations/lin forms in logs which might be hard***
 
 
-%\begin{thm}\label{cond_ex_inplace}
-%Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq %10$ relative prime, the only perfect powers besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is %a perfect power) are:
-%\begin{center}
-%\begin{tabular}{c | c || c | c}
-%$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
-%$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
-%$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
-%$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
-%$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
-%$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
-%$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
-%$(2,5)$ & $u_3 = 3^2$ \\
-%\end{tabular}
-%\end{center}
-%\end{thm}
 
 
 
