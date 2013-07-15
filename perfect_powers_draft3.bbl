@@ -18,6 +18,11 @@ Michael~A. Bennett, \emph{Powers in recurrence sequences: {P}ell equations},
   Trans. Amer. Math. Soc. \textbf{357} (2005), no.~4, 1675--1691 (electronic).
   \MR{2115381 (2005h:11066)}
 
+\bibitem[BG96]{bugeaud96}
+Yann Bugeaud and K{\'a}lm{\'a}n Gy{\H{o}}ry, \emph{Bounds for the solutions of
+  {T}hue-{M}ahler equations and norm form equations}, Acta Arith. \textbf{74}
+  (1996), no.~3, 273--292. \MR{1373714 (97b:11046)}
+
 \bibitem[BMS06]{siksek06}
 Yann Bugeaud, Maurice Mignotte, and Samir Siksek, \emph{Classical and modular
   approaches to exponential {D}iophantine equations. {I}. {F}ibonacci and
@@ -70,8 +75,8 @@ Preda Mih{\u{a}}ilescu, \emph{Primary cyclotomic units and a proof of
   \MR{2076124 (2005f:11051)}
 
 \bibitem[Pet82]{petho82}
-Attila Petho, \emph{Perfect powers in second order linear recurrences}, J.
-  Number Theory \textbf{15} (1982), no.~1, 5--13. \MR{666345 (84f:10024)}
+Attila Peth{\H{o}}, \emph{Perfect powers in second order linear recurrences},
+  J. Number Theory \textbf{15} (1982), no.~1, 5--13. \MR{666345 (84f:10024)}
 
 \bibitem[Pet92]{petho92}
 A.~Peth{\H{o}}, \emph{The {P}ell sequence contains only trivial perfect
@@ -83,6 +88,10 @@ A.~Peth{\H{o}}, \emph{The {P}ell sequence contains only trivial perfect
 Kenneth~A. Ribet, \emph{Lowering the levels of modular representations without
   multiplicity one}, Internat. Math. Res. Notices (1991), no.~2, 15--19.
   \MR{1104839 (92d:11064)}
+
+\bibitem[Rob83]{robbins83}
+Neville Robbins, \emph{On {F}ibonacci numbers which are powers. {II}},
+  Fibonacci Quart. \textbf{21} (1983), no.~3, 215--218. \MR{718208 (85m:11013)}
 
 \bibitem[SS83]{shorey83}
 T.~N. Shorey and C.~L. Stewart, \emph{On the {D}iophantine equation

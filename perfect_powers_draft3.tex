@@ -144,33 +144,19 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 
 
 \section{Introduction}
-The Fibonacci Sequence, perhaps the simplest linear recurrence sequence, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$th powers for small primes $p$. In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci sequence to the arithmetic properties of elliptic curves.
+The Fibonacci sequence, perhaps the simplest linear recurrence sequence, begins as \[\underline{0},\underline{1},\underline{1},2,3,5,\underline{8},13,21,34,55,89,\underline{144},233, \cdots\] The reader will no doubt note that the underlined terms are perfect powers. Although a folklore conjecture for many years, a proof that these underlined terms are in fact the \emph{only} perfect powers in the Fibonacci sequence remained decidedly elusive via classical methods. Various partial results in this direction, based mainly on elementary congruences and Baker's theory of linear forms in logarithms, ruled out specific $p$th powers for small primes $p$. In 2006, this conjecture was finally proven in an impressive paper of Bugeaud, Mignotte, and Siksek \cite{siksek06}. In contrast with previous results, the proof relied upon what has come to be termed the ``modular method", connecting the Diophantine behavior of the Fibonacci sequence to the arithmetic properties of elliptic curves.
 
 Here, we revisit this strategy with two aims. First, we would like to apply the modular method to find all perfect powers in other examples of linear binary recurrence relations.  In particular, we study natural generalizations of the Fibonacci sequence known as Lucas sequences.  A Lucas sequence is a nondegenerate recurrence sequence defined by \[ u_n = b u_{n-1} + c u_{n-2}, \qquad u_0 = 0, u_1 = 1, \] for $b$ and $c$ nonzero integers.  The Diophantine problem of interest, of course, is to study integer solutions $(n,y,p)$, $n > 0$, $p$ prime, to \begin{equation}\label{the_eqn}u_n = y^p.\end{equation}
-Solutions of the form $0=0^p$ or $1 = 1^p$ are called trivial, as they are perfect $p$th powers for any $p$. 
-
-We develop an effective method, whose correctness is conditional on the Frey-Mazur Conjecture (see \ref{FreyMazur}), to determine all of the perfect powers in a Lucas sequence with $b$ and $c$ relatively prime.  We use this method in Section \ref{examples} to prove the following theorem:
-
-\begin{ithm}\label{cond_ex}
-Assume the Frey-Mazur Conjecture.  For $(b,c)$ a nondegenerate Lucas sequence with $1 \leq b,c \leq 10$ relative prime, the only perfect powers occur for $p \leq 19$.
-%besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power) occur for $n \leq 7$.
-\end{ithm}
-
-***need to get the bound on $n$ in terms of $p$, then we think we can prove the stronger theorem on all of the perfect powers***
-
-%The exact perfect powers are given in \ref{cond_ex_inplace}.  
-
-In some cases, our methods do not require the Frey-Mazur Conjecture.  Namely, we prove the following theorem:
+Solutions of the form $0=0^p$ or $1 = 1^p$ are called trivial, as they are perfect $p$th powers for any $p$.   We prove the following theorem on perfect powers in a class of Lucas sequences where $b^2+4c = 1$.
 
 \begin{ithm}\label{explicit_eg_thm}
 For the following values of $b$ and $c$:
 \begin{equation}\label{examples} (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \end{equation}
-the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.  Further these are the only sequences with $b^2+4c = 1$ that map to levels $N$ such that $\dim S_2(\Gamma_0(N)) = 0$.
-\end{ithm}
+the Lucas sequence $u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.  \end{ithm}
 
 Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theorem that there are no perfect powers in the Mersenne numbers $2^n - 1$.  This is a specific case of Catalan's Conjecture on perfect powers differing by $1$, recently proven by Mihaelescu \cite{mih04}.  These specific unconditional examples, as well as the necessary classical and modular techniques, are covered in Sections \ref{classicalresults} and \ref{mod_method}.
 
-The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of cuspforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
+The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of newforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
 
 
 This leads us to the second goal of our paper, which is to use modular methods combined with the powerful Frey-Mazur Conjecture to obtain general results about perfect powers in Lucas sequences. It was shown independently by Peth{\H{o}} \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ has not been published to the knowledge of the authors.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
@@ -179,13 +165,13 @@ This leads us to the second goal of our paper, which is to use modular methods c
 \begin{ithm}\label{condbound}
 Assume the Frey-Mazur conjecture.  Let 
 \[ \psi(N) = N \cdot \prod_{p|N} \left( 1 + \frac{1}{p} \right)\]
-be the Dedekind $\psi$ function.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$ and $b,c$ relatively prime. Let $N = 2^8 \cdot \rad(c(b^2+4c))$. Then 
+be the Dedekind $\psi$ function.  Consider a solution (n,y,p) to \eqref{the_eqn}, with $n > 6$ and $b^2+4c >0$. For $b,c$ relatively prime, let $N = 2^8 \cdot \rad'(c)\rad'(b^2+4c)$; otherwise let $N = 2^8 \cdot \rad'(c)^2\rad'(b^2+4c)$, where $\rad'$ denotes the product over odd primes. Then 
 \[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12+1)}, 3\log{|\alpha|} \cdot ( N+1)  \right\} \]
 for $\alpha$ the dominant root of the characteristic polynomial $g(z) = z^2 -bz-c$.
 \end{ithm}
-This Theorem allows the conditional results covered in Section \ref{examples}.
+Using this theorem, we prove conditional results for several sequences in Section \ref{examples}.  For $b$ even and $c = -1$, our result improves upon one published by Bennett in \cite{bennett05}.
 
-\section{Classical Facts about Lucas Sequences}\label{classicalresults}
+\section{Classical Facts and Results}\label{classicalresults}
 
 
 Let $(b,c) \in \Z \times \Z$ define the integral linear binary recurrence relation
@@ -198,33 +184,10 @@ The sequence $u_n$ is termed a Lucas sequence, and will be our main focus.  The 
 \begin{equation}\label{binetform} u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta} \qquad \qquad v_n = \alpha^n +\beta^n. \end{equation}
 This formula easily implies the following two key facts
 \begin{equation}\label{fib2} u_{2k} = u_kv_k \end{equation}
-\begin{equation}\label{gen_diophan}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n. \end{equation}
+\begin{equation}\label{gen_diophan_unred}(\alpha - \beta)^2u_n^2 = v_n^2 - 4(\alpha\beta)^n, \end{equation} which is equivalent to
+\begin{equation}\label{gen_diophan}(b^2+4c)u_n^2 = v_n^2 - 4(-c)^n. \end{equation}
 Both equations \ref{binetform} and \ref{gen_diophan} translate the question of perfect powers in recurrence sequences into a clear Diophantine context that will be the focus of the remaining sections of the paper.
 
-\section{Some Immediate Results}
-
-We begin a survey of some classes of recurrence sequences that can be dealt with immediately as one or both of their associated Diophantine equations \ref{binetform} and \ref{gen_diophan} have already been investigated.
-
-\subsection{Pell Sequences with $b$ even and $c = -1$}
-
-In this case, equation \ref{gen_diophan} reduces to
-\[ (b^2-4)y^{2p}+4 = v_n^2, \]
-and as $b^2-4 \equiv 0 \pmod{4}$, this gives an integral solution to 
-\begin{equation}\label{pell} x^2 - Dy^{2p} = 1.\end{equation}
-Bennett has studied these equations in \cite{bennett05} and proven the following general theorem
-\begin{thm}
-For $p \geq 3$ and $D$ not a square, and $x,y$ satisfying \ref{pell}, either $D = 2^{2p-2}a^{2p}-1, y = 2a$ or $p < (2e\cdot \rad(D))^{2\rad(D)^3}$.
-\end{thm}
-In addition, the paper finds all solutions to \ref{pell} for $D< 100$.  The proof of this theorem also relies upon the modular method.  Note that assuming the Frey-Mazur conjecture, our Theorem \ref{condbound} provides a stronger bound for sequences of this form. 
-
-\subsection{Sequences with $\beta = 1$}
-
-Similarly when the smaller root $\beta=1$, the Diophantine equation \ref{binetform} reduces to 
-\[ \frac{\alpha^n - 1}{\alpha - 1} = y^p, \]
-which is a Nagell-Ljunggren equation.  This equation has been shown to have no nontrivial solutions for all values of $-10^4 \leq \alpha \leq 10^6$.  These sequences with $\beta = 1$ are those for which $b \geq 3$, $c = -b+1$.  
-
-
-\section{Classical Results}
 
 Using classical methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequences in Theorem \ref{explicit_eg_thm}; recall that $b^2+4c = 1$ and $\alpha,\beta \in \Z$ with $\beta = \alpha-1$.  We prove the following lemmas in the direction of that theorem.
 
@@ -440,6 +403,9 @@ Posit a solution $u_n = y^p$ for $n \geq 7$ and $p \geq 5$.  To this solution, w
 Invoking Lemma \ref{smallp} for the cases $p=2,3$ completes the proof of the theorem.
 \end{proof}
 
+\begin{rem}
+We believe the examples in Theorem \ref{explicit_eg_thm} are the only sequences with $b^2+4c = 1$ that map to levels $N$ such that $\dim S_2(\Gamma_0(N)) = 0$. Finiteness is clear as we may transform the problem into a question of integral points on an elliptic curve.  We have computationally checked that these are all solutions with $|b|,|c| \leq 10^{50}$.
+\end{rem}
 
 \section{Proof of Theorem \ref{condbound}}\label{genthmproof}
 
@@ -538,7 +504,7 @@ There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\e
 \item $c_\ell^2 \equiv (\ell+1)^2 \mod \mathfrak{p}$, if $\ell \mid\mid N$.
 \end{itemize}
 Further, as $|a_\ell| < 2\sqrt{\ell}$,
-\[p \mid \gcd_{\ell \nmid N}(B(\ell)C(\ell)), \] where
+\[p \mid \gcd_{\ell^2 \nmid N}(B(\ell)C(\ell)), \] where
 \[B(\ell) = \ell \cdot N_{K / \mathbb{Q}}(c_\ell^2-(\ell+1)^2) \]
 \[C(\ell) = \prod_{-2\sqrt{\ell} < r < 2\sqrt{\ell}}{N_{K / \mathbb{Q}}}(c_\ell - r).\]
 \end{lem}
@@ -568,63 +534,54 @@ By Lemma \ref{boundell}, we may take $\ell \leq (1/6)\psi(N)$, and $n_{K} \leq 1
 \end{proof}
  
  
- \begin{proof}[Proof of Theorem \ref{condbound}]
- Let $E$ be a Frey curve, such as in \ref{freycurves}.  Then if
+ \subsection{Proof of Theorem \ref{condbound}}
+ Let $E$ be a Frey curve, such as in \ref{freycurves}.  Then 
  \[N_E = 2^\alpha {\rad}'(c(b^2+4c)y), \qquad \alpha \leq 8\]
 where ${\rad}'$ denotes radical over odd primes, then $\rho_{E,p} \simeq \bar{\rho_{f,p}}$ for a newform $f$ of level
 \[N_f =  2^\alpha {\rad}'(c(b^2+4c))\leq 2^8  {\rad}'(c(b^2+4c)) = N.\]
- If $f$ is irrational, we apply Theorem \ref{bound_av} to conclude that
- \[ p \leq \psi(N)^{(\psi(N)/12+1)}. \]
- If $f$ is rational, then we apply Theorem \ref{bound_ell} to conclude that
- \[ p \leq \max\left\{ 17, 3 \log|\alpha| \cdot (N+1) \right\}. \]
+ If $f$ is irrational, we apply Theorem \ref{bound_av} to conclude that $p \leq \psi(N)^{(\psi(N)/12+1)}$.
+ If $f$ is rational, then we apply Theorem \ref{bound_ell} to conclude that $p \leq \max\left\{ 17, 3 \log|\alpha| \cdot (N+1) \right\}$. 
  The theorem easily follows.
- \end{proof}
+
  
 \section{Examples}\label{examples}
 
 In many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To demonstrate this fact, we find a sharp bound on $p$ for all Lucas sequences with $1 \leq b,c \leq 10$ and relatively prime.  This is summarized in the following theorem.
 
 \begin{thm}
-Let $(b,c)$ identify a Lucas sequence with $1 \leq b,c \leq 10$ and relatively prime.  Then the perfect powers in Table \ref{tab:perfectpowers} are exhaustive, except perhaps if $p \leq 19$.
+Let $(b,c)$ identify a Lucas sequence $u_n$ with $1 \leq b,c \leq 10$ and relatively prime.  Then for all solutions $u_n = y^p$, $p \leq 19$.
 \end{thm}
 
+For any prime $p$, given a bound $n \leq B(n,p)$ we develop a sieve to find all $p$th powers.  This method has some similarity to the sieve in \cite{siksek06}; however, unlike their sieve which uses Frey curves, our method relies entirely upon elementary techniques.  Moreover, our method is completely general, applying to any Lucas sequence and any index $n$ (in contrast, \cite{siksek06} relies upon the fact that $n$ is prime and $c = 1$).
 
-\begin{table}
-\begin{tabular}{c | c || c | c}
-$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
-$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
-$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
-$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
-$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
-$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
-$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
-$(2,5)$ & $u_3 = 3^2$ \\
-\end{tabular}
-\caption{The conditionally complete set of perfect powers in Lucas sequences with $1 \leq b,c \leq 10$ relative prime, besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power), except perhaps if $p \leq 17$.}
-\label{tab:perfectpowers}
-\end{table}
+Although the sieve is completely general, the bound $B(n,p)$ is sharpest when $c = 1$ and $b^2+4$ is prime.  To demonstrate this method, we prove the following theorem.
 
-For any prime $p$, given a bound $n \leq B(n,p)$ we develop a elementary sieve to find all $p$th powers in a similar manner to \cite{siksek06}.  Although the sieve is completely general, the bound $B(n,p)$ is sharpest when $c = 1$ and $b^2+4$ is prime.  To demonstrate this method, we prove the following theorem.
-
-\begin{thm}
+\begin{thm}\label{cond_examples}
 Assuming the Frey-Mazur Conjecture, there are no nontrivial perfect powers in the Lucas sequences $(3,1)$, $(5,1)$, and $(7,1)$.
 \end{thm}
 
+
 \subsection{The Sieve}
 
-For a given recurrence sequence $(b,c)$ and prime $p$, we want to find the complete list of solutions to $u_n = y^p$.  We derive congruence conditions on $n$ by examining solutions to $u_n = y^p$ over $\F_q$ for $q \equiv 1 \pmod{p}$.  Note that as $p \mid {}^{\#}\F_q^\times$, the proportion of $p$th powers in our sequence modulo $q$ should be $1/p$.
+For a given recurrence sequence $(b,c)$ and prime $p$, we want to find the complete list of solutions to $u_n = y^p$.  We derive congruence conditions on $n$ by examining solutions to $u_n = y^p$ over $\F_q$ for $q \equiv 1 \pmod{p}$.  Note that as $p \mid {}^{\#}\F_q^\times$, the proportion of $p$th powers in our sequence modulo $q$ should heuristically be roughly $1/p$.
 
 For $K(q)$ the period of the Fibonacci sequence mod $q$, let $\N(q) \subseteq \Z/K(q)\Z $ be the set of possible congruences for $n$.  We tighten this set by ``intersecting" data from several primes $S = \{q_i\}$ agreeing via the Chinese Remainder Theorem, to get the set of congruences
 \[ \N(S) \subseteq \Z/K(S)\Z, \qquad \qquad K(S)= \lcm(K(q_1),K(q_2),...).\]  
 To make this computation manageable,  we choose $q_i$ such that $K(q_i) \mid q_i-1$, and $q_i-1 \mid M$, for $M$ a particularly smooth, increasing modulus.  Although the sieve is completely elementary, it seems to work as efficiently as the sieve in \cite{siksek06}.
 
-The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  All remaining elements of $\N(S)$ should grow with the modulus $M$.  Clearly, we can rule out these possible congruences if the smallest such $\bar{a} > B(n,p)$ .  For $N(S) > B(n,p)$, it is clear that the known $p$th powers are a complete list globally.
+For $K(S) > B(n,p)$, it is clear that the set of congruences are a complete list globally.  The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  All remaining elements of $\N(S)$ should grow with the modulus $M$.  Clearly, we can rule out these possible congruences if the smallest such $\bar{a} > B(n,p)$.  An implementation of the sieve is available at \url{my_website_to_be_inserted}.
 
 
+\subsection{Proof of Theorem \ref{cond_examples}}
 
+Using the methods of \ref{condbound}, we find that for the sequences in question, $p\leq 17$.  For a solution $(n,y,p)$ to \eqref{gen_diophan}, with can reduce to odd index $n$ via a generalization of an argument of Robbins \cite{robbins83}.  When $n$ is odd, as in \cite{siksek06}, we convert a solution $(n,y,p)$ to \eqref{gen_diophan} into an integral solution $(X,Y)$ of the Thue equation \begin{equation}
+\pm 1  =  b \sum_{k=0}^{\lfloor p/2 \rfloor} (-4)^{\frac{p-2k-1}{2}} {p\choose 2k} X^{2k}Y^{p-2k}  + \sum_{k=0}^{\lfloor p/2 \rfloor} (-4)^{\frac{p-2k-1}{2}} {p\choose 2k+1} X^{2k+1}Y^{p-2k-1},
+\end{equation} where $y^2 = 4X^2 + Y^2$. We then obtain an upper bound $\max\{|X|, |Y|\} < B$ using the work of Bugeaud and Gyory on Thue equations \cite{bugeaud96}. Letting $d = b^2+4$, $y^p = \left[ \frac{\alpha^n}{\sqrt{d}} \right]$ and it follows that 
+\begin{equation} n < \frac{\log\left(\sqrt{5^p d}B^p + \sqrt{d}\right)}{\log|\alpha|}. \end{equation}
+In particular, for $(b,c) = (3,1), (5,1),(7,1)$, if $p\leq17$,  then \[ n < 10^{800}. \]
+Using the sieve, we can rule out $p$th powers for indices less than $10^{800}$ 
 
-
-
+ ***this is actually still running at the moment, so we'll see in a day or two, but this is almost certainly true.  we have already checked up to $p^{10p}$ **.
 
 
 
