@@ -173,7 +173,7 @@ Note that for $(b,c) = (3,-2)$, this provides an alternative proof to the theore
 The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, there are only finitely many levels $N$ for which the space of cuspforms is empty; in fact this implies $N \leq 60$.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.
 
 
-This leads us to the second goal of our paper, which is to use modular methods combined with the powerful Frey-Mazur Conjecture to obtain general results about perfect powers in Lucas sequences. It was shown independently by Petho \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ has not been published to the knowledge of the authors.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
+This leads us to the second goal of our paper, which is to use modular methods combined with the powerful Frey-Mazur Conjecture to obtain general results about perfect powers in Lucas sequences. It was shown independently by Peth{\H{o}} \cite{petho82} and Shorey and Stewart \cite{shorey83} that there are only finitely many perfect powers in any linear recurrence sequence.  Although their proofs implied the bound could be made effective, an \emph{explicit} effective bound on $p$ has not been published to the knowledge of the authors.  In section \ref{genthmproof}, we answer this question by proving the following result conditional on the Frey-Mazur Conjecture.
 
 
 \begin{ithm}\label{condbound}
@@ -215,18 +215,18 @@ Bennett has studied these equations in \cite{bennett05} and proven the following
 \begin{thm}
 For $p \geq 3$ and $D$ not a square, and $x,y$ satisfying \ref{pell}, either $D = 2^{2p-2}a^{2p}-1, y = 2a$ or $p < (2e\cdot \rad(D))^{2\rad(D)^3}$.
 \end{thm}
-In addition, the paper finds all solutions to \ref{pell} for $D< 100$.  The proof of this theorem also relies upon the modular method.  Note that assuming the Frey-Mazur conjecture, our Theorem \ref{condbound} provides a stronger bound for sequences of this form.  In addition, Bennett found all solutions for $D< 100$.
+In addition, the paper finds all solutions to \ref{pell} for $D< 100$.  The proof of this theorem also relies upon the modular method.  Note that assuming the Frey-Mazur conjecture, our Theorem \ref{condbound} provides a stronger bound for sequences of this form. 
 
 \subsection{Sequences with $\beta = 1$}
 
-Similarly when the smaller root $\beta=1$, the Diophantine equation \ref{gen_diophan} reduces to 
-\[ \frac{\alpha^n - 1}{\alpha - 1} = y^p \]
+Similarly when the smaller root $\beta=1$, the Diophantine equation \ref{binetform} reduces to 
+\[ \frac{\alpha^n - 1}{\alpha - 1} = y^p, \]
 which is a Nagell-Ljunggren equation.  This equation has been shown to have no nontrivial solutions for all values of $-10^4 \leq \alpha \leq 10^6$.  These sequences with $\beta = 1$ are those for which $b \geq 3$, $c = -b+1$.  
 
 
 \section{Classical Results}
 
-Using classical methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequences in Theorem \ref{explicit_eg_thm}; we prove the following lemmas in the direction of that theorem.
+Using classical methods alone, it is often possible to prove that there are no nontrivial perfect $p$th powers in a Lucas sequence for a specific fixed small value of $p$.  For example, let $(b,c)$ be one of the sequences in Theorem \ref{explicit_eg_thm}; recall that $b^2+4c = 1$ and $\alpha,\beta \in \Z$ with $\beta = \alpha-1$.  We prove the following lemmas in the direction of that theorem.
 
 \begin{lem}\label{relprime}
 Let $(b,c)$ be any binary recurrence sequence such that $b^2+4c=1$.  For $n \geq 1$,  $u_n$, $v_n$, and $c$ are relatively prime.
@@ -244,11 +244,11 @@ There are no nontrivial squares or cube terms in any of the examples in Theorem 
 
 \begin{proof}
 
-We first deal with the case of $p=2$; we will derive our contradiction from the relation \eqref{gen_diophan}, which in this case reduces to
-\begin{equation}\label{binetform} \alpha^n - (\alpha-1)^n = z^2.\end{equation} 
+We first deal with the case of $p=2$; we will derive our contradiction from the relation \eqref{binetform}, which in this case reduces to
+\[ \alpha^n - (\alpha-1)^n = z^2.\]
 Assume that the index $n$, for which $u_n = z^2$, is odd; in this case we can absorb the sign and have a nontrivial integral solution to
 \[ x^n +y^n = z^2. \]
-But there are no nontrivial solutions to the $(n,n,2)$ Diophantine equation for $n \geq 4$  \cite{darmon97} .  We easily check that in our examples, $u_3$ is not a square.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then we can write
+But there are no nontrivial solutions to the $(n,n,2)$ Diophantine equation for $n \geq 4$  \cite{darmon97}.  We easily check that in our examples, $u_3$ is not a square.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then we can write
 \begin{align*}
 \alpha^{2^rk} - \beta^{2^rk} & = (\alpha^{2^{r-1}k} - \beta^{2^{r-1}k})(\alpha^{2^{r-1}k} + \beta^{2^{r-1}k}) \\
 & = (\alpha^{2^{r-1}k} + \beta^{2^{r-1}k})(\alpha^{2^{r-2}k} + \beta^{2^{r-2}k}) \cdots (\alpha^{k} - \beta^{k}) (\alpha^{k} + \beta^{k})
@@ -380,7 +380,7 @@ A reducible mod $p$ representation implies that $E$ has a $\Q$-rational $p$ isog
 Now, first take $p =11$, or $p \geq 17$.  Then by \cite{mazur78} Cor 4.4, $\rho_{E,p}$ is irreducible.  Further, as $E$ has a rational 2-torsion point, reducible implies that $E$ corresponds to a rational point on the modular curve $X_0(2p)$ parameterizing elliptic curves with cyclic $2p$-isogenies.  But there are no noncuspidal, non-CM rational points for $p = 7,13$.
 
 Now assume that $\Delta_E$ is a rational square.  If $\rho_{E,5}$ were reducible, it would give rise to a rational point on $X_0(5) \simeq \P_1$.  Let $X_{\Delta} \simeq \P_1$ be the degree $2$ cover of $X(1)$ parameterizing an elliptic curve $E'$ and a choice of square root of its discriminant $\Delta_{E'}$.  The map to $X(1)$ is given by
-\[z \mapsto z^2 + 12^3. \]
+\[z \mapsto z^2 + 12^3 = j(E'). \]
 As $\Delta_E$ is a rational square, $E$ gives rise to a rational point on $X_{\Delta}$.
 As in \cite{brown12} we construct the following diagram
 \begin{center}
@@ -402,10 +402,10 @@ X(2) & X_{\Delta} & X(1)\\};
 \end{tikzpicture}
 \end{center}
 where $X$ is the normalization of the fiber product $X_{\Delta} \times_{X(1)} X_0(5)$.  $X$ is an elliptic curve given by the equation
-\[X: \qquad  y^2 = x^3 + 22x^2 +125x .\]
+\[X \colon \qquad  y^2 = x^3 + 22x^2 +125x .\]
 The map to $X_{\Delta}$ is given by
 \[ (x,y) \mapsto \frac{y(x^2-500x -15625)}{x^3}. \]
-Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and $(0:1:0)$, both lying in the kernel of the map to $X_{\Delta}$.  \david{The target is $\P^1$ and doesn't have a kernel}. Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible and thus absolutely irreducible.  \david{wait, this only gives irreducibility. What about absolutel irreducibility? You need to do the same construction for the normalizer of the nonsplit cartan. Ah, actually, your level is squarefree below, so it is absolutely irreducible.}
+Sage easily determines that $X$ is rank $0$, with rational points $(0:0:1)$ and $(0:1:0)$, both mapped to the cusp at $\infty$ under the map to $X_{\Delta}$. Thus our elliptic curve cannot give rise to a rational point on $X_0(5)$, and we conclude that $\rho_{E,5}$ is irreducible and thus absolutely irreducible. 
 \end{proof}
 
 \subsection{Proof of Theorem \ref{explicit_eg_thm}}
@@ -457,7 +457,7 @@ Assume the Frey-Mazur conjecture.  Consider a solution (n,y,p) to \eqref{the_eqn
 We break this into the following two theorems
 
 \begin{thm}[]\label{bound_av}
-Define ${\AV}(N)$ to be the maximum prime $p \in \Z$ such that there exists an elliptic curve $E/\Q$ which level lowers, mod $p$, to a modular abelian variety of level $N$, and dimension $> 1$.  Then
+Define ${\AV}(N)$ to be the maximum prime $p \in \Z$ such that the 2-dimensional mod $p$ Galois representation of a higher dimensional modular abelian variety of level $N$ is isomorphic to the mod $p$ Galois representation of an elliptic curve over $\Q$.  Then
 \[{\AV(N)} \leq \psi(N)^{(\psi(N)/12+1)}. \]
 \end{thm}
 
@@ -516,7 +516,7 @@ We associate a Frey curve $E$ to the Diophantine equation
 \[ y^{2p} +4(-c)^n = v_n^2 \]
 as in \ref{freycurves}.  By proposition \ref{freycurves}, the conductor of $E$ is
 \[ N_E = 2^{\alpha}  \cdot \rad( c \cdot (b^2+4c) \cdot y) \qquad \qquad \alpha \leq 8. \]
-By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and flat at $p \notdiv c(b^2+4c)$. By assumption, there exists an elliptic curve $F$ such that
+By \ref{unram} the mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $pN$, and finite flat at $p \notdiv c(b^2+4c)$. By assumption, there exists an elliptic curve $F$ such that
 \[ \rho_{E,p} \simeq \rho_{F,p} \]  
 with
 \[N_F = 2^{\alpha} \cdot  \rad( c \cdot (b^2+4c)) \leq 2^8 \cdot \rad(c \cdot (b^2+4c))  \]
@@ -535,7 +535,7 @@ Let $E$ be an elliptic curve and let $a_\ell$ denote the coefficients of the $L$
 There exists a prime $\mathfrak{p} \mid p$ of $\mathcal{O}_f$ such that, for $\ell$ prime:
 \begin{itemize}
 \item $c_\ell \equiv a_\ell \mod \mathfrak{p}$, if $\ell \nmid pN$
-\item $c_\ell^2 \equiv (\ell+1)^2 \mod \mathfrak{p}$, if $\ell \mid\mid N$
+\item $c_\ell^2 \equiv (\ell+1)^2 \mod \mathfrak{p}$, if $\ell \mid\mid N$.
 \end{itemize}
 Further, as $|a_\ell| < 2\sqrt{\ell}$,
 \[p \mid \gcd_{\ell \nmid N}(B(\ell)C(\ell)), \] where
@@ -555,7 +555,7 @@ Let $f$ be an irrational newform of level $N$.  If $\ell$ is the first prime suc
 \end{lem}
 
 \begin{proof}
-Since $f$ has some irrational coefficient, we know there exists $\sigma \in G_\Q$, such that $f^{\sigma}$ is a distinct newform, also of level $N$.  Then, by \ref{sturm}, they must differ in an coefficient $c_\ell$ for some 
+Since $f$ has some irrational coefficient, we know there exists $\sigma \in G_\Q$, such that $f^{\sigma}$ is a distinct newform, also of level $N$.  Then, by \ref{sturm}, they must differ in a coefficient $c_\ell$ for some 
 \[ \ell \leq \frac{1}{6} \psi(N). \]
 \end{proof}
 
@@ -582,24 +582,45 @@ where ${\rad}'$ denotes radical over odd primes, then $\rho_{E,p} \simeq \bar{\r
  
 \section{Examples}\label{examples}
 
-As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  
+As noted above, in many cases the conditional bounds achieved are in fact much better than the ``worst case" recorded in Theorem \ref{condbound}.  For any specific recurrence relation $(b,c)$, we can use the formulas for associating Frey curves in \ref{freycurves} to determine the possible levels to which the mod $p$ Galois representation descends, find all possible $p$ such that the representation arises from an irrational newform, and then invoke the Frey-Mazur conjecture to determine a bound on the index $n$ for which $u_n=y^p$ for any other $p \geq 17$.  Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To demonstrate this fact, we find a sharp bound on $p$ for all Lucas sequences with $1 \leq b,c \leq 10$ and relatively prime.  This is summarized in the following theorem.
 
-Given a reasonable bound on the index, it is trivial to check that there are no unknown perfect powers up to that index.  This leaves a finite list of primes $p$ for which there might exist a perfect $p$th power.  To deal with these primes, we develop a \textbf{completely elementary} sieve resembling that used in \cite{siksek06}, but not relying upon Frey curves.
+\begin{thm}
+Let $(b,c)$ identify a Lucas sequence with $1 \leq b,c \leq 10$ and relatively prime.  Then the perfect powers in Table \ref{tab:perfectpowers} are exhaustive, except perhaps if $p \leq 19$.
+\end{thm}
+
+
+\begin{table}
+\begin{tabular}{c | c || c | c}
+$\mathbf{(b,c)}$ & $\mathbf{u_n=y^p}$ & $\mathbf{(b,c)}$ & $\mathbf{u_n = y^p}$ \\ \hline
+$(1,1)$ & $u_6 = 2^3, u_{12} = 12^2$ & $(2,7)$ & $u_4 = 6^2$ \\
+$(1,3)$ & $u_3 = 2^2$ & $(3,7)$ & $u_3 = 2^4$ \\
+$(1,4)$ & $u_4 = 3^2, u_8 = 21^2$ & $(3,8)$ & $u_5 = 19^2$ \\
+$(1,7)$ & $u_3 = 2^3$ & $(4,9)$ & $u_3 = 5^2$ \\
+$(1,8)$ & $u_6 = 15^2$ & $(5,2)$ & $u_3 = 3^3$ \\
+$(2,1)$ &  $u_7 = 13^2$ & $(5,7)$ & $u_3 = 2^5$ \\
+$(2,5)$ & $u_3 = 3^2$ \\
+\end{tabular}
+\caption{The only perfect powers in Lucas sequences with $1 \leq b,c \leq 10$ relative prime, besides $u_0=0,u_1=1$, and $u_2 = b$ (in the cases $b$ is a perfect power), except perhaps if $p \leq 17$.}
+\label{tab:perfectpowers}
+\end{table}
+
+
+To deal with these primes, we develop a \textbf{completely elementary} sieve resembling that used in \cite{siksek06}, but not relying upon Frey curves.  With this sieve we **hope to** prove that Table \ref{tab:perfectpowers} is an exhaustive list.
 
 \subsection{The Sieve}
 
-Given a recurrence sequence $(b,c)$, fix $p$ a prime.  We want to find the complete list of solutions to $u_n = y^p$.  Let $q \equiv 1 \pmod{p}$ be a prime.  Define $K(q)$ to be the period of the Fibonacci sequence mod $q$.  As $p$ necessarily divides the order of $\F_q^\times$, there should be only $1/p$ perfect $p$th powers in our sequence modulo $q$.  
+Given a recurrence sequence $(b,c)$, fix $p$ a prime.  We want to find the complete list of solutions to $u_n = y^p$.  Let $q \equiv 1 \pmod{p}$ be a prime.  Define $K(q)$ to be the period of the Fibonacci sequence mod $q$.  As $p$ necessarily divides the order of $\F_q^\times$, the proportion of $p$th powers in our sequence modulo $q$ should be $1/p$.
 
 Construct a set $\N(q) \subseteq \Z/K(q)\Z $ consisting of possible values of the index $n \mod{K(q)}$ such that $u_n$ is perfect $p$th power mod $q$.  For any set $S = (q_1,q_2,...,q_m)$, denote $K(S) = \lcm(K(q_1),...,K(q_m))$ and $\N(S)$ the ``intersection" of the sets $K(q_1)$ coming from the Chinese Remainder Theorem.
 
 
-As in \cite{siksek06}, we choose $q_i$ such that $K(q_i)$ are all particularly smooth, ie such that 
+As in \cite{siksek06}, we choose $q_i$ such that $K(q_i)$ are all particularly smooth, i.e. such that 
 \[K(S) \mid M = 2^5 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 11.\]
 With enough primes $q_i$, we will get a small number of congruences modulo a large modulus.  Once $K(S) = M$, we replace $M$ by $M  \cdot 13$ and continue again. 
 
 The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another nontrivial $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  However, if in fact these are the only $p$th powers, then any remaining elements of $\N(S)$ should grow with the modulus $M$.  
 
-Coming from Thue equations and linear forms in logarithms, **we hope to have a bound**  $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} \in \N(S)$ is large enough such that $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
+There is certainly a bound $B(n,p)$ for $n$ in terms of $p$.  If there are no other elements of $\N(S)$ that grow with $M$, then once $M >B(n,p)$, we have found all of the perfect powers.  If there are elements that grow with $M$, then once the smallest $\bar{a} \in \N(S)$ is large enough such that $\bar{a} > B(n,p)$, we have found all perfect $p$th powers.
 
 
 
