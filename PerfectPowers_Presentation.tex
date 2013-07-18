@@ -1,0 +1,268 @@
+\documentclass[pdf]{beamer}
+\mode<presentation>{\usetheme{Warsaw}}
+\usecolortheme[RGB={100,90,150}]{structure}
+
+\renewcommand{\emph}[1]{{\color{red}\textbf{#1}}}
+\newcommand{\tw}{\textwidth}
+\usefonttheme{serif}
+\usepackage{tikz}
+%\usepackage{movie15}
+%\usepackage{multimedia}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows,chains,matrix,positioning,scopes}
+
+\makeatletter
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+\makeatother
+%
+\tikzset{>=stealth',every on chain/.append style={join},
+         every join/.style={->}}
+\tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
+   execute at end node=$]
+\usetikzlibrary{patterns}
+
+\def\A{{\mathcal A}}
+\def\B{{\mathbb B}}
+\def\C{{\mathbb C}}
+\def\D{{\mathbb D}}
+\def\F{{\mathbb F}}
+\def\H{{\mathbb H}}
+\def\M{{\mathbb M}}
+\def\N{{\mathbb N}}
+\def\0{{\mathbb 0}}
+\def\P{{{\mathbb P}}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\T{{\mathbb T}}
+\def\Z{{\mathbb Z}}
+
+\newcommand{\bound}{\partial}
+\newcommand{\la}[1]{\mathfrak{#1}}
+\newcommand{\im}{\text{Im} \hspace{0.1em} }
+\newcommand{\ann}{\text{Ann} \hspace{0.1em} }
+\newcommand{\rank}{\text{rank} \hspace{0.1em} }
+\newcommand{\coker}[1]{\text{coker}\hspace{0.1em}{#1}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\re}{\text{Re}  \hspace{0.1em} }
+\newcommand{\ext}[1]{\text{Ext}(#1)}
+\newcommand{\Hom}[1]{\text{Hom}(#1)}
+\newcommand{\End}[1]{\text{End(#1)}}
+\newcommand{\bs}{\setminus}
+\newcommand{\rpp}[1]{\mathbb{R}\text{P}^{#1}}
+\newcommand{\cpp}[1]{\mathbb{C}\text{P}^{#1}}
+\newcommand{\tr}{\text{tr}\hspace{0.1em} }
+\newcommand{\inner}[1]{\langle {#1}\rangle}
+\newcommand{\tensor}{\otimes}
+\newcommand{\sq}{\text{Sq}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\gl}[1]{\text{GL}_{#1}}
+\newcommand{\pgl}[1]{\text{PGL}_{#1}}
+\renewcommand{\sl}[1]{\text{SL}_{#1}}
+\newcommand{\so}[1]{\text{SO}_{#1}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\pso}[1]{\text{PSO}_{#1}}
+\renewcommand{\o}[1]{\text{O}_{#1}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\psp}[1]{\text{PSp}_{#1}}
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+
+
+\title{Perfect Powers in Lucas Sequences}
+\author{Jesse Silliman and Isabel Vogt}
+
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\thispagestyle{empty}         
+\titlepage
+
+
+
+\end{frame}
+\addtocounter{framenumber}{-1} 
+
+\begin{frame}{The Fibonacci Sequence}
+
+\[0,1,1,2,3,5,8,13,21,34,55,89, 144,233, 377 \cdots \]
+
+
+\end{frame}
+
+\begin{frame}{The Fibonacci Sequence}
+
+\[\emph{0},\emph{1},\emph{1},2,3,5,\emph{8},13,21,34,55,89,\emph{144},233, 377 \cdots \]
+
+\pause
+
+Folklore conjecture: these are the \emph{only} perfect powers!
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Perfect Powers in the Fibonacci Sequence}
+
+\begin{theorem}[Siksek, Bugeaud, Mignotte, 2006]
+0,1,8,144 are the only pp
+\end{theorem}
+
+\pause
+
+\begin{proof}
+Modularity of elliptic curves :-)
+\end{proof}
+
+
+\end{frame}
+
+\begin{frame}{Our Aims}
+
+Generalize the result of Siksek 2006 to other binary recurrence sequences.
+
+\begin{enumerate}[1.]
+
+\item Find more examples
+
+\item Prove a general result for all Lucas sequences
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Lucas Sequences}
+
+Definition.
+
+\end{frame}
+
+\begin{frame}{Theorem 1}
+
+\begin{theorem}
+Unconditional specific sequences
+
+\end{theorem}
+
+
+\end{frame}
+
+\begin{frame}{Theorem 2}
+
+\begin{theorem}
+General Theorem
+
+\end{theorem}
+
+
+\end{frame}
+
+\begin{frame}{Theorem 3}
+
+\begin{theorem}
+Conditional specific sequences
+
+\end{theorem}
+
+
+\end{frame}
+
+\begin{frame}{The modular method}
+
+Frey curves \\
+
+Galois Representations \\
+
+Modularity of Elliptic curves / Modular forms \\
+
+Level-lowering
+
+\end{frame}
+
+
+\begin{frame}{Proof of Theorem 1}
+
+
+\end{frame}
+
+\begin{frame}{Why it's hard}
+
+
+\end{frame}
+
+
+\begin{frame}{Sketch of Theorem 2}
+
+\end{frame}
+
+
+\begin{frame}{Frey-Mazur Conjecture}
+
+State the conjecture.
+
+
+\end{frame}
+
+
+\begin{frame}{The Elliptic Curve Case}
+
+
+\end{frame}
+
+
+\begin{frame}{The Higher Dimensional Abelian Variety Case}
+
+
+\end{frame}
+
+
+\begin{frame}{Conditional Examples}
+
+statement of thm
+
+
+\end{frame}
+
+
+\begin{frame}{Bounding $p$}
+
+
+\end{frame}
+
+
+\begin{frame}{Bounding $n$}
+
+
+\end{frame}
+
+
+\begin{frame}{The Sieve}
+
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

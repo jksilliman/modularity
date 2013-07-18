@@ -104,6 +104,12 @@ T.~N. Shorey and C.~L. Stewart.
   powers in recurrence sequences.
 \newblock {\em Math. Scand.}, 52(1):24--36, 1983.
 
+\bibitem{code}
+Jesse Silliman and Isabel Vogt.
+\newblock Sage code for finding perfect powers in recurrence sequences.
+\newblock Available online at
+  \url{http://people.fas.harvard.edu/~ivogt/perfect_powers_code.sage}.
+
 \bibitem{stein07}
 William Stein.
 \newblock {\em Modular forms, a computational approach}, volume~79 of {\em

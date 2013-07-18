@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Powers_LucasSequences_final.aux
+The style file: plain.bst
+Database file #1: bib.bib
+Warning--there's a number but no volume in brown12
+Warning--there's a number but no volume in ribet91
+Warning--empty journal in code
+Warning--empty year in code
+You've used 22 entries,
+            2118 wiz_defined-function locations,
+            646 strings with 7188 characters,
+and the built_in function-call counts, 7157 in all, are:
+= -- 749
+> -- 228
+< -- 4
++ -- 93
+- -- 70
+* -- 540
+:= -- 1176
+add.period$ -- 69
+call.type$ -- 22
+change.case$ -- 99
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 259
+empty$ -- 611
+format.name$ -- 70
+if$ -- 1475
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 24
+newline$ -- 115
+num.names$ -- 44
+pop$ -- 73
+preamble$ -- 1
+purify$ -- 79
+quote$ -- 0
+skip$ -- 163
+stack$ -- 0
+substring$ -- 659
+swap$ -- 36
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 4
+while$ -- 83
+width$ -- 24
+write$ -- 251
+(There were 4 warnings)

@@ -171,7 +171,7 @@ Note that for $(b,c) = (3,-2)$, Theorem \ref{explicit_eg_thm} provides an altern
 
 The proof of this theorem relies upon the modular method, which begins by constructing a Frey elliptic curve for an alleged $p$th power.  By the modularity of elliptic curves and Ribet's level lowering theorem, this is associated to a weight $2$ newform whose level $N$ is independent of the alleged solution.  These specific unconditional examples, as well as the necessary classical and modular techniques, are covered in Sections \ref{classicalresults} and \ref{mod_method}.
 
-The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, if the space of newforms of level $N$ is empty, then $N \leq 60$.  In fact, the sequences in Theorem \ref{explicit_eg_thm} are the only sequences with $b^2+4c = 1$ associated to such levels.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.  Relying on this alone, the possibility of a systematic treatment seems out of reach.
+The modular method is highly effective for the Diophantine problems encountered in Theorem \ref{explicit_eg_thm} as there are no weight 2 newforms for the levels of interest, allowing a contradiction similar to that in Fermat's Last Theorem.  However, if the space of newforms of level $N$ is empty, then $N \leq 60$.  In fact, the sequences in Theorem \ref{explicit_eg_thm} are the only sequences with $b^2+4c = 1$ associated to such levels, see Proposition \ref{onlyseqs}.  The number of newforms of level $N$ grows roughly linearly, thus as $N$ increases, more clever techniques are necessary in order to show that the newforms of a given level cannot correspond to nontrivial solutions to the Diophantine problem.  This usually involves exploiting congruence conditions placed on Fourier coefficients or the existence of complex multiplication, as in \cite{bennett04}.  If a solution could exist, one might proceed as in \cite{siksek06}, deriving ``local conditions" on the index of the solution, which can then be combined with classical methods.  None of these techniques, though, work in general, and often rely heavily on details of the problem at hand, sometimes combined with nontrivial amounts of computation.  Relying on this alone, the possibility of a systematic treatment seems out of reach.
 
 This leads us to the main goal of our paper, which is to use modular methods combined with the powerful Frey-Mazur Conjecture to obtain general results about perfect powers in Lucas sequences.
 
@@ -219,10 +219,7 @@ Let $(b,c)$ be any binary recurrence sequence such that $b^2+4c=1$.  For $n \geq
 \end{lem}
 
 \begin{proof}
-We prove this by induction on $n$.  First note that $b^2 +4c = 1$ forces $b$ and $c$ to be relatively prime and $c$ to be even.  Clearly as
-\[ u_2 = b \cdot u_1 + c \cdot u_0 \]
-and $u_1$ is relatively prime to $c$, $u_2$ is relatively prime to $c$.  Thus by induction $u_n$ is relatively prime to $c$.  Similarly for $v_n$.  And further as $u_n^2  = v_n^2 - 4(-c)^n$, no primes except perhaps those dividing $c$ can divide $u_n$ and $v_n$.  Thus they are pairwise relatively prime.
-\end{proof}
+First note that $b^2 +4c = 1$ forces $b$ and $c$ to be relatively prime and $c$ to be even.  By induction on $n$, $u_n$ and $v_n$ are relatively prime to $c$.  And further as $u_n^2  = v_n^2 - 4(-c)^n$, no primes except perhaps those dividing $c$ can divide $u_n$ and $v_n$, and as such they are pairwise relatively prime. \end{proof}
 
 \begin{lem}\label{smallp}
 There are no nontrivial squares or cube terms in any of the examples in Theorem \ref{explicit_eg_thm} except $u_2 = 9$ for the sequence $(9,-20)$.
@@ -236,7 +233,7 @@ Assume that the index $n$, for which $u_n = z^2$, is odd; in this case we can ab
 \[ x^n +y^n = z^2. \]
 But there are no nontrivial solutions to the $(n,n,2)$ Diophantine equation for $n \geq 4$  \cite{darmon97}.  We easily check that in our examples, $u_3$ is not a square.  In the case $n$ is even, write $n=2^rk$ for $k$ odd.  Then by \eqref{fib2}, 
 \[u_{n} = v_{2^{r-1}k}v_{2^{r-2}k} \cdots u_kv_k.\]  
-Further by Lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $v_k = \alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition of a nontrivial solution to the $(n,n,2)$ Diophantine equation, which yields a contradiction.  If $k = 1$ (ie $n$ is powers of $2$), then this is the condition that $b$ is a perfect square.  It is easy to verify that this is not true in all of the above examples, except $(9,-20)$.  Further, $u_2 = 3^2$ is the only square in the sequence $(9,-20)$ as any other square term of index $n = 2^r$ would require that all of $u_m$ for $m = 2^{r-1},...,2^2$ also be squares, and $u_4 = 369$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
+Further by Lemma \ref{relprime}, we know that that these terms are relatively prime.  Thus $u_n=z^2$ if and only if each of these terms is also a square.  In particular, $v_k = \alpha^k + \beta^k$ must be a square.  If $k \neq 1$, then this is identical to the previous condition of a nontrivial solution to the $(n,n,2)$ Diophantine equation, which yields a contradiction.  If $k = 1$ (i.e. $n$ is powers of $2$), then again only $n=2$ has nontrivial solutions.  It is easy to verify that $u_2$ is not a square except in $(9,-20)$.  The proof for $p=3$ follows in exactly the same way from reduction to odd index and the solution of $(n,n,3)$ by \cite{darmon97}.
 \end{proof}
 
 In addition, in some specific cases it is possible to find all perfect powers in a binary recurrence sequence by classical methods alone.  For example, in \cite{petho92}, Peth{\H{o}} proved that $u_7 = 13^2$ is the only nontrivial perfect power in the Pell sequence $(2,1)$.
@@ -276,38 +273,53 @@ Assume $u_n = y^p$ for $p\geq 5$, and $n \geq 7$, and $b,c$ relatively prime.  A
 \begin{enumerate}[1.]
 
 \item $b^2+4c \equiv 1 \pmod{4}$, and $2 \notdiv y,w_n,c$, and $w_n \equiv -(-c)^n \pmod{4}$.
+\vspace{-5pt}
 \[ E_1: Y^2 = X^3 + w_nX^2 + (-c)^nX \]
+\vspace{-20pt}
 \[ \Delta = 2^4(-c)^{2n}(b^2+4c)y^{2p},  \qquad N = 2^{\alpha} \rad(2c \cdot (b^2+4c) \cdot y), \qquad \alpha =  \begin{cases} 1: (-c)^n \equiv -1 \pmod{4}\\ 2 : (-c)^n \equiv 1 \pmod{4} \end{cases} \]
 
 \item $b^2+4c \equiv 1,0 \pmod{4}$, $2|y,w_n$, $2 \notdiv c$, let $w_n = 2\hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$.
+\vspace{-5pt}
 \[ E_{2} : Y^2 +XY = X^3 + \frac{\hat{w}_n - 1}{4} X^2 + (b^2+4c)2^{-8}u_nX \]
+\vspace{-15pt}
 \[ \Delta = 2^{-16}(b^2+4c)^2(-c)^ny^{4p}, \qquad N = \rad( c \cdot (b^2+4c)\cdot y)  \]
 
 \item $b^2+4c \equiv 1 \pmod{4}$, $2|c$, $2 \notdiv y,w_n$, and $w_n \equiv 1 \pmod{4}$
+\vspace{-5pt}
 \[ E_{3}: Y^2 +XY = X^3 +\frac{w_n-1}{4}X^2 +2^{-4}(-c)^nX \]
+\vspace{-15pt}
 \[ \Delta = 2^{-8}(-c)^{2n}(b^2+4c)y^{2p} , \qquad N =\rad( c \cdot (b^2+4c)\cdot y)  \]
 
 \item $k = 2$, $2 \notdiv y$, $D \equiv -1 \pmod{4}$
+\vspace{-5pt}
 \[ E_{4} : Y^2 = X^3 + w_nX^2 +Du_n^2X, \qquad \Delta = 2^{6}D^2(-c)^ny^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
 
 \item $k = 2$, $2 \notdiv y$,  $D \equiv 1 \pmod{4}$
+\vspace{-5pt}
 \[E_{5} : Y^2 = X^3 +w_nX^2 +(-c)^nX, \qquad \Delta = 2^{6}D(-c)^{2n}y^{2p}, \qquad N = 2^{5}\rad( c \cdot D \cdot y )  \]
 
 \item $k = 3$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, 
+\vspace{-5pt}
 \[ E_{6} : Y^2 = X^3 + w_nX^2 + 2Du_n^2X, \qquad  \Delta = 2^8D^2(-c)^ny^{4p} , \qquad N = 2^6 \rad( c \cdot 2D \cdot y)  \]
 
 \item $k=4$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$,  with $\hat{w}_n \equiv -D \pmod{4}$
+\vspace{-5pt}
 \[ E_{7} : Y^2 = X^3 +\hat{w}_nX^2 + D u_n X\]
+\vspace{-15pt}
  \[ \Delta = 2^4D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad( c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} 1 & : \ D \equiv -1 \pmod{4}\\ 2 & : \ D \equiv 1 \pmod{4} \end{cases} \]
 
 
 \item $k = 5,6,7$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$
+\vspace{-5pt}
 \[ E_{8} : Y^2 = X^3 + \hat{w}_nX^2 + 2^{k-4}D u_n X \]
+\vspace{-20pt}
 \[ \Delta = 2^{2k-4}D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad(c \cdot 2D \cdot y ) ,  \qquad \alpha =  \begin{cases} 4 &:  \ k = 5 \\ 2 &:  \ k = 6,7 \end{cases} \]
 
 
 \item $k\geq 8$, $2 \notdiv y$, $w_n = 2 \hat{w}_n$, with $\hat{w}_n \equiv 1 \pmod{4}$
+\vspace{-5pt}
 \[ E_{9} : Y^2 + XY = X^3 + \frac{\hat{w}_n-1}{4} X^2 + 2^{k-8}D u_n X \]
+\vspace{-20pt}
 \[ \Delta = 2^{2k-16}D^2(-c)^ny^{4p}, \qquad N = 2^\alpha \rad(c \cdot 2D \cdot y) ,  \qquad \alpha =  \begin{cases} -1&: \ k = 8 \\ 0 &: \ k > 8 \end{cases} \]
 
 
@@ -417,6 +429,17 @@ As $\Delta_E$ is a square, Lemma \ref{absirr} implies $\rho_{E,5}$ is absolutely
 Posit a solution $u_n = y^p$ for $n \geq 5$ and $p \geq 5$.  To this solution, we associate a Frey curve $E$, as in Lemma \ref{freycurves}.  The mod $p$ Galois representation $\rho_{E,p}$ is unramified outside $p\cdot \rad{(c)}$ and finite flat at $p$  by Lemma \ref{unram} (except at $p=5$ in $(b,c) = (9,-20)$ when $p \mid c$).   By Lemma \ref{absirr} and \ref{frey5irr}, $\rho_{E,p}$ is absolutely irreducible for $p\geq 5$.  By the modularity of elliptic curves \ref{modularity} and Ribet's level-lowering Theorem \ref{levellow}, the representation $\rho_{E,p}$ is isomorphic to one arising from a modular form of level $N = \rad(c)$.  For $b,c$ as above, there are no modular forms of level $\rad(c)=2,6,10$.  So there are no perfect $p$th powers if $p \geq 5$ and $n \geq 5$.
 
 Invoking Lemma \ref{smallp} for the cases $p=2,3$ (and checking $n \leq 4$) completes the proof of the theorem.
+\end{proof}
+
+In addition, we have the following interesting proposition that these are the \emph{only} such sequences.
+
+\begin{prop}\label{onlyseqs}
+The sequences in Theorem \ref{explicit_eg_thm} are the only Lucas sequences with $b^2+4c = 1$ whose Frey curves descend to levels $N$ such that $\dim S_2(\Gamma_0(N))_{\text{new}} = 0$.
+\end{prop}
+\begin{proof}
+The level descended to is $N = \rad(c)$ by Lemma \ref{freycurves}.  The only even, squarefree levels for which the corresponding space of newforms is trivial are $\rad(c) = N = 2,6,10,22$.  Any solution to $b^2+4c = 1$ with $\rad(c)$ in the above list corresponds to an integral point on an elliptic curve of the form
+\[ E \colon Y^2 = Ax^3+1, \]
+for finitely many possible $A$.  Enumerating the possible elliptic curves and their integral points easily completes the proof. (When $A = 968$, the curve in question is 13068j1 in the Cremona database; the others can be done in about 30 seconds with Sage, see \cite{code})
 \end{proof}
 
 \section{Proof of Theorem \ref{condbound}}\label{genthmproof}
@@ -567,10 +590,10 @@ In many cases the conditional bounds achieved are in fact much better than the `
 Let $(b,c)$ identify a Lucas sequence $u_n$ with $1 \leq b,c \leq 10$ and relatively prime.  Then for all solutions $u_n = y^p$, $p \leq 19$. When additionally $c = 1$, we have $p \leq 17$.
 \end{thm}
 \begin{proof}
-Using the formulas for conductors given in Lemma \ref{freycurves}, we compute the list of possible levels to which the Frey curve descends.  Using Lemma \ref{ircong1} we find a sharp bound on $p$ for the possibility of level-lowering to an irrational newform.  Then for $p > 17$, we use Theorem \ref{smoothterm} to bound the index $n$ and check all terms up to this bound.  The Sage transcript of computations can be found at \url{http://people.fas.harvard.edu/~ivogt/perfect_powers_code.sage}.
+Using the formulas for conductors given in Lemma \ref{freycurves}, we compute the list of possible levels to which the Frey curve descends.  Using Lemma \ref{ircong1} we find a sharp bound on $p$ for the possibility of level-lowering to an irrational newform.  Then for $p > 17$, we use Theorem \ref{smoothterm} to bound the index $n$ and check all terms up to this bound.  The Sage transcript of computations can be found at \cite{code}.
 \end{proof}
 
-For any prime $p$, given a bound $n \leq B(p)$ we develop a sieve to find all $p$th powers.  This method has some similarity to the sieve in \cite{siksek06}; however, unlike their sieve which uses Frey curves, our method relies entirely upon elementary techniques.  Moreover, our method is completely general, applying to any Lucas sequence and any index $n$ (in contrast, \cite{siksek06} uses the fact that $n$ is prime and $c = 1$).
+For any prime $p$, given a bound $n \leq B(p)$ we develop a sieve to find all $p$th powers.  This method has some similarity to the sieve in \cite{siksek06}; however, unlike their sieve which uses Frey curves, our method relies entirely upon elementary techniques.  Moreover, our method is completely general, clearly applying to any Lucas sequence and any index $n$ (in contrast, \cite{siksek06} uses the fact that $n$ is prime and $c = 1$).
 
 Although the sieve is completely general, the bound $B(p)$ is sharpest when $c = 1$ and $b^2+4$ is prime.  To demonstrate this method, we prove the following theorem.
 
@@ -587,8 +610,7 @@ For $K(q)$ the period of the Fibonacci sequence mod $q$, let $\N(q) \subseteq \Z
 \[ \N(S) \subseteq \Z/K(S)\Z, \qquad \qquad K(S)= \lcm(K(q_1),K(q_2),...).\]  
 To make this computation manageable,  we choose $q_i$ such that $K(q_i) \mid q_i-1$, and $q_i-1 \mid M$, for $M$ a particularly smooth, increasing modulus.  Although the sieve is completely elementary, it seems to work as efficiently as the sieve in \cite{siksek06}.
 
-For $K(S) > B(p)$, it is clear that the set of congruences are a complete list globally.  The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  All remaining elements of $\N(S)$ should grow with the modulus $M$.  Clearly, we can rule out these possible congruences if the smallest such $\bar{a} > B(p)$.  An implementation of the sieve is available at \url{http://people.fas.harvard.edu/~ivogt/perfect_powers_code.sage}.
-
+For $K(S) > B(p)$, it is clear that the set of congruences are a complete list globally.  The congruences $n \equiv 0,1 \pmod{K(S)}$ will always be present in $\N(S)$ as they are $p$th powers for any $p$.  In addition, if there exists another $p$th power, this will appear as an added congruence in $\N(S)$ that does not grow with the modulus.  All remaining elements of $\N(S)$ should grow with the modulus $M$.  Clearly, we can rule out these possible congruences if the smallest such $\bar{a} > B(p)$.  An implementation of the sieve is available at \cite{code}.
 
 \subsection{Proof of Theorem \ref{cond_examples}}
 
@@ -597,7 +619,7 @@ From Theorem~\ref{conditional_bound_p}, we find that for the sequences in questi
 \end{equation} where $y^2 = 4X^2 + Y^2$. We then obtain an upper bound $\max\{|X|, |Y|\} < B$ using the work of Bugeaud and Gyory on Thue equations \cite{bugeaud96}.  Letting $d = b^2+4$, note that $y^p = \left[ \frac{\alpha^n}{\sqrt{d}} \right]$ and it follows that
 \begin{equation} n < \frac{\log\left(\sqrt{5^p d}B^p + \sqrt{d}\right)}{\log|\alpha|}. \end{equation}
 In particular, for $(b,c) = (3,1), (5,1),(7,1)$, if $p\leq17$,  then \[ n < 10^{800}. \]
-Using our sieve, we can rule out $p$th powers for indices less than $10^{800}.$ 
+Given a bound $n < B(p)$, our sieve heuristically runs in time $O((\log B(p))^{2+\epsilon})$; thus the above bound is computationally attainable.  In fact, using our sieve, we can rule out $p$th powers for indices less than $10^{800}$ in a computation that takes less than 10 hours \cite{code}.
 
 
 

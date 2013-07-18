@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: perfect_powers_draft3.aux
+The style file: plain.bst
+Database file #1: bib.bib
+Warning--there's a number but no volume in brown12
+Warning--there's a number but no volume in ribet91
+You've used 21 entries,
+            2118 wiz_defined-function locations,
+            642 strings with 6993 characters,
+and the built_in function-call counts, 6913 in all, are:
+= -- 727
+> -- 215
+< -- 4
++ -- 88
+- -- 66
+* -- 525
+:= -- 1132
+add.period$ -- 66
+call.type$ -- 21
+change.case$ -- 94
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 249
+empty$ -- 594
+format.name$ -- 66
+if$ -- 1428
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 23
+newline$ -- 110
+num.names$ -- 42
+pop$ -- 65
+preamble$ -- 1
+purify$ -- 75
+quote$ -- 0
+skip$ -- 156
+stack$ -- 0
+substring$ -- 654
+swap$ -- 36
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 80
+warning$ -- 2
+while$ -- 81
+width$ -- 23
+write$ -- 242
+(There were 2 warnings)
