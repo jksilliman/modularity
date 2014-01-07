@@ -282,15 +282,23 @@ $u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta}$ and $v_n = \alpha^n +\beta^n$,
 
 \begin{kasten}
 
-\subsection*{ \color{blue} Frey Elliptic Curves}
+\subsection*{\color{blue} Elliptic Curves}
 
-Some explanation \\
+An elliptic curve is a genus 1 abelian variety with 1 marked point.  Every elliptic curve may be written as a plane cubic in Weierstrass form $E \colon y^2 + a_1xy +a_3y = x^3 +a_2x^2 + a_4x +a_6$.  \\
 
-Consider a hypothetical solution $u_n = y^p$ to the Lucas sequence $(3,-2)$, then $13y^{2p} + 2^{n+2} = v_n^2$.
-Let $E$ be the Frey elliptic curve
-\[ E: Y^2 + XY = X^3 + \left(\frac{w_n-1}{4} \right)X^2 + 2^{n-4}X \]
-where $w_n = \pm v_n$ so that $w_n \equiv 1 \pmod{4}$, and $n \geq 5$.  Then we can compute the discriminant and conductor
-\[ \Delta_E = 2^{2n-8}y^{2p} \qquad \qquad N_E = 2 \prod_{\ell | y} \ell. \]
+The minimal discriminant and conductor of an elliptic curve measure the bad reduction at primes and can be computed using Tate's algorithm \cite{tate}.
+
+
+\subsection*{\color{blue} Modular Forms}
+A modular form of weight $2$ on the group $\Gamma_0(N) \subset \SL_2(\Z)$ is a holomorphic function $f$ on the upper half plane $\H$ such that $f \big( \frac{az+b}{cz+d} \big) = (cz+d)^2 f(z) \ \text{for all} \ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \Gamma_0(N)$, and is bounded at the cusps for the action of $\Gamma_0(N)$ on $\H$. 
+
+
+\subsection*{\color{blue} Galois Representations}
+
+For $E$ an elliptic curve and $p$ a prime, the absolute $p$-torsion points $E[p] \simeq \F_p \times \F_p$.
+The Galois action of $G_\Q = \Gal(\bar{\Q}/\Q)$ on $E[p]$ gives a linear representation of the Galois group 
+\[ \rho_{E,p} \colon G_\Q \rightarrow \GL_2(\F_p). \]
+It is ramified at a prime $\ell$ iff $\ell$ ramifies in $\Q(E[p])$.  Eichler-Shimura theory gives a Galois representation $\rho_{f,p}$ associated to a weight $2$ newform $f$.
 
 \end{kasten}
 
@@ -307,41 +315,53 @@ where $w_n = \pm v_n$ so that $w_n \equiv 1 \pmod{4}$, and $n \geq 5$.  Then we 
 
 \begin{kasten}
 
-\subsection*{ \color{blue} Galois Representations}
+\subsection*{\color{blue} Frey Elliptic Curves}
 
-Stuff
+A Frey ellipitic curve is an elliptic curve built out of a hypothetical solution to a Diophantine problem.  The key is that the minimal discriminant will be of the form $C\cdot D^p$ where $C$ does not depend upon the hypothetical solution and $D$ does. \\
+
+For example, consider a hypothetical solution $u_n = y^p$ to the Lucas sequence $(3,-2)$, then $13y^{2p} + 2^{n+2} = v_n^2$.
+Let $E$ be the Frey elliptic curve
+\[ E: Y^2 + XY = X^3 + \left(\frac{w_n-1}{4} \right)X^2 + 2^{n-4}X \]
+where $w_n = \pm v_n$ so that $w_n \equiv 1 \pmod{4}$, and $n \geq 5$.  Then we can compute the discriminant and conductor
+\[ \Delta_E = 2^{2n-8}y^{2p} \qquad \qquad N_E = 2 \prod_{\ell | y} \ell. \]
 
 \end{kasten}
+
+
 
 \begin{kasten}
 
-\subsection*{ \color{blue} Modularity of Elliptic Curves}
+\subsection*{\color{blue} Modularity of Elliptic Curves}
 
-Stuff
+Let $E$ be an elliptic curve over $\Q$ with conductor $N$.  For any prime $p$, there exists a weight 2 newform $f \in S_2(\Gamma_0(N))$ such that
+\[ \rho_{E,p^{\infty}} \simeq \rho_{f,p^{\infty}} \]
+for $\rho_{E,p^\infty}$ and $\rho_{f,p^\infty}$ the $p$-adic representations. 
 
-\end{kasten}
+\subsection*{\color{blue} Level Lowering}
 
-\begin{kasten}
+Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional mod $p$ Galois representation $\rho_{f,p}$ unramified at $\ell$ if $\ell \neq p$ and finite flat at $\ell = p$. 
 
-\subsection*{ \color{blue} Level Lowering}
-
-Stuff
-
-\end{kasten}
-
-\begin{kasten}
-
-\subsection*{ \color{blue} Example}
-
-Prove that now pth powers for $p>7$ for previous example.
+ Then there exists a weight 2 newform $g$ of level $N$ such that
+ \vspace{-10pt}
+\[ \rho_{f,p} \simeq \rho_{g,p}. \]
 
 \end{kasten}
 
-\end{spalte}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%               third column                  %%%             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{spalte}
+%\begin{kasten}
+
+%\subsection*{ \color{blue} Example}
+
+%We can use the modular method to show that there are no $p$th powers in the Lucas sequence $(3,-2)$ for $p\geq 5$.  Let $E$ be the Frey elliptic curve in the above example with $\Delta_E = 2^{2n-8}y^{2p}$ and $N_E = 2 \prod_{\ell | y} \ell$.
+
+
+%One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by a modular curve argument.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
+
+
+%Therefore the Modularity Theorem and Level Lowering guarantee that if this hypothetical Frey curve exists, then there also exists a newform $g$ of level $2$ such that $\rho_{E,p} \simeq \rho_{f, p}$.  But the are no newforms of level $2$, which is a contradiction.
+
+%\end{kasten}
+
+
 \begin{kasten}
 \section*{3 \hspace{0.1cm} {\color{red} 
 \underline{Results}}}
@@ -349,23 +369,32 @@ Prove that now pth powers for $p>7$ for previous example.
 
 \begin{kasten}
 
-Theorem 1 and Theorem 2.
+%We find all perfect powers in several example sequences, and prove a conditional bound on the admissible prime exponents. \\
+
+\textbf{\large \color{blue} Theorem 1.} \textit{For the following values of $b$ and $c$:
+\[ (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \]
+$u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.} \\
+
+\textbf{\large\color{blue} Theorem 2.} \textit{Consider a solution $u_n = y^p$, with $b^2+4c >0$. Let \[ N = 2^8  {\rad}'(c)\rad'(b^2+4c),\]
+where $\rad'$ denotes the product over odd prime divisors.  Then, assuming the Frey-Mazur Conjecture. 
+\[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12+1)}, 4\log{|\alpha|} \cdot  \max\{30,( N+1)\}  \right\}. \]}
 
 \end{kasten}
 
 
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               third column                  %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
 
 \begin{kasten}
-
-\subsection*{\color{blue} Sketch of Proof of Theorem 1}
-
+\section*{3 \hspace{0.1cm} {\color{red} 
+\underline{Techniques}}}
 \end{kasten}
 
-\begin{kasten}
 
-\subsection*{\color{blue} Sketch of Proof of Theorem 2}
 
-\end{kasten}
 
 \end{spalte}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -378,7 +407,15 @@ Theorem 1 and Theorem 2.
 }}}
 \end{kasten}
 
+\begin{kasten}
 
+\subsection*{\color{blue} Sketch of Proof of Theorem 1}
+
+\subsection*{\color{blue} Sketch of Proof of Theorem 2}
+
+
+
+\end{kasten}
 
 \begin{kasten}
   \subsection*{{\color{blue} \large Examples}}
