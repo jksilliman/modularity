@@ -1,0 +1,261 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{url}
+
+\newenvironment{citemize}{
+\begin{list}{$\bullet$}{\setlength{\itemsep}{0pt} \setlength{\rightmargin}{0pt} \setlength{\leftmargin}{0.5\labelwidth} \setlength{\topsep}{0pt}}
+}{\end{list}}
+
+%%
+%
+% 
+% N.B. This format is cribbed from one obtained from the University
+% of Karlsruhe, so some macro names and parameters are in German
+% Here is a short glossary:
+% Breite: width
+% Hoehe: height
+% Spalte: column
+% Kasten: box
+%
+% All style files necessary are part of standard TeTeX distribution
+%
+% The recommended procedure is to first generate a ``Special Format" size poster
+% file, which is relatively easy to manipulate and view.  It can be
+% resized later to A0 (900 x 1100 mm) full poster size, or A4 or Letter size
+% as desired (see web site).  Note the large format printers currently
+% in use at UF's OIR have max width of about 90cm or 3 ft., but the paper
+% comes in rolls so the length is variable.  See below the specifications
+% for width and height of various formats.  Default in the template is
+% ``Special Format",  with 4 columns.
+%%
+%% 
+%% Choose your poster size:
+%% For printing you will later RESIZE your poster by a factor
+%%        2*sqrt(2) = 2.828    (for A0)
+%%        2         = 2.00     (for A1) 
+%%  
+%% 
+
+ \def\breite{355.6mm}
+ \def\hoehe{321.733mm}
+ \def\anzspalten{4}
+
+%%
+%% Procedure:
+%%   Generate poster.dvi with latex
+%%   Check with Ghostview
+%%   Make a .ps-file with ``dvips -o poster.ps poster''
+%%   Scale it with poster_resize poster.ps S
+%%   where S is scale factor
+%%     for Special Format->A0 S= 2.828 (= 2^(3/2)))
+%%     for Special Format->A1 S= 2 (= 2^(2/2)))
+%% 
+%% Sizes (European:)
+%%   A3: 29.73 X 42.04 cm
+%%   A1: 59.5 X 84.1 cm
+%%   A0: 84.1 X 118.9 cm
+%%   N.B. The recommended procedure is ``Special Format x 2.82"
+%%   which gives 90cm x 110cm (not quite A0 dimensions).
+%%
+%% --------------------------------------------------------------------------
+%%
+%% Load the necessary packages
+%% 
+\usepackage{palatino}
+\usepackage[latin1]{inputenc}
+\usepackage{epsf}
+\usepackage{graphicx,psfrag,color,pst-grad}
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage{amsthm}
+
+\newtheorem*{define}{Definition}
+
+%%
+%% Define the required numbers, lengths and boxes 
+%%
+\newsavebox{\dummybox}
+\newsavebox{\spalten}
+
+\newlength{\bgwidth}\newlength{\bgheight}
+\setlength\bgheight{\hoehe} \addtolength\bgheight{-1mm}
+\setlength\bgwidth{\breite} \addtolength\bgwidth{-1mm}
+
+\newlength{\kastenwidth}
+
+%% Set paper format
+\setlength\paperheight{\hoehe}                                             
+\setlength\paperwidth{\breite}
+\special{papersize=\breite,\hoehe}
+
+\topmargin -1in
+\marginparsep0mm
+\marginparwidth0mm
+\headheight0mm
+\headsep0mm
+
+%% Minimal Margins to Make Correct Bounding Box
+\setlength{\oddsidemargin}{-2.47cm}
+\addtolength{\topmargin}{-4mm}
+\textwidth\paperwidth
+\textheight\paperheight
+
+\parindent0cm
+\parskip1.5ex plus0.5ex minus 0.5ex
+\pagestyle{empty}
+
+
+\definecolor{MyBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyGreen}{rgb}{0,0.5,0.25}
+\definecolor{TitleGreen}{rgb}{0,0.5,0.35}
+\definecolor{recoilcolor}{rgb}{1,0,0}
+\definecolor{occolor}{rgb}{0,1,0}
+\definecolor{pink}{rgb}{0,1,1}
+\definecolor{mybrown}{rgb}{0.6, 0.3, 0}
+
+\def\UberStil{\normalfont\sffamily\bfseries\large}
+\def\UnterStil{\normalfont\sffamily\small}
+\def\LabelStil{\normalfont\sffamily\tiny}
+\def\LegStil{\normalfont\sffamily\tiny}
+
+%%
+%% Define some commands
+%%
+\definecolor{JG}{rgb}{0.1,0.9,0.3}
+
+\newenvironment{kasten}{%
+  \begin{lrbox}{\dummybox}%
+    \begin{minipage}{0.96\linewidth}}%
+    {\end{minipage}%
+  \end{lrbox}%
+  \raisebox{-\depth}{\psshadowbox[framesep=1em]{\usebox{\dummybox}}}\\[0.5em]}
+\newenvironment{spalte}{%
+  \setlength\kastenwidth{1.2\textwidth}
+  \divide\kastenwidth by \anzspalten
+  \begin{minipage}[t]{\kastenwidth}}{\end{minipage}\hfill}
+
+\renewcommand{\emph}[1]{{\color{red}\textbf{#1}}}
+\renewcommand{\refname}{{\color{red}\underline{References}} } 
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               Background                     %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\newrgbcolor{gradbegin}{0.4 0.4 1}%
+  \newrgbcolor{gradend}{0.85 0.4 1}%{1 1 0.5}%
+  \psframe[fillstyle=gradient,gradend=gradend,%
+  gradbegin=gradbegin,gradmidpoint=0.1](\bgwidth,-\bgheight)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                     Header                   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\hspace{-0.1in} \psshadowbox{\makebox[0.46\textwidth]{
+\parbox[c]{\linewidth}{
+    \parbox[c]{1.0\linewidth}{
+      \begin{center}
+        \textbf{\Huge \color{TitleGreen}
+{\  Perfect Powers in Lucas Sequences  \\  via Galois Representations}}\\
+\vspace{.1in}
+        \textsc{\large \color{blue} Jesse Silliman (Chicago) and Isabel Vogt (Harvard)}\\
+\vspace{.1in}
+        {\color{mybrown} Joint Mathematical Meetings,  \ Baltimore, Maryland}
+      \end{center}}
+}}}
+\end{center}
+
+\begin{lrbox}{\spalten}
+  \parbox[t][\textheight]{1.3\textwidth}{%
+    \hfill
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               first column                   %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+\vspace{-2.8in}
+      \begin{kasten}
+\section*{1 \hspace{0.1cm} {\color{red} \underline{Introduction}}}
+\end{kasten}
+
+\begin{kasten}
+\subsection*{\color{blue} What am I Doing?}
+{\color{blue}
+Text here.
+} % end of blue color.
+\end{kasten}
+
+\begin{kasten}
+\subsection*{\color{blue} An Understandable Example}
+Text here.
+\end{kasten}
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               second column                   %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+\begin{kasten}
+\section*{3 \hspace{0.1cm} {\color{red} 
+\underline{Second Column}}}
+\end{kasten}
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               third column                  %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+\begin{kasten}
+\section*{3 \hspace{0.1cm} {\color{red} 
+\underline{Third Column}}}
+\end{kasten}
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               fourth column                  %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+\vspace{-2.8in}
+\begin{kasten}
+ \section*{5 \hspace{0.1cm} {\color{red} \underline{Conclusion
+}}}
+\end{kasten}
+
+\begin{kasten}
+\subsection*{{\color{blue} \large Sketch of Proof}}
+Text here.
+\end{kasten}
+
+\begin{kasten}
+  \subsection*{{\color{blue} \large Significance and Applications}}
+
+\begin{citemize}
+\item Some stuff.
+\end{citemize}
+
+\end{kasten}
+
+
+\begin{kasten}
+\subsection*{{\color{blue} Acknowledgements}}
+I would like to thank \ldots
+\begin{citemize}
+\item Some people.
+\end{citemize}
+\end{kasten}
+
+\begin{kasten}
+         {\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{-2mm}
+
+\bibitem{something} Works cited.
+
+\end{thebibliography}
+} % end \small
+\end{kasten}
+
+\end{spalte}
+    }
+    \end{lrbox}
+\resizebox*{0.98\textwidth}{!}{%
+  \usebox{\spalten}}\hfill\mbox{}\vfill
+\end{document}
