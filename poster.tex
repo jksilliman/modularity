@@ -1,9 +1,75 @@
-\documentclass[12pt]{scrartcl}
+\documentclass[14pt]{scrartcl}
 \usepackage{url}
 
 \newenvironment{citemize}{
 \begin{list}{$\bullet$}{\setlength{\itemsep}{0pt} \setlength{\rightmargin}{0pt} \setlength{\leftmargin}{0.5\labelwidth} \setlength{\topsep}{0pt}}
 }{\end{list}}
+
+\def\B{{\mathbb B}}
+\def\C{{\mathbb C}}
+\def\D{{\mathbb D}}
+\def\Fp{{\mathbb F}_p}
+\def\Fell{{\mathbb F}_{\ell}}
+\def\F{{\mathbb F}}
+\def\H{{\mathbb H}}
+\def\M{{\mathbb M}}
+\def\N{{\mathcal N}}
+\def\O{{\mathcal O}}
+\def\0{{\mathbb 0}}
+\def\P{{{\mathbb P}}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\T{{\mathbb T}}
+\def\Z{{\mathbb Z}}
+
+\newcommand{\sol}{_{a^p,b^p,c^p}}
+\newcommand{\bound}{\partial}
+\newcommand{\la}[1]{\mathfrak{#1}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\ann}{\text{Ann} \hspace{0.1em} }
+\newcommand{\rank}{\text{rank} \hspace{0.1em} }
+\newcommand{\coker}[1]{\text{coker}\hspace{0.1em}{#1}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\re}{\text{Re}  \hspace{0.1em} }
+\newcommand{\ext}[1]{\text{Ext}(#1)}
+\newcommand{\Hom}[1]{\text{Hom}(#1)}
+\newcommand{\End}[1]{\text{End(#1)}}
+\newcommand{\bs}{\setminus}
+\newcommand{\rpp}[1]{\mathbb{R}\text{P}^{#1}}
+\newcommand{\cpp}[1]{\mathbb{C}\text{P}^{#1}}
+\newcommand{\tr}{\text{tr}\hspace{0.1em} }
+\newcommand{\inner}[1]{\langle {#1}\rangle}
+\newcommand{\tensor}{\otimes}
+\newcommand{\Cl}{\text{Cl}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\GL}{\text{GL}}
+\newcommand{\PGL}{\text{PGL}}
+\newcommand{\SL}{\text{SL}}
+\newcommand{\so}[1]{\text{SO}_{#1}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\pso}[1]{\text{PSO}_{#1}}
+\renewcommand{\o}[1]{\text{O}_{#1}}
+\renewcommand{\sp}[1]{\text{Sp}_{#1}}
+\newcommand{\psp}[1]{\text{PSp}_{#1}}
+\newcommand{\Span}{\rm Span}
+\newcommand{\Frob}{\rm Frob}
+\newcommand{\tor}{\rm tor}
+\newcommand{\rad}{{\rm{rad}}}
+\newcommand{\denom}{\rm denom}
+\renewcommand{\bar}{\overline}
+\newcommand{\notdiv}{\nmid}
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}
+\newcommand{\bfrac}[2]{\left| \frac{#1}{#2} \right|}
+\newcommand{\Ell}{\rm{Ell}}
+\newcommand{\AV}{\rm{AV}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\ord}{{\rm{ord}}}
+
+\newcommand{\kron}[2]{\bigl(\frac{#1}{#2}\bigr)}
+\newcommand{\leg}[2]{\Biggl(\frac{#1}{#2}\Biggr)}
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
 
 %%
 %
@@ -35,8 +101,8 @@
 %%  
 %% 
 
- \def\breite{355.6mm}
- \def\hoehe{321.733mm}
+ \def\breite{20in}
+ \def\hoehe{15in}
  \def\anzspalten{4}
 
 %%
@@ -171,22 +237,63 @@
 %%%               first column                   %%%             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{spalte}
-\vspace{-2.8in}
+\vspace{-3.4in}
       \begin{kasten}
 \section*{1 \hspace{0.1cm} {\color{red} \underline{Introduction}}}
 \end{kasten}
 
 \begin{kasten}
-\subsection*{\color{blue} What am I Doing?}
-{\color{blue}
-Text here.
-} % end of blue color.
+\subsection*{\color{blue} Abstract}
+{
+Let $u_n$ be a nondegenerate Lucas sequence.  We generalize the results of Bugeaud, Mignotte, and Siksek \cite{siksek06} to give a systematic approach towards the problem of determining all perfect powers in any particular Lucas sequence.  We then prove a general bound on admissible prime powers in a Lucas sequence assuming the Frey-Mazur conjecture on isomorphic mod $p$ Galois representations of elliptic curves.  Finally we develop a computationally efficient elementary sieve to conditionally determine all powers in several more example sequences.
+} 
 \end{kasten}
 
 \begin{kasten}
-\subsection*{\color{blue} An Understandable Example}
-Text here.
+
+\subsection*{\color{blue} Motivation/Previous Work}
+In 2006, Bugeaud, Mignotte, and Siksek proved that
+$F_0=0^p$, $F_1=1^p$, $F_6=2^3$, and $F_{12} = 12^2$ are the only perfect powers in the Fibonacci sequence.  Their proof relied upon the theory of elliptic curves and their associated Galois representations, especially the modularity theorem for elliptic curves over $\Q$.
+
 \end{kasten}
+
+\begin{kasten}
+%\subsection*{\color{blue} Elliptic Curves}
+
+%An elliptic curve is a genus 1 abelian variety with 1 marked point.  In characteristic $\neq 2,3$ every elliptic curve may be written as a plane cubic in Weierstrass form $E \colon y^2 = x^3 +ax +b$.
+
+%\subsection*{\color{blue} Modular Forms}
+%A modular form of weight $2$ on the group $\Gamma_0(N) \subset \SL_2(\Z)$ is a holomorphic function $f$ on the upper half plane $\H$ such that $f \big( \frac{az+b}{cz+d} \big) = (cz+d)^2 f(z) \ \text{for all} \ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \Gamma_0(N)$, and is bounded at the cusps. 
+
+\subsection*{\color{blue} Lucas Sequences}
+A Lucas sequence $u_n$ is a nondegenerate integral linear binary recurrence relation defined by
+%\vspace{-.1in}
+\[u_{n+2} = bu_{n+1} + cu_n\]
+%\vspace{-.1in}
+with $u_0=0$ and $u_1 = 1$.  
+The companion sequence $v_n$ is defined by $v_{n+2} = bv_{n+1} + cv_n$ with $v_0=2$ and $v_1 = b$.
+A Lucas sequence $(b,c)$ has characteristic polynomial and roots
+\[ g(z) = z^2 - bz - c, \qquad \qquad \alpha, \beta = \frac{b \pm \sqrt{b^2+4c}}{2},\]
+and we may write
+$u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta}$ and $v_n = \alpha^n +\beta^n$, which gives the relations
+\[(b^2+4c)u_n^2 = v_n^2 - 4(-c)^n\]
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{ \color{blue} Frey Elliptic Curves}
+
+Some explanation \\
+
+Consider a hypothetical solution $u_n = y^p$ to the Lucas sequence $(3,-2)$, then $13y^{2p} + 2^{n+2} = v_n^2$.
+Let $E$ be the Frey elliptic curve
+\[ E: Y^2 + XY = X^3 + \left(\frac{w_n-1}{4} \right)X^2 + 2^{n-4}X \]
+where $w_n = \pm v_n$ so that $w_n \equiv 1 \pmod{4}$, and $n \geq 5$.  Then we can compute the discriminant and conductor
+\[ \Delta_E = 2^{2n-8}y^{2p} \qquad \qquad N_E = 2 \prod_{\ell | y} \ell. \]
+
+\end{kasten}
+
 
 \end{spalte}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,7 +302,39 @@ Text here.
     \begin{spalte}
 \begin{kasten}
 \section*{3 \hspace{0.1cm} {\color{red} 
-\underline{Second Column}}}
+\underline{The Modular Method}}}
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{ \color{blue} Galois Representations}
+
+Stuff
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{ \color{blue} Modularity of Elliptic Curves}
+
+Stuff
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{ \color{blue} Level Lowering}
+
+Stuff
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{ \color{blue} Example}
+
+Prove that now pth powers for $p>7$ for previous example.
+
 \end{kasten}
 
 \end{spalte}
@@ -205,7 +344,27 @@ Text here.
     \begin{spalte}
 \begin{kasten}
 \section*{3 \hspace{0.1cm} {\color{red} 
-\underline{Third Column}}}
+\underline{Results}}}
+\end{kasten}
+
+\begin{kasten}
+
+Theorem 1 and Theorem 2.
+
+\end{kasten}
+
+
+
+\begin{kasten}
+
+\subsection*{\color{blue} Sketch of Proof of Theorem 1}
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{\color{blue} Sketch of Proof of Theorem 2}
+
 \end{kasten}
 
 \end{spalte}
@@ -213,19 +372,16 @@ Text here.
 %%%               fourth column                  %%%             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{spalte}
-\vspace{-2.8in}
+\vspace{-3.4in}
 \begin{kasten}
  \section*{5 \hspace{0.1cm} {\color{red} \underline{Conclusion
 }}}
 \end{kasten}
 
-\begin{kasten}
-\subsection*{{\color{blue} \large Sketch of Proof}}
-Text here.
-\end{kasten}
+
 
 \begin{kasten}
-  \subsection*{{\color{blue} \large Significance and Applications}}
+  \subsection*{{\color{blue} \large Examples}}
 
 \begin{citemize}
 \item Some stuff.
@@ -233,6 +389,10 @@ Text here.
 
 \end{kasten}
 
+\begin{kasten}
+\subsection*{{\color{blue} \large Future Work}}
+Text here.
+\end{kasten}
 
 \begin{kasten}
 \subsection*{{\color{blue} Acknowledgements}}
