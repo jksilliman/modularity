@@ -421,7 +421,7 @@ First we compute all possible Frey elliptic curves for this Diophantine problem 
 
 \subsection*{\color{blue} Sturm's Bound}
 
-If two weight 2 modular forms $f$ and $g$ on $\Gamma_0(N)$ are not isomorphic, then Sturm's bound gives that they must differ in a Fourier coefficient whose index $n$ is bounded by 
+If two weight 2 modular forms $f$ and $g$ on $\Gamma_0(N)$ are not equal, then Sturm's bound gives that they must differ in a Fourier coefficient whose index $n$ is bounded by 
 \[n \leq \frac{\psi(N)}{6}.\] 
 
 \end{kasten}
@@ -503,8 +503,9 @@ as the elliptic curves are isogenous.
 \item Otherwise it level-lowers to a higher dimensional abelian variety, and the congruence conditions give
 \[ p \leq \Nm_{K/\Q}(2\sqrt{\ell} +\ell+1) \leq (2\sqrt{\ell} +\ell+1)^{\operatorname{deg}{K}}.\]
 
-\item Further, Sturm's Bound gives that
-
+\item Further, Sturm's Bound gives that $\ell \leq \psi(N)/6$, as $f$ is not equal to its Galois conjugates.  Further the degree of $K$ is bounded by $1+\psi(N)/12$.  So
+\[p \leq \psi(N)^{(\psi(N)/12+1)}.\]
+\qed
 \end{citemize}
 
 \end{kasten}
@@ -524,9 +525,40 @@ as the elliptic curves are isogenous.
 \begin{kasten}
   \subsection*{{\color{blue} \large Examples}}
 
+%\begin{citemize}
+%\item Some stuff.
+%\end{citemize}
+
+We also give an algorithm for finding all $p$th powers up to a bound on the index $B(p)$.  This can come from the theory of Thue equations.
+
+\subsubsection*{\color{red} Sieve for $p$th Powers}
+
 \begin{citemize}
-\item Some stuff.
+
+\item Look at $u_n$ mod $q$ for $q \equiv 1 \pmod{p}$, i.e. $p \mid \#\F_q^\times$
+
+\item There should be $1/p$ $p$th powers mod $q$
+
+
+
+\item This gives nontrivial congruence data on $n$ mod the period of $u_n$
+
+
+
+\item Do this for many such primes and combine via the Chinese Remainder Theorem
+
+
+\item The modulus $M$ grows, as do some congruences $\bar{a}$ in the list
+\[ \bar{n} \in \{0,1,...,\bar{a}_1,...,\bar{a}_m\} \subseteq \Z/M\Z \]
+
+
+\item If $\bar{a}_1 > B(p) \Rightarrow $ the fixed congruences are a complete list
+
 \end{citemize}
+
+\subsubsection*{\color{red} Conditional Examples}
+
+Assuming the Frey-Mazur Conjecture, there are no nontrivial $p$th powers in the Lucas sequences $(b,c) = (3,1)$, $(5,1)$, and $(7,1)$.
 
 \end{kasten}
 
