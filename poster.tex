@@ -391,10 +391,12 @@ where $\rad'$ denotes the product over odd prime divisors.  Then, assuming the F
 \underline{Techniques}}}
 \end{kasten}
 
+
+
 \begin{kasten}
 
 \subsection*{ \color{blue} Congruence Conditions for Isomorphism}
-The condition that two mod $p$ Galois representations be isomorphic imposes congruence constraints on the Fourier coefficients of the newforms.
+%The condition that two mod $p$ Galois representations be isomorphic imposes congruence constraints on the Fourier coefficients of the newforms.
 
 If $g$ is a rational newform (coresponding to an elliptic curve) and coefficients $a_\ell$ and conductor $N_g$, and $f$ is the level-lowered newform with coefficients $c_\ell$ and conductor $N_f$, then
 \begin{align*}
@@ -411,11 +413,16 @@ If $f$ is an irrational newform, then being integral modulo some prime is a nont
 
 \begin{kasten}
 
-\subsection*{ \color{blue} The Frey-Mazur Conjecture}
+\subsection*{\color{blue} Bounds on the Frey Curve Conductor}
 
-The Frey-Mazur Conjecture says that for $p$ large enough, two elliptic curves with isomorphic mod $p$ Galois representations must be isogenous. \\
+First we compute all possible Frey elliptic curves for this Diophantine problem and find that in all cases,
+\[N_E \leq 2^8 \cdot \rad'(c) \cdot \rad'((b^2+4c)\cdot y).\]
 
-Precisely, let $E, E'$ be two elliptic curves defined over $\Q$. If $E[p] \cong E'[p]$ for some $p > 17$, then $E$ and $E'$ are isogenous.
+
+\subsection*{\color{blue} Sturm's Bound}
+
+If two weight 2 modular forms $f$ and $g$ on $\Gamma_0(N)$ are not isomorphic, then Sturm's bound gives that they must differ in a Fourier coefficient whose index $n$ is bounded by 
+\[n \leq \frac{\psi(N)}{6}.\] 
 
 \end{kasten}
 
@@ -425,7 +432,15 @@ Precisely, let $E, E'$ be two elliptic curves defined over $\Q$. If $E[p] \cong 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{spalte}
 
+\begin{kasten}
 
+\subsection*{ \color{blue} The Frey-Mazur Conjecture}
+
+The Frey-Mazur Conjecture says that for $p$ large enough, two elliptic curves with isomorphic mod $p$ Galois representations must be isogenous. \\
+
+Precisely, let $E, E'$ be two elliptic curves defined over $\Q$. If $E[p] \cong E'[p]$ for some $p > 17$, then $E$ and $E'$ are isogenous.
+
+\end{kasten}
 
 \begin{kasten}
 
@@ -463,6 +478,37 @@ Let $S$ be the set of all integers whose prime factors lie in some finite set $\
 
 \end{kasten}
 
+\begin{kasten}
+
+\subsection*{\color{blue} Sketch of Proof of Theorem 2}
+
+\begin{citemize}
+
+\item We first divide the problem into two cases:
+\begin{enumerate}
+
+\item $E$ level lowers to an elliptic curve
+
+\item $E$ level lowers to a higher dimensional abelian variety
+
+\end{enumerate}
+
+\item Let $p$ be a prime such that $E$ level lowers mod $p$ to an elliptic curve $F$.  Then either $p \leq 17$, or
+\[ N_E = 2^\gamma \cdot \rad'(c \cdot (b^2+4c)\cdot y) = 2^\gamma \cdot \rad'(c \cdot (b^2+4c)) = N_F, \]
+as the elliptic curves are isogenous.
+
+\item In this case $\rad(y) \mid \rad(2c \cdot (b^2+4c))$, so the term $u_n = y^p$ is smooth by the primes dividing $\rad{N} = 2\rad{c\cdot (b^2+4c)}$, and hence $n < \max\{30, N+1\}$.  And $\log y^p \approx \log(n \alpha^{n-1})$ so
+\[p \leq 4 \log |\alpha| \cdot \max\{30, N+1\}. \]
+
+\item Otherwise it level-lowers to a higher dimensional abelian variety, and the congruence conditions give
+\[ p \leq \Nm_{K/\Q}(2\sqrt{\ell} +\ell+1) \leq (2\sqrt{\ell} +\ell+1)^{\operatorname{deg}{K}}.\]
+
+\item Further, Sturm's Bound gives that
+
+\end{citemize}
+
+\end{kasten}
+
 
 
 \end{spalte}
@@ -473,13 +519,7 @@ Let $S$ be the set of all integers whose prime factors lie in some finite set $\
 \vspace{-2.71in}
 
 
-\begin{kasten}
 
-\subsection*{\color{blue} Sketch of Proof of Theorem 2}
-
-
-
-\end{kasten}
 
 \begin{kasten}
   \subsection*{{\color{blue} \large Examples}}
@@ -624,12 +664,12 @@ Jesse Silliman and Isabel Vogt.
 \newblock Available online at
   \url{http://people.fas.harvard.edu/~ivogt/perfect_powers_code.sage}.
 
-\bibitem{stein07}
-William Stein.
-\newblock {\em Modular forms, a computational approach}, volume~79 of {\em
-  Graduate Studies in Mathematics}.
-\newblock American Mathematical Society, Providence, RI, 2007.
-\newblock With an appendix by Paul E. Gunnells.
+%\bibitem{stein07}
+%William Stein.
+%\newblock {\em Modular forms, a computational approach}, volume~79 of {\em
+%  Graduate Studies in Mathematics}.
+%\newblock American Mathematical Society, Providence, RI, 2007.
+%\newblock With an appendix by Paul E. Gunnells.
 
 \bibitem{taylorwiles95}
 Richard Taylor and Andrew Wiles.
