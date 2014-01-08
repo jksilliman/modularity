@@ -241,7 +241,7 @@
 %%%               first column                   %%%             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{spalte}
-\vspace{-2.71in}
+\vspace{-2.81in}
       \begin{kasten}
 \section*{1 \hspace{0.1cm} {\color{red} \underline{Introduction}}}
 \end{kasten}
@@ -282,6 +282,53 @@ A Lucas sequence $(b,c)$ has characteristic polynomial and roots
 and we may write
 $u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta}$ and $v_n = \alpha^n +\beta^n$, which gives the relations
 \[(b^2+4c)u_n^2 = v_n^2 - 4(-c)^n\]
+
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{\color{blue} Finding Perfect Powers}
+
+Fix a Lucas sequence $u_n$.  A perfect power is a solution to the Diophantine equation $u_n = y^p$ for some integers $y>1$ and $p$.  By factoring $p$, it suffices to consider prime exponents.  This naturally breaks into 3 steps:
+
+\begin{enumerate}
+
+\item Bound the exponent $p$ that can appear
+
+\item Bound the index $n \leq B(p)$ in terms of $p$
+
+\item Check all terms of index less than $B(p)$ and determine if they are $p$th powers
+
+\end{enumerate}
+The last step, though nontrivial, is possible via the following elementary algorithm:
+\subsubsection*{\color{red} Sieve for $p$th Powers}
+
+\begin{citemize}
+
+\item Look at $u_n$ mod $q$ for $q \equiv 1 \pmod{p}$, i.e. $p \mid \#\F_q^\times$
+
+\item There should be $1/p$ $p$th powers mod $q$
+
+
+
+\item This gives nontrivial congruence data on $n$ mod the period of $u_n$
+
+
+
+\item Do this for many such primes and combine via the CRT
+
+
+\item The modulus $M$ grows, as do some congruences $\bar{a}$ in the list
+\[ \bar{n} \in \{0,1,...,\bar{a}_1,...,\bar{a}_m\} \subseteq \Z/M\Z \]
+
+
+\item If $\bar{a}_1 > B(p) \Rightarrow $ the fixed congruences are a complete list
+
+\end{citemize}
+
+%The bounds in question in the second step are effective known due to \cite{petho82} and \cite{shorey83}, and can sometimes be computed explicitly using the theory of Thue equations.  For that reason, 
+
+The bound $B(p)$ can come from the theory of Thue equations.  Here we focus on answering the first question by demonstrating an explicit bound on $p$ depending on $b$ and $c$.
 
 \end{kasten}
 
@@ -327,6 +374,15 @@ $u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta}$ and $v_n = \alpha^n +\beta^n$,
 
 \end{kasten}
 
+
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               second column                   %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+
+
 \begin{kasten}
 
 \subsection*{\color{blue} Frey Elliptic Curves}
@@ -357,23 +413,14 @@ Conversely, given a weight $2$ newform $f$, Eichler-Shimura theory associates an
 
 
 
-
-\end{spalte}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%               second column                   %%%             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{spalte}
-
-
-
 \begin{kasten}
 
 \subsection*{\color{blue} Modularity of Elliptic Curves}
 
 Let $E$ be an elliptic curve over $\Q$ with conductor $N$.  For any prime $p$, there exists a weight 2 newform $f \in S_2(\Gamma_0(N))$ such that
-\[ \rho_{E,p} \simeq \rho_{f,p}. \]
-%\[ \rho_{E,p^{\infty}} \simeq \rho_{f,p^{\infty}} \]
-%for $\rho_{E,p^\infty}$ and $\rho_{f,p^\infty}$ the $p$-adic representations. 
+%\[ \rho_{E,p} \simeq \rho_{f,p}. \]
+\[ \rho_{E,p^{\infty}} \simeq \rho_{f,p^{\infty}},\]
+for $\rho_{E,p^\infty}$ and $\rho_{f,p^\infty}$ the $p$-adic representations. 
 
 \subsection*{\color{blue} Level Lowering}
 
@@ -386,17 +433,17 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 \end{kasten}
 
 
-\begin{kasten}
+%\begin{kasten}
 
-\subsection*{ \color{blue} Example}
+%\subsection*{ \color{blue} Example}
 
-We can use the modular method to show that there are no $p$th powers in the Lucas sequence $(3,-2)$ for $p\geq 5$.  Let $E$ be the Frey elliptic curve in the above example with $\Delta_E = 2^{2n-8}y^{2p}$ and $N_E = 2 \prod_{\ell | y} \ell$.
+%We can use the modular method to show that there are no $p$th powers in the Lucas sequence $(3,-2)$ for $p\geq 5$.  Let $E$ be the Frey elliptic curve in the above example with $\Delta_E = 2^{2n-8}y^{2p}$ and $N_E = 2 \prod_{\ell | y} \ell$.
 
-One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by studying the modular curves $X_0(p)$ and $X_0(2p)$.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
+%One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by studying the modular curves $X_0(p)$ and $X_0(2p)$.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
 
-Therefore the Modularity Theorem and Level Lowering guarantee that if this hypothetical Frey curve exists, then there also exists a newform $g$ of level $2$ such that $\rho_{E,p} \simeq \rho_{f, p}$.  But the are no newforms of level $2$, which is a contradiction.
+%Therefore the Modularity Theorem and Level Lowering guarantee that if this hypothetical Frey curve exists, then there also exists a newform $g$ of level $2$ such that $\rho_{E,p} \simeq \rho_{f, p}$.  But the are no newforms of level $2$, which is a contradiction.
 
-\end{kasten}
+%\end{kasten}
 
 
 %\begin{kasten}
@@ -404,12 +451,57 @@ Therefore the Modularity Theorem and Level Lowering guarantee that if this hypot
 %\underline{Results}}}
 %\end{kasten}
 
+
 \begin{kasten}
-\section*{3 \hspace{0.1cm} {\color{red} 
-\underline{Techniques}}}
+ \section*{5 \hspace{0.1cm} {\color{red} \underline{Results
+}}}
+\end{kasten}
+
+\begin{kasten}
+
+We find all perfect powers in several example sequences, and prove a conditional bound on the admissible prime exponents. \\
+
+\textbf{\large \color{blue} Theorem 1.} \textit{For the following values of $b$ and $c$:
+\[ (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \]
+$u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.} \\
+
+\textbf{\large\color{blue} Theorem 2.} \textit{Consider a solution $u_n = y^p$, with $b^2+4c >0$. Let \[ N = 2^8  {\rad}'(c)\rad'(b^2+4c),\]
+where $\rad'$ denotes the product over odd prime divisors.  Then, assuming the Frey-Mazur Conjecture. 
+\[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12+1)}, 4\log{|\alpha|} \cdot  \max\{30,( N+1)\}  \right\}. \]}
+
 \end{kasten}
 
 
+
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               third column                  %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+
+
+\begin{kasten}
+\section*{4 \hspace{0.1cm} {\color{red} 
+\underline{Techniques}}}
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{\color{blue} Overview}
+
+When the modular method does not work as smoothly as in the examples in Theorem 1, we break our problem into two cases
+\begin{enumerate}
+
+\item $E$ level lowers to an elliptic curve
+
+\item $E$ level lowers to a higher dimensional abelian variety
+
+\end{enumerate}
+
+
+
+\end{kasten}
 
 \begin{kasten}
 
@@ -464,33 +556,6 @@ Let $S$ be the set of all integers whose prime factors lie in some finite set $\
 
 \end{kasten}
 
-\end{spalte}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%               third column                  %%%             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{spalte}
-
-
-
-\begin{kasten}
- \section*{5 \hspace{0.1cm} {\color{red} \underline{Results
-}}}
-\end{kasten}
-
-\begin{kasten}
-
-We find all perfect powers in several example sequences, and prove a conditional bound on the admissible prime exponents. \\
-
-\textbf{\large \color{blue} Theorem 1.} \textit{For the following values of $b$ and $c$:
-\[ (b,c) = (3,-2), (5,-6), (7,-12), (17,-72), (9,-20) \]
-$u_n$ has no nontrivial $p$th powers, except $u_2 = 3^2$ in $(9,-20)$.} \\
-
-\textbf{\large\color{blue} Theorem 2.} \textit{Consider a solution $u_n = y^p$, with $b^2+4c >0$. Let \[ N = 2^8  {\rad}'(c)\rad'(b^2+4c),\]
-where $\rad'$ denotes the product over odd prime divisors.  Then, assuming the Frey-Mazur Conjecture. 
-\[ p \leq \max\left\{17,   \psi(N)^{(\psi(N)/12+1)}, 4\log{|\alpha|} \cdot  \max\{30,( N+1)\}  \right\}. \]}
-
-\end{kasten}
-
 
 \begin{kasten}
 
@@ -519,15 +584,6 @@ where $\rad'$ denotes the product over odd prime divisors.  Then, assuming the F
 \subsection*{\color{blue} Sketch of Proof of Theorem 2}
 
 \begin{citemize}
-
-\item We first divide the problem into two cases:
-\begin{enumerate}
-
-\item $E$ level lowers to an elliptic curve
-
-\item $E$ level lowers to a higher dimensional abelian variety
-
-\end{enumerate}
 
 \item Let $p$ be a prime such that $E$ level lowers mod $p$ to an elliptic curve $F$.  Then either $p \leq 17$, or
 \[ N_E = 2^\gamma \cdot \rad'(c \cdot (b^2+4c)\cdot y) = 2^\gamma \cdot \rad'(c \cdot (b^2+4c)) = N_F, \]
@@ -567,30 +623,7 @@ as the elliptic curves are isogenous.
 
 We also give an algorithm for finding all $p$th powers up to a bound on the index $B(p)$.  This can come from the theory of Thue equations.
 
-\subsubsection*{\color{red} Sieve for $p$th Powers}
 
-\begin{citemize}
-
-\item Look at $u_n$ mod $q$ for $q \equiv 1 \pmod{p}$, i.e. $p \mid \#\F_q^\times$
-
-\item There should be $1/p$ $p$th powers mod $q$
-
-
-
-\item This gives nontrivial congruence data on $n$ mod the period of $u_n$
-
-
-
-\item Do this for many such primes and combine via the Chinese Remainder Theorem
-
-
-\item The modulus $M$ grows, as do some congruences $\bar{a}$ in the list
-\[ \bar{n} \in \{0,1,...,\bar{a}_1,...,\bar{a}_m\} \subseteq \Z/M\Z \]
-
-
-\item If $\bar{a}_1 > B(p) \Rightarrow $ the fixed congruences are a complete list
-
-\end{citemize}
 
 \subsubsection*{\color{red} Conditional Examples}
 
