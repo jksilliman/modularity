@@ -353,7 +353,13 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 
 \end{kasten}
 
+\begin{kasten}
 
+\subsection*{ \color{blue} Application}
+
+Suppose that $E$ is an elliptic curve over $\Q$ with minimal discriminant $\Delta = C\cdot D^p$, conductor $N$ | \Delta$
+
+\end{kasten}
 
 
 \end{spalte}
@@ -372,7 +378,7 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 
 We can use the modular method to show that there are no $p$th powers in the Lucas sequence $(3,-2)$ for $p\geq 5$.  Let $E$ be the Frey elliptic curve in the above example with $\Delta_E = 2^{2n-8}y^{2p}$ and $N_E = 2 \prod_{\ell | y} \ell$.
 
-One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by studying the modular curve $X_0(5)$.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
+One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by a modular curve argument.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
 
 Therefore the Modularity Theorem and Level Lowering guarantee that if this hypothetical Frey curve exists, then there also exists a newform $g$ of level $2$ such that $\rho_{E,p} \simeq \rho_{f, p}$.  But the are no newforms of level $2$, which is a contradiction.
 
