@@ -213,7 +213,7 @@
 %%%               Background                     %%%             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\newrgbcolor{gradbegin}{0.4 0.4 1}%
-  \newrgbcolor{gradend}{0.85 0.4 1}%{1 1 0.5}%
+  \newrgbcolor{gradend}{0.75 0.4 1}%{1 1 0.5}%
   \psframe[fillstyle=gradient,gradend=gradend,%
   gradbegin=gradbegin,gradmidpoint=0.1](\bgwidth,-\bgheight)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,8 +303,28 @@ $u_n = \frac{\alpha^n - \beta^n}{\alpha - \beta}$ and $v_n = \alpha^n +\beta^n$,
 
 
 \begin{kasten}
-\section*{3 \hspace{0.1cm} {\color{red} 
+\section*{2 \hspace{0.1cm} {\color{red} 
 \underline{The Modular Method}}}
+\end{kasten}
+
+\begin{kasten}
+
+\subsection*{\color{blue} Overview}
+
+\begin{citemize}
+
+\item Given an alleged perfect power $u_n = y^p$, we first associate an elliptic curve whose coefficients depend in a crucial way upon $y$, $n$, and $p$.  Such an elliptic curve is called a Frey curve.  It has conductor $N$, which depends upon the input $y$.
+
+\item To this elliptic curve is associated a mod $p$ Galois representation coming from the Galois action on the $p$-torsion points.
+
+\item By the Modularity Theorem, this mod $p$ Galois representation is isomorphic to one coming from a weight $2$ newform of level $N$.
+
+\item This representation level-lowers to an isomorphic representation of a newform of level $N'$, where now $N'$ \emph{does not} depend upon $y$.
+
+\item Then use arithmetic information about newforms at level $N'$ to derive a contradiction or congruence conditions.
+
+\end{citemize}
+
 \end{kasten}
 
 \begin{kasten}
@@ -324,7 +344,7 @@ where $w_n = \pm v_n$ so that $w_n \equiv 1 \pmod{4}$, and $n \geq 5$.  Then we 
 \begin{kasten}
 
 \subsection*{\color{blue} Galois Representations}
-We can obtain Galois representations from both elliptic curves and modular forms.
+%We can obtain Galois representations from both elliptic curves and modular forms.
 
 For $E$ an elliptic curve and $p$ a prime, the absolute $p$-torsion points $E[p] \simeq \F_p \times \F_p$.
 The Galois action of $G_\Q = \Gal(\bar{\Q}/\Q)$ on $E[p]$ gives a linear representation of the Galois group 
@@ -334,6 +354,18 @@ It is ramified at a prime $\ell$ iff $\ell$ ramifies in $\Q(E[p])$.
 Conversely, given a weight $2$ newform $f$, Eichler-Shimura theory associates an abelian variety $A_f$, from which we obtain a Galois representation $\rho_{f,p}$.
 
 \end{kasten}
+
+
+
+
+\end{spalte}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               second column                   %%%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{spalte}
+
+
+
 \begin{kasten}
 
 \subsection*{\color{blue} Modularity of Elliptic Curves}
@@ -353,24 +385,6 @@ Let $f$ be a newform of level $\ell N$ with absolutely irreducible 2-dimensional
 
 \end{kasten}
 
-\begin{kasten}
-
-\subsection*{ \color{blue} Application}
-
-Suppose that $E$ is an elliptic curve over $\Q$ with minimal discriminant $\Delta = C\cdot D^p$, conductor $N$ | \Delta$
-
-\end{kasten}
-
-
-\end{spalte}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%               second column                   %%%             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{spalte}
-
-
-
-%\end{kasten}
 
 \begin{kasten}
 
@@ -378,7 +392,7 @@ Suppose that $E$ is an elliptic curve over $\Q$ with minimal discriminant $\Delt
 
 We can use the modular method to show that there are no $p$th powers in the Lucas sequence $(3,-2)$ for $p\geq 5$.  Let $E$ be the Frey elliptic curve in the above example with $\Delta_E = 2^{2n-8}y^{2p}$ and $N_E = 2 \prod_{\ell | y} \ell$.
 
-One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by a modular curve argument.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
+One can show that $\rho_{E,p}$ is absolutely irreducible for $p \geq 5$ by studying the modular curves $X_0(p)$ and $X_0(2p)$.  Further, as all primes $\ell$ dividing $y$ appear to an $\ell$th power in the discriminant, a Tate curve argument shows that $\rho_{E,p}$ is unramified at $\ell\neq p$ and finite flate at $\ell = p$.
 
 Therefore the Modularity Theorem and Level Lowering guarantee that if this hypothetical Frey curve exists, then there also exists a newform $g$ of level $2$ such that $\rho_{E,p} \simeq \rho_{f, p}$.  But the are no newforms of level $2$, which is a contradiction.
 
@@ -434,11 +448,10 @@ If two weight 2 modular forms $f$ and $g$ on $\Gamma_0(N)$ are not equal, then S
 
 \subsection*{ \color{blue} The Frey-Mazur Conjecture}
 
-The Frey-Mazur Conjecture states that for $p$ large enough, two elliptic curves with isomorphic mod $p$ Galois representations must be isogenous. \\
+The Frey-Mazur Conjecture states that for $p$ large enough, two elliptic curves with isomorphic mod $p$ Galois representations must be isogenous. In particular if $E$ and $E'$ are nonisogenous elliptic curves over $\Q$, and $\rho_{E,p} \cong \rho_{E',p}$
+Then $p\leq 17$.
 
-Precisely, let $E, E'$ be two elliptic curves defined over $\Q$. If $E[p] \cong E'[p]$ for some $p > 17$, then $E$ and $E'$ are isogenous.
-
-***HOW DO WE STATE IT IN TERMS OF MODULAR CURVES?***
+%***HOW DO WE STATE IT IN TERMS OF MODULAR CURVES?***<-- is this necessary?
 
 \end{kasten}
 
@@ -620,11 +633,11 @@ Michael~A. Bennett and Chris~M. Skinner.
   modular forms.
 \newblock {\em Canad. J. Math.}, 56(1):23--54, 2004.
 
-%\bibitem{conrad01}
-%Christophe Breuil, Brian Conrad, Fred Diamond, and Richard Taylor.
-%\newblock On the modularity of elliptic curves over {$\bold Q$}: wild 3-adic
-%  exercises.
-%\newblock {\em J. Amer. Math. Soc.}, 14(4):843--939 (electronic), 2001.
+\bibitem{conrad01}
+Christophe Breuil, Brian Conrad, Fred Diamond, and Richard Taylor.
+\newblock On the modularity of elliptic curves over {$\bold Q$}: wild 3-adic
+  exercises.
+\newblock {\em J. Amer. Math. Soc.}, 14(4):843--939 (electronic), 2001.
 
 \bibitem{brown12}
 David Brown.
@@ -643,11 +656,11 @@ Yann Bugeaud, Maurice Mignotte, and Samir Siksek.
   equations. {I}. {F}ibonacci and {L}ucas perfect powers.
 \newblock {\em Ann. of Math. (2)}, 163(3):969--1018, 2006.
 
-\bibitem{cohen07}
-Henri Cohen.
-\newblock {\em Number theory. {V}ol. {II}. {A}nalytic and modern tools}, volume
-  240 of {\em Graduate Texts in Mathematics}.
-\newblock Springer, New York, 2007.
+%\bibitem{cohen07}
+%Henri Cohen.
+%\newblock {\em Number theory. {V}ol. {II}. {A}nalytic and modern tools}, volume
+%  240 of {\em Graduate Texts in Mathematics}.
+%\newblock Springer, New York, 2007.
 
 %\bibitem{darmon97}
 %Henri Darmon and Lo{\"{\i}}c Merel.
@@ -684,23 +697,23 @@ B.~Mazur.
 %\newblock Primary cyclotomic units and a proof of {C}atalan's conjecture.
 %\newblock {\em J. Reine Angew. Math.}, 572:167--195, 2004.
 
-\bibitem{petho92}
-A.~Petho.
-\newblock The {P}ell sequence contains only trivial perfect powers.
-\newblock In {\em Sets, graphs and numbers ({B}udapest, 1991)}, volume~60 of
-  {\em Colloq. Math. Soc. J\'anos Bolyai}, pages 561--568. North-Holland,
-  Amsterdam, 1992.
+%\bibitem{petho92}
+%A.~Petho.
+%\newblock The {P}ell sequence contains only trivial perfect powers.
+%\newblock In {\em Sets, graphs and numbers ({B}udapest, 1991)}, volume~60 of
+%  {\em Colloq. Math. Soc. J\'anos Bolyai}, pages 561--568. North-Holland,
+%  Amsterdam, 1992.
 
 \bibitem{petho82}
 Attila Petho.
 \newblock Perfect powers in second order linear recurrences.
 \newblock {\em J. Number Theory}, 15(1):5--13, 1982.
 
-%\bibitem{ribet91}
-%Kenneth~A. Ribet.
-%\newblock Lowering the levels of modular representations without multiplicity
-%  one.
-%\newblock {\em Internat. Math. Res. Notices}, (2):15--19, 1991.
+\bibitem{ribet91}
+Kenneth~A. Ribet.
+\newblock Lowering the levels of modular representations without multiplicity
+  one.
+\newblock {\em Internat. Math. Res. Notices}, (2):15--19, 1991.
 
 %\bibitem{robbins83}
 %Neville Robbins.
@@ -726,15 +739,15 @@ T.~N. Shorey and C.~L. Stewart.
 %\newblock American Mathematical Society, Providence, RI, 2007.
 %\newblock With an appendix by Paul E. Gunnells.
 
-%\bibitem{taylorwiles95}
-%Richard Taylor and Andrew Wiles.
-%\newblock Ring-theoretic properties of certain {H}ecke algebras.
-%\newblock {\em Ann. of Math. (2)}, 141(3):553--572, 1995.
+\bibitem{taylorwiles95}
+Richard Taylor and Andrew Wiles.
+\newblock Ring-theoretic properties of certain {H}ecke algebras.
+\newblock {\em Ann. of Math. (2)}, 141(3):553--572, 1995.
 
-%\bibitem{wiles95}
-%Andrew Wiles.
-%\newblock Modular elliptic curves and {F}ermat's last theorem.
-%\newblock {\em Ann. of Math. (2)}, 141(3):443--551, 1995.
+\bibitem{wiles95}
+Andrew Wiles.
+\newblock Modular elliptic curves and {F}ermat's last theorem.
+\newblock {\em Ann. of Math. (2)}, 141(3):443--551, 1995.
 
 
 \end{thebibliography}
